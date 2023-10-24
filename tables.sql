@@ -1,56 +1,15 @@
-CREATE DATABASE PCPartsDB
-USE PCPartsDB
-Create Table CPUParts(
-	useCase VarChar(30) NOT NULL,
+-- useCase: Production or gaming
+-- quality: HighEnd or LowEnd or both
+-- partType: CPU, GPU, RAM, Storage, PSU, Case, Motherboard
+-- partName: Name of the part
+-- price: $0 to $9999.99
+-- performance_score: rating from 0 to 100, or NULL if there is no performance
+
+Create Table if not exists Parts(
+	useCase VARCHAR(30) NOT NULL,
 	quality VarChar(30) NOT NULL,
 	partType VarChar(30) NOT NULL,
-	name VarChar(max) NOT NULL,
+	partName VarChar(255) NOT NULL,
 	price Numeric(6,2) NOT NULL,
-	performance_score Integer NOT NULL
-);
-Create Table GPUParts(
-	useCase VarChar(30) NOT NULL,
-	quality VarChar(30) NOT NULL,
-	partType VarChar(30) NOT NULL,
-	name VarChar(max) NOT NULL,
-	price Numeric(6,2) NOT NULL,
-	performance_score Integer NOT NULL
-);
-Create Table RAMParts(
-	useCase VarChar(30) NOT NULL,
-	quality VarChar(30) NOT NULL,
-	partType VarChar(30) NOT NULL,
-	name VarChar(max) NOT NULL,
-	price Numeric(6,2) NOT NULL,
-	performance_score Integer NOT NULL
-);
-Create Table STORAGEParts(
-	useCase VarChar(30) NOT NULL,
-	quality VarChar(30) NOT NULL,
-	partType VarChar(30) NOT NULL,
-	name VarChar(max) NOT NULL,
-	price Numeric(6,2) NOT NULL,
-	performance_score Integer NOT NULL
-);
-Create Table PSUParts(
-	useCase VarChar(30) NOT NULL,
-	quality VarChar(30) NOT NULL,
-	partType VarChar(30) NOT NULL,
-	name VarChar(max) NOT NULL,
-	price Numeric(6,2) NOT NULL,
-	performance_score Integer NOT NULL
-);
-Create Table CASEParts(
-	useCase VarChar(30) NOT NULL,
-	quality VarChar(30) NOT NULL,
-	partType VarChar(30) NOT NULL,
-	name VarChar(max) NOT NULL ,
-	price Numeric(6,2) NOT NULL,
-);
-Create Table MOTHERBOARDParts(
-	useCase VarChar(30) NOT NULL,
-	quality VarChar(30) NOT NULL,
-	partType VarChar(30) NOT NULL,
-	name VarChar(max) NOT NULL,
-	price Numeric(6,2) NOT NULL,
+	performance_score Integer
 );
