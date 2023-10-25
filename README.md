@@ -1,1 +1,3 @@
 #Thats-Crazy
+Intro:
+If you're currently in the market for a new computer and you're finding yourself swamped by the vast array of choices, don't worry. Whether you're a dedicated gamer, a content creator, a business professional, or just in need of a dependable everyday PC, we've got your back. At Rapid Rigs, we firmly believe that the process of finding your ideal computer should be a breeze. That's precisely why we've put together a user-friendly platform that guides you through every step of the way, from pinpointing your unique requirements to piecing together your dream PC, we're here to make your computer buying experience a piece of cake.
