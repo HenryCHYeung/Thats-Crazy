@@ -18,18 +18,24 @@ def get_user_input():
     while True:
         if user_usage == 1:
             print("Choose your budget for Gaming:")
-            print("1 = $800, 2 = $1000, 3 = $1300, 4 = $1500, 5 = $2000")
+            print("1 = $800, 2 = $1000, 3 = $1300, 4 = $1500, 5 = $2000, 6 = $2500, 7 = $3000, 8 = $3500")
             user_budget_choice = input("Enter the number corresponding to your budget: ")
         elif user_usage == 2:
             print("Choose your budget for Production:")
-            print("1 = $1300, 2 = $1500, 3 = $1700, 4 = $2000, 5 = $2500, 6 = $3000, 7 = $3500")
+            print("1 = $1300, 2 = $1500, 3 = $1700, 4 = $2000, 5 = $2500, 6 = $3000, 7 = $3500, 8 = $4000")
             user_budget_choice = input("Enter the number corresponding to your budget: ")
 
-        if user_budget_choice in ['1', '2', '3', '4', '5', '6', '7']:
-            user_budget = {
-                '1': 800.0, '2': 1000.0, '3': 1300.0, '4': 1500.0, '5': 2000.0,
-                '6': 2500.0, '7': 3000.0, '8': 3500.0
-            }[user_budget_choice]
+        if user_budget_choice in ['1', '2', '3', '4', '5', '6', '7', '8']:
+            if user_usage == 1:
+                user_budget = {
+                    '1': 800.0, '2': 1000.0, '3': 1300.0, '4': 1500.0, '5': 2000.0,
+                    '6': 2500.0, '7': 3000.0, '8': 3500.0
+                }[user_budget_choice]
+            elif user_usage == 2:
+                user_budget = {
+                    '1': 1300.0, '2': 1500.0, '3': 1700.0, '4': 2000.0, '5': 2500.0,
+                    '6': 3000.0, '7': 3500.0, '8': 4000.0
+                }[user_budget_choice]
             break
         else:
             print("Invalid choice. Please select a valid budget option.")
@@ -52,11 +58,18 @@ def recommend_components(component_data, purpose, user_budget):
     for component_type in ["CPUs", "GPUs", "RAM", "Storage", "PSU", "Case", "Motherboard"]:
         #print(min_components.get(component_type).get("price"))
         sum_of_min_others = sum_of_min_cost - min_components.get(component_type).get("price")
-        affordable_components = [
-            component
-            for component in components["LowEnd"][component_type]
-            if component.get("price", 0) <= (user_budget - sum_of_min_others)
-        ]
+        affordable_components = []
+        for component in components["LowEnd"][component_type]:
+            if component.get("price", 0) <= (user_budget - sum_of_min_others):
+                affordable_components.append(component)
+
+        for component in components["HighEnd"][component_type]:
+            #print("User budget: ", user_budget)
+            #print(component.get("price", 0), (user_budget - sum_of_min_others))
+            if component.get("price", 0) <= (user_budget - sum_of_min_others):
+                affordable_components.append(component)
+
+        #print(component_type, affordable_components, "\n\n")
         #print("sum of min others: ", sum_of_min_others)
         #print("Budget - sum: ", user_budget - sum_of_min_others)
 
