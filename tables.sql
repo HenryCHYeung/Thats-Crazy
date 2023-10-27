@@ -1,5 +1,5 @@
 -- useCase: Production or gaming
--- quality: HighEnd or LowEnd or both
+-- quality: HighEnd or LowEnd
 -- partType: CPU, GPU, RAM, Storage, PSU, Case, Motherboard
 -- partName: Name of the part
 -- price: $0 to $9999.99

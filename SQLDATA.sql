@@ -1,3 +1,5 @@
+-- (useCase, quality, partType, partName, price, performance_score)
+
 INSERT OR REPLACE INTO Parts
 VALUES
 ('Gaming','CPUs','LowEnd','Intel Core i5-11400F',199.99,85),
