@@ -45,18 +45,11 @@ def get_user_input():
 
 def recommend_components(component_data, purpose, user_budget):
     components = component_data[purpose]
-
-    # Determine the budget tier based on the user's budget
-    budget_tier = "LowEnd" if (purpose == "Gaming" and user_budget <= 1000) or (purpose == "Production" and user_budget <= 1500) else "HighEnd"
-    
     recommendations = {}
     min_components, sum_of_min_cost = find_min_components(component_data, purpose, user_budget)
-    #print(min_components)
-    #print(sum_of_min_cost)
     total_cost = 0
 
     for component_type in ["CPUs", "GPUs", "RAM", "Storage", "PSU", "Case", "Motherboard"]:
-        #print(min_components.get(component_type).get("price"))
         sum_of_min_others = sum_of_min_cost - min_components.get(component_type).get("price")
         affordable_components = []
         for component in components["LowEnd"][component_type]:
@@ -64,14 +57,8 @@ def recommend_components(component_data, purpose, user_budget):
                 affordable_components.append(component)
 
         for component in components["HighEnd"][component_type]:
-            #print("User budget: ", user_budget)
-            #print(component.get("price", 0), (user_budget - sum_of_min_others))
             if component.get("price", 0) <= (user_budget - sum_of_min_others):
                 affordable_components.append(component)
-
-        #print(component_type, affordable_components, "\n\n")
-        #print("sum of min others: ", sum_of_min_others)
-        #print("Budget - sum: ", user_budget - sum_of_min_others)
 
         if not affordable_components:
             raise ValueError("Sorry, we couldn't find compatible components within your budget.")
