@@ -3,10 +3,10 @@ import "./App.css";
 import PaymentForm from "./PaymentForm.js";
 
 function Results({ userChoice, selectedPrice }) {
-    const [showPaymentForm, setShowPaymentForm] = useState(false);
+    const [showPaymentForm, setShowPaymentForm] = useState(false); //for conditional rendering
 
 
-    return (
+    return ( //even more conditional rendering! between the results and the payment form, NOTE: need to actually implement the algorithm!
       <div>
         {!showPaymentForm ? (
         <div id="results" className={!showPaymentForm ? "" : "invisible"}>

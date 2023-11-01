@@ -3,14 +3,14 @@ import "./App.css";
 
 
 function PaymentForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(false); // for the final bit of conditional rendering!
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent the form from actually submitting (for demonstration purposes)
     setSubmitted(true);
   };
 
-  return (
+  return ( //final bit of condtional rendering! a placeholder form followed by a basic thingy
     <div id="payment">
       {submitted ? (
         <h1>Done!</h1>
