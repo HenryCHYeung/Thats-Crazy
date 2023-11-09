@@ -1,0 +1,51 @@
+CREATE DATABASE PCPartsDB
+USE PCPartsDB
+Create Table CPU(
+	Name VarChar(max) NOT NULL,
+	Price Numeric(6,2) NOT NULL,
+    Socket VarChar(max) NOT NULL,
+    TDP TINYINT(max) NOT NULL,
+	PerformanceScore Integer NOT NULL,
+	imagePath TEXT
+);
+Create Table GPU(
+	Name VarChar(max) NOT NULL,
+	Price Numeric(6,2) NOT NULL,
+    TDP TINYINT(max) NOT NULL,
+	PerformanceScore Integer NOT NULL,
+	imagePath TEXT
+);
+Create Table RAM(
+    Name VarChar(max) NOT NULL,
+	Price Numeric(6,2) NOT NULL,
+    MemoryType VarChar(max) NOT NULL,
+	imagePath TEXT
+);
+Create Table Storage(
+	Name VarChar(max) NOT NULL,
+	Price Numeric(6,2) NOT NULL,
+    Capacity VarChar(max) NOT NULL,
+	imagePath TEXT
+);
+Create Table PSU(
+	Name VarChar(max) NOT NULL,
+	Price Numeric(6,2) NOT NULL,
+    Wattage SMALLINT(max) NOT NULL,
+	imagePath TEXT
+);
+Create Table Case(
+	Name VarChar(max) NOT NULL,
+	Price Numeric(6,2) NOT NULL,
+	imagePath TEXT
+);
+Create Table Motherboard(
+	Name VarChar(max) NOT NULL,
+	Price Numeric(6,2) NOT NULL,
+    Socket VarChar(max) NOT NULL,
+    MemoryType VarChar(max) NOT NULL,
+	imagePath TEXT
+);
+Create Table CPUCooler(
+	Name VarChar(max) NOT NULL,
+	Price Numeric(6,2) NOT NULL
+);
