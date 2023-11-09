@@ -1,0 +1,68 @@
+MINIMUM PRODUCTION PC:
+CPU: AMD Ryzen 3 3100 ($161.97, PS = 5428, Socket = AM4, TDP = 65)
+GPU: XFX GTR XXX Radeon RX 580 ($129.99, PS = 4482, TDP = 185)
+PSU: Thermaltake Smart 500 W ($44.99, W = 500)
+Motherboard: MSI B450-A PRO MAX ($139.99, Socket = AM4, MT = DDR4)
+RAM: Klevv BOLT X 16 GB ($35.99, MT = DDR4)
+Storage:
+	500 GB: Crucial P3 500 GB ($29.99)
+	1 TB: Seagate BarraCuda 1 TB ($51.99)
+	2 TB: Western Digital Blue 2 TB ($64.98)
+Case: Cooler Master MasterBox Q300L ($39.99)
+
+Price (500 GB): $582.91
+Price (1 TB): $604.91
+Price (2 TB): $617.9
+
+
+MINIMUM GAMING PC:
+GPU: XFX GTR XXX Radeon RX 580 ($129.99, PS = 4482, TDP = 185)
+CPU: AMD Ryzen 3 3200G ($84.99, PS = 3319, Socket = AM4, TDP = 65)
+PSU: Thermaltake Smart 500 W ($44.99, W = 500)
+Motherboard: MSI B450-A PRO MAX ($139.99, Socket = AM4, MT = DDR4)
+RAM: Klevv BOLT X 16 GB ($35.99, MT = DDR4)
+Storage:
+	500 GB: Crucial P3 500 GB ($29.99)
+	1 TB: Seagate BarraCuda 1 TB ($51.99)
+	2 TB: Western Digital Blue 2 TB ($64.98)
+Case: Cooler Master MasterBox Q300L ($39.99)
+
+Price (500 GB): $505.93
+Price (1 TB): $527.93
+Price (2 TB): $540.92
+
+
+MAXIMUM PRODUCTION PC:
+CPU: Intel Core i9-12900K ($389.81, PS = 27473, Socket = LGA1700, TDP = 125)
+CPU Cooler: Noctua NH-D15 ($109.95)
+GPU: NVIDIA Geforce RTX 4080 ($1199.00, PS = 24639, TDP = 320)
+PSU: Cooler Master MWE Bronze V2 650 W ($474.00, W = 650)
+Motherboard: EVGA Z690 Dark K|NGP|N ($457.69, Socket = LGA1700, MT = DDR5)
+RAM: G.Skill Trident Z5 RGB 64 GB ($214.99, MT = DDR5)
+Storage:
+	500 GB: Kingston A2000 500 GB ($63.99)
+	1 TB: Samsung 970 Pro 1 TB ($239.00)
+	2 TB: Crucial P5 2 TB ($313.61)
+Case: Cooler Master Cosmos C700M ($547.99)
+
+Price (500 GB): $3457.42
+Price (1 TB): $3632.43
+Price (2 TB): $3707.04
+
+
+MAXIMUM GAMING PC:
+GPU: NVIDIA Geforce RTX 4090 ($1599.00, PS = 30388, TDP = 450)
+CPU: Intel Core i9-12900K ($389.81, PS = 27473, Socket = LGA1700, TDP = 125)
+CPU Cooler: Noctua NH-D15 ($109.95)
+PSU: Cooler Master MWE Bronze V2 650 W ($474.00, W = 650)
+Motherboard: EVGA Z690 Dark K|NGP|N ($457.69, Socket = LGA1700, MT = DDR5)
+RAM: G.Skill Trident Z5 RGB 64 GB ($214.99, MT = DDR5)
+Storage:
+	500 GB: Kingston A2000 500 GB ($63.99)
+	1 TB: Samsung 970 Pro 1 TB ($239.00)
+	2 TB: Crucial P5 2 TB ($313.61)
+Case: Cooler Master Cosmos C700M ($547.99)
+
+Price (500 GB): $3857.42
+Price (1 TB): $4032.43
+Price (2 TB): $4107.04
