@@ -1,26 +1,30 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./App.css";
 import PaymentForm from "./PaymentForm.js";
 
-function Results({ userChoice, selectedPrice }) {
-    const [showPaymentForm, setShowPaymentForm] = useState(false); //for conditional rendering
+function Results({ userChoice, selectedPrice, selectedStorage }) {
+  const [showPaymentForm, setShowPaymentForm] = useState(false);
 
+  const goToPaymentForm = () => {
+    setShowPaymentForm(true);
+  };
 
-    return ( //even more conditional rendering! between the results and the payment form, NOTE: need to actually implement the algorithm!
-      <div>
-        {!showPaymentForm ? (
-        <div id="results" className={!showPaymentForm ? "" : "invisible"}>
-             <h1>Results</h1>
-             <p>User Choice: {userChoice}</p>
-             <p>Selected Price: {selectedPrice}</p>
-             <p>PART INFO HERE</p>
-             <button onClick={() => setShowPaymentForm(true)}>Proceed to Payment</button>
+  return (
+    <div>
+      {showPaymentForm ? (
+        <PaymentForm />
+      ) : (
+        <div id="results"> 
+          <h1>Results</h1>
+          <p>User Choice: {userChoice}</p>
+          <p>Selected Storage: {selectedStorage}</p> 
+          <p>Selected Price: {selectedPrice}</p>
+          <p>PART INFO HERE</p>
+          <button onClick={goToPaymentForm}>Proceed to Payment</button>
         </div>
-        ) : (
-          <PaymentForm />
-        )}
-      </div>
-    );
-  }
-  
+      )}
+    </div>
+  );
+}
+
 export default Results;

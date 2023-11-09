@@ -4,7 +4,9 @@ import './App.css';
 import PriceChoice from "./PriceChoice.js";
 
 function Home() { //Home page which contains initial starting variables
-  // Define gamingPrices and productionPrices here
+  const [startBut, setStartBut] = useState(false); //for the Start button
+  const [userChoice, setUserChoice] = useState(null); //for the choice between gaming and production
+
   const gamingPrices = ["$800", "$1000", "$1300", "$1500", "$2000"];
   const productionPrices = [
     "$1300",
@@ -16,9 +18,6 @@ function Home() { //Home page which contains initial starting variables
     "$3500",
   ];
 
-  const [startBut, setStartBut] = useState(false); //for the Start button
-  const [userChoice, setUserChoice] = useState(null); //for the choice between gaming and production
-
   const handleStartClick = () => { // For the start button
     setStartBut(true);
   };
@@ -27,7 +26,7 @@ function Home() { //Home page which contains initial starting variables
     setUserChoice(choice);
   };
 
-  return (//Making stuff invisible + the conditional rendering between home, priceChoice and typeChoice, home is just made invisible for simplicity.
+  return (//Making stuff invisible + the conditional rendering between home, StorageChoice and typeChoice, home is just made invisible for simplicity.
     <div>
       <div id="home" className={startBut ? "invisible" : ""}> 
         <h1>Welcome to the Building Site!</h1>
@@ -36,10 +35,11 @@ function Home() { //Home page which contains initial starting variables
 
       {startBut && userChoice ? (
         <PriceChoice
-          userChoice={userChoice}
-          gamingPrices={gamingPrices}
-          productionPrices={productionPrices}
-        />
+        userChoice={userChoice}
+        gamingPrices={gamingPrices}
+        productionPrices={productionPrices}
+      />
+      
       ) : (
         <TypeChoice
           onChoiceSelected={handleChoiceSelected}
