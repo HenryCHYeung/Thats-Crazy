@@ -58,7 +58,7 @@ PRODUCTION:
 			selectedCPU = CPU
 			break out of loop	// Select the first CPU that meets all the conditions above
 		end for loop
-		if (!selectedCPU) return "No PC available"	// if no CPU gets selected, no computer can be built
+		if (!selectedCPU) return "No PC available. That's crazy!"	// if no CPU gets selected, no computer can be built
 			
 	GPU:
 		min_sum_of_others = min_sum_of_price - cheapest_GPU.price	// Compare GPU prices
