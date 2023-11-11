@@ -9,9 +9,11 @@ app.use(express.urlencoded({ extended: true }));        // Allows incoming HTML 
 app.use(cors());              // Allows frontend to make requests to access the APIs here
 
 app.post("/finished", function(req, res) {
-  let mess = req.body;
-  console.log(mess);
-  res.json({message: "Hello"});
+  let choice = req.body.userChoice;
+  let storage = req.body.selectedStorage;
+  let price = req.body.selectedPrice;
+  console.log(choice, storage, price);
+  res.json({choice, storage, price});
 });
 
 // Server will run on PORT

@@ -46,7 +46,7 @@ function PriceChoice({ userChoice, gamingPrices, productionPrices }) {
               key={index}
               onClick={() => handlePriceSelection(price)}
             >
-              {price}
+              ${price}
             </button>
           ))}
         </div>

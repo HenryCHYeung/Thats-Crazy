@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function StorageChoice({ onStorageSelected }) {
-  const storageOptions = ["500GB", "1TB", "2TB"];
+  const storageOptions = ["500 GB", "1 TB", "2 TB"];
   const [showStorageChoice, setShowStorageChoice] = useState(true);
 
   const handleStorageSelection = (storage) => {

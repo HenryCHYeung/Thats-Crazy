@@ -7,16 +7,8 @@ function Home() { //Home page which contains initial starting variables
   const [startBut, setStartBut] = useState(false); //for the Start button
   const [userChoice, setUserChoice] = useState(null); //for the choice between gaming and production
 
-  const gamingPrices = ["$800", "$1000", "$1300", "$1500", "$2000"];
-  const productionPrices = [
-    "$1300",
-    "$1500",
-    "$1700",
-    "$2000",
-    "$2500",
-    "$3000",
-    "$3500",
-  ];
+  const gamingPrices = [800, 1000, 1300, 1500, 2000];
+  const productionPrices = [1300, 1500, 1700, 2000, 2500, 3000, 3500];
 
   const handleStartClick = () => { // For the start button
     setStartBut(true);
