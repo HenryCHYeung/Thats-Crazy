@@ -18,35 +18,35 @@ FIND CHEAPEST PC AND USE IT AS BASELINE
 6) Find cheapest storage with capacity = userInput(storage)
 7) Find cheapest case
 8) Set min_sum_of_price = sum of cheapest parts above
-9) Record all storage with capacity = userInput(storage) into array storage[], ordered by price DESCENDING
-10) Record all cases into array case[], ordered by price DESCENDING
-11) Recommendation algorithm (Look at psuedo-code below)
+9) Recommendation algorithm (Look at psuedo-code below)
 
 PSUEDO-CODE
 PRODUCTION:
 	CPU:
 		min_sum_of_others = min_sum_of_price - cheapest_CPU.price
 		Find CPUs such that CPU.price <= budget - min_sum_of_others AND 
-				    CPU.performance_score >= minimum GPU performance score,
+				    CPU.performance_score >= cheapest_GPU.performance score,
 		record in array CPU[] ordered by performance_score DESCENDING
 		for CPU in CPU[]:
-			Get a new list of GPUs that satisfy the conditions and does not exceed budget
-			Get a new list of PSUs that satisfy the conditions and does not exceed budget (CPU + max(GPU.TDP) from above)
-			Get a new list of motherboards that satisfy the conditions and does not exceed budget (CPU)
-			Get a new list of RAMs that satisfy the conditions and does not exceed budget (DDR4 or both DDR4 and DDR5)
+			Get a new list of GPUs that satisfy the conditions and do not exceed budget
+			Get a new list of PSUs that satisfy the conditions and do not exceed budget (CPU + max(GPU.TDP) from above)
+			Get a new list of motherboards that satisfy the conditions and do not exceed budget (CPU)
+			Get a new list of RAMs that do not exceed budget (compatibility with motherboard can be worked out later)
+			Get a new list of storage that satisfy user input and do not exceed budget
+			Get a new list of cases that do not exceed budget
 			// does not exceed budget means min_sum_of_others + current component <= budget
 			If any list is empty (no component satisfies conditions), continue to next CPU in list
-			GPU[] is ordered by performance score in descending order
-			Everything else is ordered by price in descending order
+			Every list except GPU is ordered by price in descending order
+			GPU is ordered by performance score in descending order
 			Recalculate min_sum_of_others using the new lists (includes the cheapest storage and case from before)
 			if (CPU.price + min_sum_of_others > budget)	// the cheapest PC with selected CPU exceeds budget
 				continue to next CPU in list
-			if (CPU.TDP > 100) AND (CPU.price + min_sum_of_others + CPU_Cooler.price > budget)	
+			if (CPU.TDP >= 100) AND (CPU.price + min_sum_of_others + CPU_Cooler.price > budget)	
 				continue to next CPU in list			// Adding cooler exceeds budget so don't add CPU
-		
-			min_sum_of_price = min_sum_of_others + CPU.price
-			if (CPU.TDP > 100)
+			if (CPU.TDP >= 100)		// Cooler fits in budget
 				min_sum_of_price += CPU_Cooler.price
+			min_sum_of_price = min_sum_of_others + CPU.price
+			
 
 			Right now min_sum_of_price uses the current CPU.price, but it uses the cheapest prices for everything else.
 			The goal is to select better quality components for the other categories while still remaining in budget.
@@ -87,7 +87,7 @@ PRODUCTION:
 		Same pattern as above
 
 	GENERALIZED FUNCTION:
-	function getSuitablePart(min_sum_of_price, cheapest_part.price, partList, budget)
+	function getSuitablePart(cheapest_part.price, partList, budget)
 		min_sum_of_others = min_sum_of_price - cheapest_part.price
 		for part in partList
 			if (part.price + min_sum_of_others > budget)
