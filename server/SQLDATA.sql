@@ -1,3 +1,5 @@
+-- Parts are obtained from PCPartPicker
+
 INSERT OR REPLACE INTO Cases (Name,Price) VALUES ('NZXT H510', 89.99);
 INSERT OR REPLACE INTO Cases (Name,Price) VALUES ('Cooler Master MasterBox Q300L', 39.99);
 INSERT OR REPLACE INTO Cases (Name,Price) VALUES ('Fractal Design Focus G', 69.98);
