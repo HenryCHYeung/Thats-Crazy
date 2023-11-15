@@ -10,7 +10,11 @@ function Results({ userChoice, selectedPrice, selectedStorage }) {
     .post("/finished", {            // POST request to send user inputs to server
       userChoice, selectedStorage, selectedPrice})
     .then((response) => {           // Receives response from server after running algorithm
-      console.log(response.data);
+      if (!response.data) {
+        console.log("No PC available based on your specifications. That's crazy!");
+      } else {
+        console.log(response.data);
+      }
     });
 
   const goToPaymentForm = () => {

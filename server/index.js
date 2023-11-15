@@ -66,17 +66,19 @@ async function findMinPC(purpose, storage) {
   min_sum_of_price = cheapest_CPU[0].Price + cheapest_GPU[0].Price + cheapest_PSU[0].Price + cheapest_MB[0].Price +
                       cheapest_RAM[0].Price + cheapest_Storage[0].Price + cheapest_Case[0].Price;   // Price of cheapest PC
 
-  let parts_List = {
+  // Put these components together into an object
+  const cheapest_pc = {
     CPU: cheapest_CPU[0],
     GPU: cheapest_GPU[0],
     PSU: cheapest_PSU[0],
     Motherboard: cheapest_MB[0],
     RAM: cheapest_RAM[0],
     Storage: cheapest_Storage[0],
-    Case: cheapest_Case[0]
+    Case: cheapest_Case[0],
+    Price: min_sum_of_price
   };
   console.log("min_sum_of_price: " + min_sum_of_price);
-  return parts_List;
+  return cheapest_pc;
 }
 
 // Build production PC (Find CPU first)
@@ -152,8 +154,9 @@ async function productionPC(storage, budget, cheapest_PC) {
   }
   if (selected_CPU == undefined) {    // Undefined means no CPUs meet the requirements. Thus no PCs can be built
     console.log("No PC available");
-    return "No PC available based on specifications. That's crazy!";
+    return undefined;
   }
+  // Select the best of each component that fits the budget from each of the lists above
   selected_GPU = getSuitablePart(min_GPU_price[0].Price, list_GPU, budget);
   selected_PSU = getSuitablePart(list_PSU[list_PSU.length - 1].Price, list_PSU, budget);
   selected_MB = getSuitablePart(list_MB[list_MB.length - 1].Price, list_MB, budget);
@@ -167,18 +170,21 @@ async function productionPC(storage, budget, cheapest_PC) {
   selected_RAM = getSuitablePart(list_RAM[list_RAM.length - 1].Price, new_list_RAM, budget);
   selected_storage = getSuitablePart(list_storage[list_storage.length - 1].Price, list_storage, budget);
   selected_case = getSuitablePart(list_case[list_case.length - 1].Price, list_case, budget);
-  console.log(selected_CPU);
-  console.log(selected_GPU);
-  console.log(selected_PSU);
-  console.log(selected_MB);
-  console.log(selected_RAM);
-  console.log(selected_storage);
-  console.log(selected_case);
-  console.log(selected_cooler);
-  let sum = selected_CPU.Price + selected_GPU.Price + selected_PSU.Price + selected_MB.Price + selected_RAM.Price + 
-            selected_storage.Price + selected_case.Price + selected_cooler.Price;
-  console.log(sum);
+  
+  // Put selected components together into an object
+  const final_pc = {
+    CPU: selected_CPU,
+    GPU: selected_GPU,
+    PSU: selected_PSU,
+    Motherboard: selected_MB,
+    RAM: selected_RAM,
+    Storage: selected_storage,
+    Case: selected_case,
+    CPU_Cooler: selected_cooler,
+    Price: min_sum_of_price
+  };
   console.log(min_sum_of_price);
+  return final_pc;
 }
 
 // cheapest_price is the price of the cheapest compatible part, partList is the list of compatible parts, ordered by "quality"
@@ -199,19 +205,21 @@ function getSuitablePart(cheapest_price, partList, budget) {
 
 // Recommendation algorithm (implementation of the psuedo-code)
 async function recommendation(purpose, storage, budget, cheapest_PC) {
+  let final_PC;
   if (purpose == "Production") {
-    productionPC(storage, budget, cheapest_PC);
+    final_PC = productionPC(storage, budget, cheapest_PC);
   }
-  
+  return final_PC;
 }
 
+// Takes user inputs and use them to build the cheapest PC, then use that as a baseline to build the actual PC
 app.post("/finished", async function(req, res) {
   let choice = req.body.userChoice;
   let storage = req.body.selectedStorage;
   let budget = req.body.selectedPrice;
   let cheapest_PC = await findMinPC(choice, storage);
-  recommendation(choice, storage, budget, cheapest_PC);
-  res.json(cheapest_PC);
+  let final_PC = await recommendation(choice, storage, budget, cheapest_PC);
+  res.json(final_PC);
 });
 
 // Server will run on PORT
