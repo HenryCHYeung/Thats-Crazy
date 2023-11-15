@@ -76,7 +76,6 @@ async function findMinPC(purpose, storage) {
     Case: cheapest_Case[0]
   };
   console.log("min_sum_of_price: " + min_sum_of_price);
-  console.log(parts_List);
   return parts_List;
 }
 
@@ -87,17 +86,11 @@ async function productionPC(storage, budget, cheapest_PC) {
   let list_CPU = await db_all(CPU_query, [budget - min_sum_of_others, cheapest_PC.GPU.PerformanceScore]);
   let list_GPU, min_GPU_price, list_PSU, list_MB, list_RAM, list_storage, list_case;
   let selected_CPU, selected_GPU, selected_PSU, selected_MB, selected_RAM, selected_storage, selected_case, selected_cooler;
-  console.log("min_sum_of_others: " + min_sum_of_others);
+
   for (i = 0; i < list_CPU.length; i++) {
     min_sum_of_others = min_sum_of_price - cheapest_PC.CPU.Price;     // Reset min_sum_of_others for every CPU in list
-    console.log("min_sum_of_price: " + min_sum_of_price);
-    console.log("cheapest_PC.CPU.Price: " + cheapest_PC.CPU.Price);
-    console.log("min_sum_of_others: " + min_sum_of_others);
-    min_sum_of_others += list_CPU[i].Price;       // Recalculate sum of every component using current CPU price
-    console.log("CPU: " + list_CPU[i].Price);
-    console.log("min_sum_of_others: " + min_sum_of_others);
+    min_sum_of_others += list_CPU[i].Price;       // Recalculate sum of every component but with current CPU price
     min_sum_of_others -= cheapest_PC.GPU.Price;   // Sum of every component except GPU (used to get GPU list)
-    console.log("min_sum_of_others: " + min_sum_of_others);
     let CPU_PS = list_CPU[i].PerformanceScore;
     let GPU_query = 'SELECT * FROM GPU WHERE PerformanceScore <= ? AND PerformanceScore >= ? AND Price <= ? ORDER BY PerformanceScore DESC';
     list_GPU = await db_all(GPU_query, [CPU_PS, CPU_PS - 3500, budget - min_sum_of_others]);
@@ -110,8 +103,6 @@ async function productionPC(storage, budget, cheapest_PC) {
     let GPU_query3 = 'SELECT Price FROM GPU WHERE PerformanceScore <= ? AND PerformanceScore >= ? AND Price <= ? ORDER BY Price ASC';
     min_GPU_price = await db_all(GPU_query3, [CPU_PS, CPU_PS - 3500, budget - min_sum_of_others]);
     min_sum_of_others += min_GPU_price[0].Price;     // Add minimum GPU price to sum of minimum components
-    console.log(min_GPU_price);
-    console.log("min_sum_of_others: " + min_sum_of_others);
     
     min_sum_of_others -= cheapest_PC.PSU.Price;     // Sum of every component except PSU (used to get PSU list)
     let PSU_query = 'SELECT * FROM PSU WHERE Wattage >= ? AND Price <= ? ORDER BY Price DESC';
@@ -163,7 +154,6 @@ async function productionPC(storage, budget, cheapest_PC) {
     console.log("No PC available");
     return "No PC available based on specifications. That's crazy!";
   }
-  console.log("GPU_List: " + JSON.stringify(list_GPU));
   selected_GPU = getSuitablePart(min_GPU_price[0].Price, list_GPU, budget);
   selected_PSU = getSuitablePart(list_PSU[list_PSU.length - 1].Price, list_PSU, budget);
   selected_MB = getSuitablePart(list_MB[list_MB.length - 1].Price, list_MB, budget);
@@ -174,7 +164,7 @@ async function productionPC(storage, budget, cheapest_PC) {
       new_list_RAM.push(list_RAM[j]);         // new_list_RAM should still be sorted by price in descending order
     }
   }
-  selected_RAM = getSuitablePart(new_list_RAM[new_list_RAM.length - 1].Price, new_list_RAM, budget);
+  selected_RAM = getSuitablePart(list_RAM[list_RAM.length - 1].Price, new_list_RAM, budget);
   selected_storage = getSuitablePart(list_storage[list_storage.length - 1].Price, list_storage, budget);
   selected_case = getSuitablePart(list_case[list_case.length - 1].Price, list_case, budget);
   console.log(selected_CPU);
@@ -194,8 +184,6 @@ async function productionPC(storage, budget, cheapest_PC) {
 // cheapest_price is the price of the cheapest compatible part, partList is the list of compatible parts, ordered by "quality"
 // partList will never be empty because this function is only executed if there are valid lists
 function getSuitablePart(cheapest_price, partList, budget) {
-  console.log("partList: ");
-  console.log(partList);
   let min_sum_of_others = min_sum_of_price - cheapest_price;
   let chosen_part;
   let loop_count = 0;
@@ -203,8 +191,6 @@ function getSuitablePart(cheapest_price, partList, budget) {
     loop_count += 1;
     if (partList[i].Price + min_sum_of_others <= budget) {    // Find first part in list that fits in budget
       chosen_part = partList[i];
-      console.log("chosen part: ");
-      console.log(chosen_part);
       min_sum_of_price = min_sum_of_others + chosen_part.Price;     // Reset min_sum_of_price to account for new part
       return chosen_part;
     }
