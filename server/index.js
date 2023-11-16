@@ -186,6 +186,111 @@ async function productionPC(storage, budget, cheapest_PC) {
   console.log(min_sum_of_price);
   return final_pc;
 }
+//Gaming
+async function gamingPC(storage, budget, cheapest_PC) {
+  let min_sum_of_others = min_sum_of_price - cheapest_PC.GPU.Price;   // Sum of every component except GPU (used to get GPU list)
+  let GPU_query = 'SELECT * FROM GPU WHERE Price <= ? AND PerformanceScore >= ? ORDER BY PerformanceScore DESC';
+  let list_GPU = await db_all(GPU_query, [budget - min_sum_of_others, cheapest_PC.CPU.PerformanceScore]);
+  let list_CPU, min_CPU_price, list_PSU, list_MB, list_RAM, list_storage, list_case;
+  let selected_CPU, selected_GPU, selected_PSU, selected_MB, selected_RAM, selected_storage, selected_case, selected_cooler;
+
+  for (i = 0; i < list_GPU.length; i++) {
+    min_sum_of_others = min_sum_of_price - cheapest_PC.GPU.Price;     // Reset min_sum_of_others for every GPU in list
+    min_sum_of_others += list_GPU[i].Price;       // Recalculate sum of every component but with current GPU price
+    min_sum_of_others -= cheapest_PC.CPU.Price;   // Sum of every component except GPU (used to get GPU list)
+    let GPU_PS = list_GPU[i].PerformanceScore;
+    let CPU_query = 'SELECT * FROM CPU WHERE PerformanceScore <= ? AND PerformanceScore >= ? AND Price <= ? ORDER BY PerformanceScore DESC';
+    list_GPU = await db_all(CPU_query, [GPU_PS, GPU_PS - 3500, budget - min_sum_of_others]);
+    if (list_CPU.length == 0) continue;       // If list is empty (no CPU meets criteria of current GPU), move on to next GPU
+
+    // Get highest TDP within the CPUs that fit the conditions (so that all potential PSUs will be valid)
+    let CPU_query2 = 'SELECT TDP FROM CPU WHERE PerformanceScore <= ? AND PerformanceScore >= ? AND Price <= ? ORDER BY TDP DESC';
+    let CPU_by_TDP = await db_all(CPU_query2, [GPU_PS, GPU_PS - 3500, budget - min_sum_of_others]);
+    let max_TDP = CPU_by_TDP[0].TDP;
+    let CPU_query3 = 'SELECT Price FROM CPU WHERE PerformanceScore <= ? AND PerformanceScore >= ? AND Price <= ? ORDER BY Price ASC';
+    min_CPU_price = await db_all(CPU_query3, [GPU_PS, GPU_PS - 3500, budget - min_sum_of_others]);
+    min_sum_of_others += min_CPU_price[0].Price;     // Add minimum CPU price to sum of minimum components
+    
+    min_sum_of_others -= cheapest_PC.PSU.Price;     // Sum of every component except PSU (used to get PSU list)
+    let PSU_query = 'SELECT * FROM PSU WHERE Wattage >= ? AND Price <= ? ORDER BY Price DESC';
+    list_PSU = await db_all(PSU_query, [list_CPU[i].TDP + max_TDP, budget - min_sum_of_others]);
+    if (list_PSU.length == 0) continue;       // If list is empty (no PSU meets criteria of current CPU), move on to next CPU
+    min_sum_of_others += list_PSU[list_PSU.length - 1].Price;     // Add minimum PSU price to sum of minimum components
+    
+    min_sum_of_others -= cheapest_PC.Motherboard.Price;    // Sum of every component except motherboard
+    let MB_query = 'SELECT * FROM Motherboard WHERE Socket = ? AND Price <= ? ORDER BY Price DESC';
+    list_MB = await db_all(MB_query, [list_CPU[i].Socket, budget - min_sum_of_others]);
+    if (list_MB.length == 0) continue;       // If list is empty (no motherboard meets criteria of current CPU), move on to next CPU
+    min_sum_of_others += list_MB[list_MB.length - 1].Price;     // Add minimum motherboard price to sum of minimum components
+
+    min_sum_of_others -= cheapest_PC.RAM.Price;      // Sum of every component except RAM
+    let RAM_query = 'SELECT * FROM RAM WHERE Price <= ? ORDER BY Price DESC';
+    list_RAM = await db_all(RAM_query, [budget - min_sum_of_others]);
+    if (list_RAM.length == 0) continue;       // If list is empty (no RAM meets criteria of current CPU), move on to next CPU
+    min_sum_of_others += list_RAM[list_RAM.length - 1].Price;   // Add minimum RAM price to sum of minimum components
+
+    min_sum_of_others -= cheapest_PC.Storage.Price;    // Sum of every component except Storage
+    let storage_query = 'SELECT * FROM Storage WHERE Capacity = ? AND Price <= ? ORDER BY Price DESC';
+    list_storage = await db_all(storage_query, [storage, budget - min_sum_of_others]);
+    if (list_storage.length == 0) continue;       // If list is empty (no storage meets criteria of current CPU), move on to next CPU
+    min_sum_of_others += list_storage[list_storage.length - 1].Price;   // Add minimum storage price to sum of minimum components
+
+    min_sum_of_others -= cheapest_PC.Case.Price;    // Sum of every component except Case
+    let case_query = 'SELECT * FROM Cases WHERE Price <= ? ORDER BY Price DESC';
+    list_case = await db_all(case_query, [budget - min_sum_of_others]);
+    if (list_case.length == 0) continue;       // If list is empty (no case meets criteria of current CPU), move on to next CPU
+    min_sum_of_others += list_case[list_case.length - 1].Price;     // Add minimum case price to sum of minimum components
+    
+    // min_sum_of_others is now the sum of minimum components with current CPU (including current CPU)
+    if (min_sum_of_others > budget) continue;   // If the cheapest PC with selected CPU exceeds budget, move on to next CPU
+
+    if (list_CPU[i].TDP >= 100) {       // If CPU has TDP >= 100, a cooler must be added
+      let cooler_query = 'SELECT * FROM CPUCooler LIMIT 1';     // Our dataset only has one cooler for now
+      let cooler = await db_all(cooler_query, []);
+      if (cooler[0].Price + min_sum_of_others > budget) continue;   // If adding cooler exceeds budget, CPU is invalid. Move on
+      min_sum_of_others += cooler[0].Price;                         // Otherwise include it
+      selected_cooler = cooler[0];
+    }
+
+    min_sum_of_price = min_sum_of_others;       // Set minimum price to global variable to be used for other parts
+    min_sum_of_others -= list_CPU[i].Price;
+    selected_CPU = list_CPU[i];
+    break;      // If code makes it here, it means the CPU meets all necessary requirements. No need to look further
+  }
+  if (selected_CPU == undefined) {    // Undefined means no CPUs meet the requirements. Thus no PCs can be built
+    console.log("No PC available");
+    return undefined;
+  }
+  // Select the best of each component that fits the budget from each of the lists above
+  selected_GPU = getSuitablePart(min_GPU_price[0].Price, list_GPU, budget);
+  selected_PSU = getSuitablePart(list_PSU[list_PSU.length - 1].Price, list_PSU, budget);
+  selected_MB = getSuitablePart(list_MB[list_MB.length - 1].Price, list_MB, budget);
+  
+  let new_list_RAM = [];
+  for (j = 0; j < list_RAM.length; j++) {
+    if (list_RAM[j].MemoryType == selected_MB.MemoryType) {       // Make sure RAM is compatible with chosen motherboard
+      new_list_RAM.push(list_RAM[j]);         // new_list_RAM should still be sorted by price in descending order
+    }
+  }
+  selected_RAM = getSuitablePart(list_RAM[list_RAM.length - 1].Price, new_list_RAM, budget);
+  selected_storage = getSuitablePart(list_storage[list_storage.length - 1].Price, list_storage, budget);
+  selected_case = getSuitablePart(list_case[list_case.length - 1].Price, list_case, budget);
+  
+  // Put selected components together into an object
+  const final_pc = {
+    CPU: selected_CPU,
+    GPU: selected_GPU,
+    PSU: selected_PSU,
+    Motherboard: selected_MB,
+    RAM: selected_RAM,
+    Storage: selected_storage,
+    Case: selected_case,
+    CPU_Cooler: selected_cooler,
+    Price: min_sum_of_price
+  };
+  console.log(min_sum_of_price);
+  return final_pc;
+}
 
 // cheapest_price is the price of the cheapest compatible part, partList is the list of compatible parts, ordered by "quality"
 // partList will never be empty because this function is only executed if there are valid lists
