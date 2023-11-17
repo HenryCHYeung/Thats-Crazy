@@ -14,6 +14,8 @@ function Results({ userChoice, selectedPrice, selectedStorage }) {
         console.log("No PC available based on your specifications. That's crazy!");
       } else {
         console.log(response.data);
+        console.log("/public/images/CPU/" + response.data.CPU.Name + ".jpg");
+        console.log("/public/images/GPU/" + response.data.GPU.Name + ".jpg");
       }
     });
 

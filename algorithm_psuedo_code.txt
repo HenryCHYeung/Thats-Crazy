@@ -101,4 +101,5 @@ PRODUCTION:
 GAMING:
 	Mostly same as above except find GPU first instead of CPU
 	Then keep in mind CPU Cooler when choosing CPU
-	Everything after is the same
+	Note: CPU will have to be chosen early so that cooler and list of motherboard can be generated
+	Everything else is the same
