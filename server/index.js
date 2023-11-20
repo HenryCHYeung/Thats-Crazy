@@ -31,7 +31,7 @@ async function db_all(query, params) {
 // Find the cheapest PC possible based on chosen purpose and storage
 async function findMinPC(purpose, storage) {
   let cheapest_CPU, cheapest_GPU;
-  
+  console.log(purpose+" "+storage);
   if (purpose == "Production") {        // If production, choose CPU then GPU
     let min_GPU_PS =  await db_all('SELECT PerformanceScore FROM GPU ORDER BY PerformanceScore LIMIT 1', []);
     let CPU_query = 'SELECT * FROM CPU WHERE PerformanceScore >= ? ORDER BY Price LIMIT 1';
@@ -275,9 +275,9 @@ function getSuitablePart(cheapest_price, partList, budget) {
 
 // Takes user inputs and use them to build the cheapest PC, then use that as a baseline to build the actual PC
 app.post("/finished", async function(req, res) {
-  let choice = req.body.userChoice;
-  let storage = req.body.selectedStorage;
-  let budget = req.body.selectedPrice;
+  let choice = req.body.selectedUseOption;
+  let storage = req.body.selectedSizeOption;
+  let budget = req.body.inputValue;
   let cheapest_PC = await findMinPC(choice, storage);
   let final_PC;
   if (choice == "Production") {

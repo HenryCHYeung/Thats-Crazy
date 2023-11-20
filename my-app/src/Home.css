@@ -11,4 +11,7 @@
     font-size: calc(10px + 2vmin);
     color: white;
   }
-  
+.logo{
+  height: 10%;
+  width: 10%;
+}

@@ -1,0 +1,69 @@
+
+.closeBtn{
+    position: relative;
+    top: 0%;
+    left: 99%;
+    background-color: beige;
+    border: 3px solid red;
+    color: red;
+    padding: '15px 30px';
+    font-Size: '18px';
+    z-index: '1';
+}
+.modalBackground{
+    width: 100%;
+    height: 82vh;
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: '-1';
+    opacity: 30%;
+    
+}
+.modalHd{
+    position: absolute;
+    top: 2%;
+    left: 25%;
+    text-align: center;
+    font-size: 80px;
+    z-index: '1';
+    transform: 'translate(-50%, -50%)';
+}
+.priceLabel{
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    text-align: center;
+    font-size: 80px;
+    z-index: '1';
+    transform: 'translate(-50%, -50%)';
+}
+.useLabel{
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    text-align: center;
+    font-size: 80px;
+    transform: 'translate(-50%, -50%)';
+    z-index: '1';
+}
+.storageLabel{
+    position:absolute;
+    top: 70%;
+    left: 20%;
+    text-align: center;
+    font-size: 80px;
+    transform: 'translate(-50%, -50%)';
+    z-index: '1';
+}
+.buildBtn{
+    position: absolute;
+    height: 10%;
+    width: 30%;
+    top: 85%;
+    left: 35%;
+    text-align: center;
+    font-size: 50px;
+    transform: 'translate(-50%, -50%)';
+    z-index: '1';
+}
