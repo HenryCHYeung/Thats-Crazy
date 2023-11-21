@@ -101,7 +101,8 @@ const JModal = ({ isOpen, closeModal }) => {
             let cpuimg=cpu.Name.replace(/\s/g, '');//remove spaces by replacing space with null
             let gpuimg=gpu.Name.replace(/\s/g, '');
             let caseimg=cased.Name.replace(/\s/g, '');
-            let motherimg=motherboard.Name.replace(/\s/g, '');
+            let mother=motherboard.Name.replace(/\s/g, '');
+            let motherimg=mother.replace(/\|/g,'');
             let psuimg=psu.Name.replace(/\s/g, '');
             let storageimg=storage.Name.replace(/\s/g, '');
             let ramimg=ram.Name.replace(/\s/g, '');
@@ -115,43 +116,59 @@ const JModal = ({ isOpen, closeModal }) => {
                 <label style={{position:'absolute',top:'30%',left:'10%',width:'40%', height:'40%'}}>
                   CPU: 
                   <p>{cpu.Name}</p>
-                  <img style={{width:'40%', height:'40%'}} src={`/images/CPU/${cpuimg}.jpg`} alt="CPU Image" />
+                  <a href={'https://www.amazon.com/s?k='+cpu.Name+'&crid=22RKV946NH24M&sprefix=MSIMPGX570GAMINGPROCARBONWIFI%2Caps%2C144&ref=nb_sb_noss'} target="_blank" rel="noopener noreferrer">
+                    <img style={{width:'40%', height:'40%'}} src={`/images/CPU/${cpuimg}.jpg`} alt="CPU Image" />
+                  </a>
                 </label>
                 <label style={{position:'absolute',top:'30%',left:'30%',width:'40%', height:'40%'}}>
                   GPU:
                   <p>{gpu.Name}</p>
+                  <a href={'https://www.amazon.com/s?k='+gpu.Name+'&crid=22RKV946NH24M&sprefix=MSIMPGX570GAMINGPROCARBONWIFI%2Caps%2C144&ref=nb_sb_noss'} target="_blank" rel="noopener noreferrer">
                   <img style={{width:'40%', height:'40%' }} src={`/images/GPU/${gpuimg}.jpg`} alt="GPU Image" />
+                  </a>
                 </label>
                 <label style={{position:'absolute',top:'30%',left:'50%',width:'40%', height:'40%'}}>
                   Case: 
                   <p>{cased.Name}</p>
+                  <a href={'https://www.amazon.com/s?k='+cased.Name+'&crid=22RKV946NH24M&sprefix=MSIMPGX570GAMINGPROCARBONWIFI%2Caps%2C144&ref=nb_sb_noss'} target="_blank" rel="noopener noreferrer">
                   <img style={{width:'40%', height:'40%' }} src={`/images/Case/${caseimg}.jpg`} alt="Case Image" />
+                  </a>
                 </label>
                 <label style={{position:'absolute',top:'30%',left:'70%',width:'40%', height:'40%'}}>
                   Motherboard: 
                   <p>{motherboard.Name}</p>
+                  <a href={'https://www.amazon.com/s?k='+motherboard.Name+'&crid=22RKV946NH24M&sprefix=MSIMPGX570GAMINGPROCARBONWIFI%2Caps%2C144&ref=nb_sb_noss'} target="_blank" rel="noopener noreferrer">
                   <img style={{width:'40%', height:'40%' }} src={`/images/Motherboard/${motherimg}.jpg`} alt="Motherboard Image" />
+                  </a>
                 </label>
                 <label style={{position:'absolute',top:'70%',left:'10%',width:'40%', height:'40%'}}>
                   RAM: 
                   <p>{ram.Name}</p>
-                  <img style={{width:'40%', height:'40%' }} src={`/images/RAM/${ramimg}.jpg`} alt="RAM Image" />
+                  <a href={'https://www.amazon.com/s?k='+ram.Name+'&crid=22RKV946NH24M&sprefix=MSIMPGX570GAMINGPROCARBONWIFI%2Caps%2C144&ref=nb_sb_noss'} target="_blank" rel="noopener noreferrer">
+                    <img style={{width:'40%', height:'40%' }}  src={`/images/RAM/${ramimg}.jpg`} alt="RAM Image" />
+                  </a> 
                 </label>
                 <label style={{position:'absolute',top:'70%',left:'30%',width:'40%', height:'40%'}}>
                   PSU: 
                   <p>{psu.Name}</p>
+                  <a href={'https://www.amazon.com/s?k='+psu.Name+'&crid=22RKV946NH24M&sprefix=MSIMPGX570GAMINGPROCARBONWIFI%2Caps%2C144&ref=nb_sb_noss'} target="_blank" rel="noopener noreferrer">
                   <img style={{width:'40%', height:'40%' }} src={`/images/PSU/${psuimg}.jpg`} alt="PSU Image" />
+                  </a>
                 </label>
                 <label style={{position:'absolute',top:'70%',left:'50%',width:'40%', height:'40%'}}>
                   Storage: 
                   <p>{storage.Name} </p>
+                  <a href={'https://www.amazon.com/s?k='+storage.Name+'&crid=22RKV946NH24M&sprefix=MSIMPGX570GAMINGPROCARBONWIFI%2Caps%2C144&ref=nb_sb_noss'} target="_blank" rel="noopener noreferrer">
                   <img style={{width:'40%', height:'40%' }} src={`/images/Storage/${storageimg}.jpg`} alt="Storage Image" />
+                  </a>
                 </label>
                 {cooler && (
                   <label style={{position:'absolute',top:'70%',left:'70%',width:'40%', height:'40%'}}>
                     Cooler: 
                     <p>{cooler.Name}</p>
+                    <a href={'https://www.amazon.com/s?k='+cooler.Name+'&crid=22RKV946NH24M&sprefix=MSIMPGX570GAMINGPROCARBONWIFI%2Caps%2C144&ref=nb_sb_noss'} target="_blank" rel="noopener noreferrer">
                     <img style={{width:'40%', height:'40%'}} src={`/images/Cooler/${coolerimg}.jpg`} alt="Cooler Image" />
+                    </a>
                   </label>
                 )}
               
@@ -170,7 +187,6 @@ const JModal = ({ isOpen, closeModal }) => {
                   <img style={{width:'110%', height:'110%'}} src={'/Error.png'} alt="CPU Image" />
                 </label>
                 <button onClick={handleBackToForm}>Back</button>
-                <button onClick={handleCheckOut}>Check Out</button>
               </div>
             );
           }
