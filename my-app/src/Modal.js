@@ -5,6 +5,7 @@ import axios from 'axios';
 import './Modal.css';
 import Componentcard from './Card';
 
+
 const JModal = ({ isOpen, closeModal }) => {
   const [inputValue, setInputValue] = useState('');
   const [selectedUseOption, setSelectedUseOption] = useState('');
@@ -81,9 +82,7 @@ const JModal = ({ isOpen, closeModal }) => {
     setShowBuildResult(false);
     setvalidBuild(false);
   };
-  const handleCheckOut = () => {
-    //setCurrentPage('checkout');
-  };
+
 
   const handleCloseModal = () => {
     // Close the modal and reset the state
@@ -91,7 +90,10 @@ const JModal = ({ isOpen, closeModal }) => {
     setvalidBuild(false);
     closeModal();
   };
-
+  const handleCheckOut = () => {
+    console.log('To Checkout');
+    window.location.pathname= '/checkout';
+  };
   return (
     <Modal isOpen={isOpen} onRequestClose={handleCloseModal} contentLabel="Example Modal" style={{content: {width: '60%', height: '60%', margin: 'auto'}}}>
         <button className="closeBtn" onClick={handleCloseModal}>X</button>

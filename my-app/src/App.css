@@ -11,3 +11,12 @@
 .invisible {
   display: none;
 }
+.horizontalNav {
+  list-style: none;
+  display: flex;
+  gap: 10px; /* Adjust the gap between items as needed */
+}
+
+.horizontalNav li {
+  display: inline-block;
+}
