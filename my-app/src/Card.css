@@ -1,0 +1,13 @@
+.cardSize{
+    height: 10%;
+    width: 48%;
+    cursor: pointer;
+
+}
+.cardSize:hover {
+    background-color: lightgray;
+  }
+.imgSize{
+    height: 100%;
+    width: 100%;
+}
