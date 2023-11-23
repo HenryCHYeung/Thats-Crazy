@@ -1,6 +1,5 @@
 import Home from './Home.js';
 import About from './About.js';
-import Credit from './Credit.js';
 import Checkout from './Checkout.js';
 import PartList from './PartList.js';
 import Laptops from './PremadeDevices.js';
@@ -16,19 +15,15 @@ function App() {
     <>
     {renderNav && (
       <nav className='horizontalNav'>
-      <ul>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/about'>About</Link></li>
-        <li><Link to='/credit'>Credit</Link></li>
         <li><Link to='/premadedevices'>Laptops and Other Devices</Link></li>
         <li><Link to='/partlist'>PC Parts</Link></li>
-      </ul>
     </nav>
     )} 
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/about' element={<About/>}/>
-      <Route path='/credit' element={<Credit/>}/>
       <Route path='/checkout' element={<Checkout/>}/>
       <Route path='/premadedevices' element={<Laptops/>}/>
       <Route path='/partlist' element={<PartList/>}/>

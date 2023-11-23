@@ -31,7 +31,7 @@
 
     position: absolute;
     top: 2%;
-    left: 45%;
+    left: 52%;
     text-align: center;
     font-size: 3vw;
     z-index: '1';
@@ -73,7 +73,9 @@
     font-size: 1vw;
     z-index: '1';
 }
-
+.bakingWindow{
+    background-color: grey;
+}
 .textInput{
     margin-top: 5px;
     padding: 5px;
@@ -94,8 +96,8 @@
 .buildBtn{
     display: flex;
     position: absolute;
-    height: 5%;
-    width: 7.5%;
+    height: 4%;
+    width: 5.5%;
     top: 85%;
     left: 70%;
     text-align: center;
@@ -107,11 +109,12 @@
     justify-content: center;
     align-items: center;
 }
+
 .modalHD{
 
     position: absolute;
     top: -4%;
-    left: 25%;
+    left: 30%;
     text-align: center;
     font-size: 3vw;
     z-index: '1';

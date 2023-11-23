@@ -96,7 +96,7 @@ const JModal = ({ isOpen, closeModal }) => {
     window.location.pathname= '/checkout';
   };
   return (
-    <Modal isOpen={isOpen} onRequestClose={handleCloseModal} contentLabel="Example Modal" style={{content: {width: '80%', height: '90%', margin: 'auto'}}}>
+    <Modal isOpen={isOpen} onRequestClose={handleCloseModal} contentLabel="Example Modal" style={{content: {width: '80%', height: '70%', margin: 'auto'}}} >
         <button className="closeBtn" onClick={handleCloseModal}>X</button>
       <div>
       {(() => {
@@ -120,29 +120,29 @@ const JModal = ({ isOpen, closeModal }) => {
                   <h2 className='modalHD'>Build Baking Results</h2>
                     <div className='buildForm'>
                       <div className='parts'>
-                        <label style={{position:'absolute',top:'30%',left:'10%',width:'20%', height:'20%'}}>
+                        <label style={{position:'absolute',top:'20%',left:'10%',width:'13%', height:'13%'}}>
                           <Componentcard component='CPU' name={cpu.Name} img={cpuimg} price={cpu.Price}/>
                         </label>
-                        <label className='' style={{position:'absolute',top:'30%',left:'30%',width:'20%', height:'20%'}}>
+                        <label className='' style={{position:'absolute',top:'20%',left:'30%',width:'13%', height:'13%'}}>
                           <Componentcard component='GPU' name={gpu.Name} img={gpuimg} price={gpu.Price}/>
                         </label>
-                        <label className='' style={{position:'absolute',top:'30%',left:'50%',width:'20%', height:'20%'}}>
+                        <label className='' style={{position:'absolute',top:'20%',left:'50%',width:'13%', height:'13%'}}>
                         <Componentcard component='Case' name={cased.Name} img={caseimg} price={cased.Price}/>
                         </label>
-                        <label className='' style={{position:'absolute',top:'30%',left:'70%',width:'20%', height:'20%'}}>
+                        <label className='' style={{position:'absolute',top:'20%',left:'70%',width:'13%', height:'13%'}}>
                         <Componentcard component='Motherboard' name={motherboard.Name} img={motherimg} price={motherboard.Price}/>
                         </label>
-                        <label className='' style={{position:'absolute',top:'70%',left:'10%',width:'20%', height:'20%'}}>
+                        <label className='' style={{position:'absolute',top:'60%',left:'10%',width:'13%', height:'13%'}}>
                         <Componentcard component='RAM' name={ram.Name} img={ramimg} price={ram.Price}/>
                         </label>
-                        <label className='' style={{position:'absolute',top:'70%',left:'30%',width:'20%', height:'20%'}}>
+                        <label className='' style={{position:'absolute',top:'60%',left:'30%',width:'13%', height:'13%'}}>
                         <Componentcard component='PSU' name={psu.Name} img={psuimg} price={psu.Price}/>
                         </label>
-                        <label className='' style={{position:'absolute',top:'70%',left:'50%',width:'20%', height:'20%'}}>
+                        <label className='' style={{position:'absolute',top:'60%',left:'50%',width:'13%', height:'13%'}}>
                         <Componentcard component='Storage' name={storage.Name} img={storageimg} price={storage.Price}/>
                         </label>
                         {cooler && (
-                          <label className='' style={{position:'absolute',top:'70%',left:'70%',width:'20%', height:'20%'}}>
+                          <label className='' style={{position:'absolute',top:'60%',left:'70%',width:'13%', height:'13%'}}>
                             <Componentcard component='CPU_Cooler' name={cooler.Name} img={coolerimg} price={cooler.Price}/>
                           </label>                  
                         )}
@@ -171,19 +171,19 @@ const JModal = ({ isOpen, closeModal }) => {
           }
         } else {
             return(
-              <div>
+              <div className='bakingWindow'>
                 <img className='modalBackground' src='giphy.gif'/>
                 <form onSubmit={handleSubmit}>
                     <h2 className='modalHd'>Baking Your Computer</h2>
                     <div className='modalForm'>
                     <label className='priceLabel'>
-                        Enter Your Price: 
+                        Enter Your Budget: 
                         <input className='textInput' type="text" placeholder="1000.00" value={inputValue} onChange={handleInputChange} />
                     </label>
                     </div>
                     <div className='useLabel' onChange={handleUse}>
                     <label>
-                        Choose Gaming or Production:
+                        Choose the PC's Purpose:
                         <div className='radioOptions'>
                         <input type='radio' name='usage' value="Gaming"/>Gaming
                         <input type='radio' name='usage' value="Production"/>Production

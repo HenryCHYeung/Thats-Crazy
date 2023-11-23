@@ -13,8 +13,10 @@
 }
 .horizontalNav {
   list-style: none;
+  position: relative;
+  left: 70%;
   display: flex;
-  gap: 20%; /* Adjust the gap between items as needed */
+  gap: 2%; /* Adjust the gap between items as needed */
 }
 
 .horizontalNav li {
