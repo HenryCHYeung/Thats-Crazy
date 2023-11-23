@@ -53,6 +53,7 @@ const JModal = ({ isOpen, closeModal }) => {
             setPrice(response.data.Price);
             setStorage(response.data.Storage);
             setRam(response.data.RAM);
+            setCooler(response.data.CPU_Cooler)
             console.log(response.data);
             setShowBuildResult(true);
             setvalidBuild(true);
@@ -95,7 +96,7 @@ const JModal = ({ isOpen, closeModal }) => {
     window.location.pathname= '/checkout';
   };
   return (
-    <Modal isOpen={isOpen} onRequestClose={handleCloseModal} contentLabel="Example Modal" style={{content: {width: '60%', height: '60%', margin: 'auto'}}}>
+    <Modal isOpen={isOpen} onRequestClose={handleCloseModal} contentLabel="Example Modal" style={{content: {width: '80%', height: '90%', margin: 'auto'}}}>
         <button className="closeBtn" onClick={handleCloseModal}>X</button>
       <div>
       {(() => {
@@ -108,10 +109,11 @@ const JModal = ({ isOpen, closeModal }) => {
             let motherimg=mother.replace(/\|/g,'');
             let psuimg=psu.Name.replace(/\s/g, '');
             let storageimg=storage.Name.replace(/\s/g, '');
-            let ramimg=ram.Name.replace(/\s/g, '');
+            let ramimg=ram.Name.replace(/\s/g, '');//
             let coolerimg;
             if(cooler){
               coolerimg=cooler.Name.replace(/\s/g, '');
+              console.log(coolerimg);
             }
             return (
                 <div >
@@ -141,7 +143,7 @@ const JModal = ({ isOpen, closeModal }) => {
                         </label>
                         {cooler && (
                           <label className='' style={{position:'absolute',top:'70%',left:'70%',width:'20%', height:'20%'}}>
-                            <Componentcard component='Cooler' name={cooler.Name} img={coolerimg} price={cooler.Price}/>
+                            <Componentcard component='CPU_Cooler' name={cooler.Name} img={coolerimg} price={cooler.Price}/>
                           </label>                  
                         )}
                       </div>

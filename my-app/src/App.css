@@ -14,7 +14,7 @@
 .horizontalNav {
   list-style: none;
   display: flex;
-  gap: 10px; /* Adjust the gap between items as needed */
+  gap: 20%; /* Adjust the gap between items as needed */
 }
 
 .horizontalNav li {
