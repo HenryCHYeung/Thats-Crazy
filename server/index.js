@@ -171,18 +171,31 @@ async function findParts(storage, budget, cheapest_PC, listType){
       }
       if (!selected_CPU) continue;    // No CPUs work with current GPU, move on to next GPU
     }
+
+    // Choose motherboard to determine the list of RAMs since RAM depends on motherboard
+    let temp_sum2 = min_sum_of_others;
+    for (m = 0; m < list_MB.length; m++) {
+      min_sum_of_others = temp_sum2 - list_MB[list_MB.length - 1].Price;
+      min_sum_of_others += list_MB[m].Price;
+      min_sum_of_others -= cheapest_PC.RAM.Price;
+
+      let RAM_query = 'SELECT * FROM RAM WHERE MemoryType = ? AND Price <= ? ORDER BY Price DESC';
+      list_RAM = await db_all(RAM_query, [list_MB[m].MemoryType, budget - min_sum_of_others]);
+      console.log(list_RAM);
+      if (list_RAM.length == 0) continue;   // No RAM meets criteria for motherboard --> current motherboard is invalid
+      min_sum_of_others += list_RAM[list_RAM.length - 1].Price;
+
+      if (min_sum_of_others > budget) continue;
+      selected_MB = list_MB[m];
+      break;
+    }
+    if (!selected_MB) continue;
     
     min_sum_of_others -= cheapest_PC.PSU.Price;     // Sum of every component except PSU (used to get PSU list)
     let PSU_query = 'SELECT * FROM PSU WHERE Wattage >= ? AND Price <= ? ORDER BY Price DESC';
     list_PSU = await db_all(PSU_query, [first_TDP + max_TDP, budget - min_sum_of_others]);
     if (list_PSU.length == 0) continue;       // If list is empty (no PSU meets criteria of current part), move on to next part
     min_sum_of_others += list_PSU[list_PSU.length - 1].Price;     // Add minimum PSU price to sum of minimum components
-
-    min_sum_of_others -= cheapest_PC.RAM.Price;      // Sum of every component except RAM
-    let RAM_query = 'SELECT * FROM RAM WHERE Price <= ? ORDER BY Price DESC';
-    list_RAM = await db_all(RAM_query, [budget - min_sum_of_others]);
-    if (list_RAM.length == 0) continue;       // If list is empty (no RAM meets criteria of current part), move on to next part
-    min_sum_of_others += list_RAM[list_RAM.length - 1].Price;   // Add minimum RAM price to sum of minimum components
 
     min_sum_of_others -= cheapest_PC.Storage.Price;    // Sum of every component except Storage
     let storage_query = 'SELECT * FROM Storage WHERE Capacity = ? AND Price <= ? ORDER BY Price DESC';
@@ -217,28 +230,17 @@ async function findParts(storage, budget, cheapest_PC, listType){
     }
     break;      // If code makes it here, it means the CPU/GPU meets all necessary requirements. No need to look further
   }
-  if (listType == "CPU" && selected_CPU == undefined) {    // Undefined means no CPUs meet the requirements. Thus no PCs can be built
+  if (selected_CPU == undefined) {    // Undefined means no CPUs meet the requirements. Thus no PCs can be built
     console.log("No PC available");
     return undefined;
   }
-  if (listType == "GPU" && selected_GPU == undefined) {    // Undefined means no GPUs meet the requirements. Thus no PCs can be built
-    console.log("No PC available");
-    return undefined;
-  }
+
   // Select the best of each component that fits the budget from each of the lists above
   if (listType == "CPU") {
     selected_GPU = getSuitablePart(min_GPU_price[0].Price, list_GPU, budget);
   }
   selected_PSU = getSuitablePart(list_PSU[list_PSU.length - 1].Price, list_PSU, budget);
-  selected_MB = getSuitablePart(list_MB[list_MB.length - 1].Price, list_MB, budget);
-
-  let new_list_RAM = [];
-  for (j = 0; j < list_RAM.length; j++) {
-    if (list_RAM[j].MemoryType == selected_MB.MemoryType) {       // Make sure RAM is compatible with chosen motherboard
-      new_list_RAM.push(list_RAM[j]);         // new_list_RAM should still be sorted by price in descending order
-    }
-  }
-  selected_RAM = getSuitablePart(list_RAM[list_RAM.length - 1].Price, new_list_RAM, budget);
+  selected_RAM = getSuitablePart(list_RAM[list_RAM.length - 1].Price, list_RAM, budget);
   selected_storage = getSuitablePart(list_storage[list_storage.length - 1].Price, list_storage, budget);
   selected_case = getSuitablePart(list_case[list_case.length - 1].Price, list_case, budget);
   
