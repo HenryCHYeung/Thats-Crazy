@@ -11,6 +11,7 @@ const JModal = ({ isOpen, closeModal }) => {
   const [selectedUseOption, setSelectedUseOption] = useState('');
   const [selectedSizeOption, setSelectedSizeOption] = useState('');
   const [showBuildResult, setShowBuildResult] = useState(false);
+  const [baking, setBaking] = useState(false);
   const [validBuild, setvalidBuild] = useState(false);
   const [cpu, setCpu] = useState(null);
   const [cased, setCased] = useState(null);
@@ -40,6 +41,7 @@ const JModal = ({ isOpen, closeModal }) => {
         if (!response.data) {
             setShowBuildResult(true);
             setvalidBuild(false);
+            setBaking(false);
             console.log("No PC available based on your specifications. That's crazy!");
         } else {
             if (response.data.Cooler) {
@@ -68,7 +70,10 @@ const JModal = ({ isOpen, closeModal }) => {
             if(selectedUseOption==""||selectedSizeOption==""||inputValue==""){
                 console.log("Please choose or input Valid values. That's crazy!");
             }else{
+                setBaking(true);
+                await new Promise((resolve) => setTimeout(resolve, 4000));
                 await fetchData(); // Wait for fetchData to complete and get the data
+                setBaking(false)
             }
             
         } catch (error) {
@@ -170,40 +175,50 @@ const JModal = ({ isOpen, closeModal }) => {
             );
           }
         } else {
+          if(!baking){
             return(
               <div className='bakingWindow'>
                 <img className='modalBackground' src='giphy.gif'/>
                 <form onSubmit={handleSubmit}>
                     <h2 className='modalHd'>Baking Your Computer</h2>
                     <div className='modalForm'>
-                    <label className='priceLabel'>
-                        Enter Your Budget: 
-                        <input className='textInput' type="text" placeholder="1000.00" value={inputValue} onChange={handleInputChange} />
-                    </label>
-                    </div>
-                    <div className='useLabel' onChange={handleUse}>
-                    <label>
-                        Choose the PC's Purpose:
-                        <div className='radioOptions'>
-                        <input type='radio' name='usage' value="Gaming"/>Gaming
-                        <input type='radio' name='usage' value="Production"/>Production
-                        </div>
-                    </label>
-                    </div>
-                    <div className='storageLabel' onChange={handleSize}>
-                    <label>
-                        Choose Your Storage Size:
-                        <div className='radioOptions'>
-                        <input type='radio' name='usage1' value="500 GB"/>500 GB
-                        <input type='radio' name='usage1' value="1 TB"/>1 TB
-                        <input type='radio' name='usage1' value="2 TB"/>2 TB
-                        </div>
-                    </label>
+                      <label className='priceLabel'>
+                          <h3>Enter Your Budget:</h3> 
+                          <input className='textInput' type="text" placeholder="ex.1000.00" value={inputValue} onChange={handleInputChange} />
+                      </label>
+                      </div>
+                      <div className='useLabel' onChange={handleUse}>
+                      <label>
+                          <h3>Choose the PC's Purpose:</h3>
+                          <div className='radioOptions'>
+                          <input type='radio' name='usage' value="Gaming"/>Gaming
+                          <input type='radio' name='usage' value="Production"/>Production
+                          </div>
+                      </label>
+                      </div>
+                      <div className='storageLabel' onChange={handleSize}>
+                      <label>
+                          <h3>Choose Your Storage Size:</h3>
+                          <div className='radioOptions'>
+                          <input type='radio' name='usage1' value="500 GB"/>500 GB
+                          <input type='radio' name='usage1' value="1 TB"/>1 TB
+                          <input type='radio' name='usage1' value="2 TB"/>2 TB
+                          </div>
+                      </label>
                     </div>
                     <button className='buildBtn' type="submit">Build PC</button>
                 </form>
               </div>
-            );
+            );}else{
+              return(
+                <div className='loadImgContainer'>
+                  <img className='loadImg'src='baking.gif' alt='baking gif'/>
+                  <div className='load'>
+                    <h1>Currently Baking...</h1>
+                  </div>
+                </div>
+              )
+            }
         }})()}
       </div>
     </Modal>

@@ -15,10 +15,17 @@ function App() {
     <>
     {renderNav && (
       <nav className='horizontalNav'>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/about'>About</Link></li>
-        <li><Link to='/premadedevices'>Laptops and Other Devices</Link></li>
-        <li><Link to='/partlist'>PC Parts</Link></li>
+        <Link to='/'>
+          <div>
+            <img className='logo' src='/Rapid_Rigs.png'/>
+          </div>
+        </Link>
+        <ul>
+          <li><Link to='/'>Home</Link></li>
+          <li><Link to='/about'>About</Link></li>
+          <li><Link to='/premadedevices'>Laptops and Other Devices</Link></li>
+          <li><Link to='/partlist'>PC Parts</Link></li>
+        </ul>
     </nav>
     )} 
     <Routes>

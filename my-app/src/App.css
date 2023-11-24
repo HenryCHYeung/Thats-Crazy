@@ -1,24 +1,45 @@
-#home, #type-choice, #results, #payment, #price {
-  background-color: #282c34;
-  min-height: 100vh;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+/* Add this to your CSS file */
 
-.invisible {
-  display: none;
-}
 .horizontalNav {
-  list-style: none;
-  position: relative;
-  left: 70%;
   display: flex;
-  gap: 2%; /* Adjust the gap between items as needed */
+  align-items: center;
+  background-color: #282c34;
+
 }
 
-.horizontalNav li {
-  display: inline-block;
+.logo-link {
+  margin-right: 40px; 
 }
+
+.logo {
+  width: 8rem; 
+  height: auto;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  position: absolute;
+  left: 69%;
+}
+
+li {
+  margin-right: 20px; 
+}
+
+li:last-child {
+  margin-right: 0; 
+}
+
+li a {
+  color: white;
+  text-decoration: none;
+  padding: 12px 16px;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
