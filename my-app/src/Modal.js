@@ -4,9 +4,10 @@ import Modal from 'react-modal';
 import axios from 'axios';
 import './Modal.css';
 import Componentcard from './Card';
-
+import { useNavigate} from 'react-router-dom';
 
 const JModal = ({ isOpen, closeModal }) => {
+  const navigate = useNavigate();
   const [inputValue, setInputValue] = useState('');
   const [selectedUseOption, setSelectedUseOption] = useState('');
   const [selectedSizeOption, setSelectedSizeOption] = useState('');
@@ -22,7 +23,7 @@ const JModal = ({ isOpen, closeModal }) => {
   const [storage, setStorage] = useState(null);
   const [cooler, setCooler] = useState(null);
   const [ram, setRam] = useState(null);
-
+  const [repsonses,setResponse]=useState(null);
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -44,6 +45,7 @@ const JModal = ({ isOpen, closeModal }) => {
             setBaking(false);
             console.log("No PC available based on your specifications. That's crazy!");
         } else {
+            setResponse(response.data)
             if (response.data.Cooler) {
                 setCooler(response.data.Cooler)
             }
@@ -71,7 +73,7 @@ const JModal = ({ isOpen, closeModal }) => {
                 console.log("Please choose or input Valid values. That's crazy!");
             }else{
                 setBaking(true);
-                await new Promise((resolve) => setTimeout(resolve, 4000));
+                await new Promise((resolve) => setTimeout(resolve, 2000));
                 await fetchData(); // Wait for fetchData to complete and get the data
                 setBaking(false)
             }
@@ -97,8 +99,7 @@ const JModal = ({ isOpen, closeModal }) => {
     closeModal();
   };
   const handleCheckOut = () => {
-    console.log('To Checkout');
-    window.location.pathname= '/checkout';
+    navigate('/checkout', { state: { responses: repsonses } });
   };
   return (
     <Modal isOpen={isOpen} onRequestClose={handleCloseModal} contentLabel="Example Modal" style={{content: {width: '80%', height: '70%', margin: 'auto'}}} >
