@@ -7,8 +7,8 @@ const PartList = () => {
 
   const fetchData = async (part) => {
     try {
-      const response = await axios.get(`/api/${part}`);
-      setPartDetails(response.data);
+      const response = await axios.post('/parts', {part});
+      console.log(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -74,8 +74,8 @@ const PartList = () => {
       </button>
       {selectedPart === 'Storage' && partDetails && <p>{partDetails}</p>}
 
-      <h4>Cooler</h4>
-      <button onClick={() => showParts('Cooler')}>
+      <h4>CPU Cooler</h4>
+      <button onClick={() => showParts('CPUCooler')}>
         {selectedPart === 'Cooler' ? 'Hide' : 'Show'}
       </button>
       {selectedPart === 'Cooler' && partDetails && <p>{partDetails}</p>}
