@@ -1,0 +1,27 @@
+.orderSize{
+    display: flex;
+    height: 10%;
+    width: 100%;
+    cursor: pointer;
+    font-size: .8vw;
+    border: .2px solid red;
+   
+}
+.contentContainer span{
+    padding-left: 10%;
+}
+.contentContainer{
+    align-items: center;
+    display: flex;
+    padding: 12px 16px; 
+    padding-left: 20%;
+}
+.orderSize:hover {
+    background-color: lightgray;
+  }
+.orderImg{
+   
+    width: 10%;
+    height: auto; 
+    
+}

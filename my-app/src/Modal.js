@@ -119,7 +119,6 @@ const JModal = ({ isOpen, closeModal }) => {
             let coolerimg;
             if(cooler){
               coolerimg=cooler.Name.replace(/\s/g, '');
-              console.log(coolerimg);
             }
             return (
                 <div >

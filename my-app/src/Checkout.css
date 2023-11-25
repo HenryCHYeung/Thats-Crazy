@@ -1,0 +1,37 @@
+.checkLogo{
+    position: absolute;
+    height: 30%;
+    width: 30%;
+    top: -2%;
+    left: 37%;
+}
+.checkout{
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+    border-radius: .2vw;
+    padding-top: 60px;
+    padding-bottom: 20px;
+}
+.content{
+    align-items: center;
+    text-align: center;
+    width: 50%;
+    display: inline-block;
+    border-radius: .2vw;
+    border: 2px solid black;
+    padding-top: 60px;
+    padding-bottom: 20px;
+}
+.creditImg{
+    position: relative;
+    width: 40%;
+    height: 40%;
+    left: 30%;
+    display: block;
+}
+.checkout button{
+    padding: 2px;
+    font-size: 2vw;
+}

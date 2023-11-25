@@ -3,6 +3,7 @@ import About from './About.js';
 import Checkout from './Checkout.js';
 import PartList from './PartList.js';
 import Laptops from './PremadeDevices.js';
+import Receipt from './Receipt.js';
 import {Link,Route, Routes, useLocation} from 'react-router-dom';
 import './App.css';
 
@@ -34,6 +35,7 @@ function App() {
       <Route path='/checkout' element={<Checkout/>}/>
       <Route path='/premadedevices' element={<Laptops/>}/>
       <Route path='/partlist' element={<PartList/>}/>
+      <Route path='/receipt' element={<Receipt/>}/>
     </Routes>
     
     </>
