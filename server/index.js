@@ -290,6 +290,13 @@ app.post("/finished", async function(req, res) {
   res.json(final_PC);
 });
 
+app.post("/parts", async function(req, res) {
+  let chosen_part = req.body.part;
+  let query = 'SELECT * FROM ' + chosen_part;
+  let part_list = await db_all(query, []);
+  res.json(part_list);
+});
+
 // Server will run on PORT
 app.listen(PORT, function() {
   console.log(`Server listening on ${PORT}`);
