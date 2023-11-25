@@ -33,7 +33,7 @@ function Checkout() {
   let storage=responses.Storage;
   let ram=responses.RAM;
   let cooler=responses.CPU_Cooler;
-  let tax=responses.Price*.1;
+  let tax=(responses.Price*.1).toFixed(2);
   let ship=50;
   let total=responses.Price+ship+prebuilt;
 
