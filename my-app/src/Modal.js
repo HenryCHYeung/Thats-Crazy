@@ -38,11 +38,11 @@ const JModal = ({ isOpen, closeModal }) => {
   const handleUse = async (event) => {
     setSelectedUseOption(event.target.value);
   };
-  const handleType = async (event) => {
-    setSelectedTypeOption(event.target.value);
-    setIsLaptop(selectedTypeOption === 'Laptop');
-  }
-
+  const handleType = (selectedType) => {
+    setIsLaptop(selectedType === 'Laptop');
+    setSelectedTypeOption(selectedType);
+  };
+  
   const fetchData = async () => {
     try {
         const response = await axios.post('/finished', { selectedUseOption, selectedSizeOption, inputValue });
@@ -194,15 +194,30 @@ const JModal = ({ isOpen, closeModal }) => {
                           <input className='textInput' type="text" placeholder="ex.1000.00" value={inputValue} onChange={handleInputChange} />
                       </label>
                       </div>
-                      <div className='typeLabel' onChange={handleType}>
-                    <label>
-                      <h3>Choose the PC's Type:</h3>
-                      <div className='radioOptions'>
-                        <input type='radio' name='usage' value='Desktop' />Desktop
-                        <input type='radio' name='usage' value='Laptop' />Laptop
-                      </div>
+                      <div className='typeLabel'>
+                       <label>
+                          <h3>Choose the PC's Type:</h3>
+                           <div className='radioOptions'>
+                            <input
+                               type='radio'
+                               name='usage'
+                              value='Desktop'
+                              checked={selectedTypeOption === 'Desktop'}
+                              onChange={() => handleType('Desktop')}
+                             />
+                         Desktop
+                      <input
+                       type='radio'
+                        name='usage'
+                        value='Laptop'
+                          checked={selectedTypeOption === 'Laptop'}
+                          onChange={() => handleType('Laptop')}
+                         />
+                           Laptop
+                  </div>
                     </label>
-                    </div>
+                      </div>
+
                       <div className='useLabel' onChange={handleUse}>
                       <label>
                           <h3>Choose the PC's Purpose:</h3>
@@ -212,7 +227,7 @@ const JModal = ({ isOpen, closeModal }) => {
                           </div>
                       </label>
                       </div>
-                      {isLaptop && (
+                      {!isLaptop && (
                 <div className='storageLabel' onChange={handleSize}>
                   <label>
                     <h3>Choose Your Storage Size:</h3>
