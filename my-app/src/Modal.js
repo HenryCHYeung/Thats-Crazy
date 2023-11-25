@@ -11,9 +11,11 @@ const JModal = ({ isOpen, closeModal }) => {
   const [inputValue, setInputValue] = useState('');
   const [selectedUseOption, setSelectedUseOption] = useState('');
   const [selectedSizeOption, setSelectedSizeOption] = useState('');
+  const [selectedTypeOption, setSelectedTypeOption] = useState('');
   const [showBuildResult, setShowBuildResult] = useState(false);
   const [baking, setBaking] = useState(false);
   const [validBuild, setvalidBuild] = useState(false);
+  const [isLaptop, setIsLaptop] = useState(true); 
   const [cpu, setCpu] = useState(null);
   const [cased, setCased] = useState(null);
   const [gpu, setGpu] = useState(null);
@@ -36,6 +38,11 @@ const JModal = ({ isOpen, closeModal }) => {
   const handleUse = async (event) => {
     setSelectedUseOption(event.target.value);
   };
+  const handleType = async (event) => {
+    setSelectedTypeOption(event.target.value);
+    setIsLaptop(selectedTypeOption === 'Laptop');
+  }
+
   const fetchData = async () => {
     try {
         const response = await axios.post('/finished', { selectedUseOption, selectedSizeOption, inputValue });
@@ -187,25 +194,36 @@ const JModal = ({ isOpen, closeModal }) => {
                           <input className='textInput' type="text" placeholder="ex.1000.00" value={inputValue} onChange={handleInputChange} />
                       </label>
                       </div>
+                      <div className='typeLabel' onChange={handleType}>
+                    <label>
+                      <h3>Choose the PC's Type:</h3>
+                      <div className='radioOptions'>
+                        <input type='radio' name='usage' value='Desktop' />Desktop
+                        <input type='radio' name='usage' value='Laptop' />Laptop
+                      </div>
+                    </label>
+                    </div>
                       <div className='useLabel' onChange={handleUse}>
                       <label>
                           <h3>Choose the PC's Purpose:</h3>
                           <div className='radioOptions'>
-                          <input type='radio' name='usage' value="Gaming"/>Gaming
-                          <input type='radio' name='usage' value="Production"/>Production
+                          <input type='radio' name='usage1' value="Gaming"/>Gaming
+                          <input type='radio' name='usage1' value="Production"/>Production
                           </div>
                       </label>
                       </div>
-                      <div className='storageLabel' onChange={handleSize}>
-                      <label>
-                          <h3>Choose Your Storage Size:</h3>
-                          <div className='radioOptions'>
-                          <input type='radio' name='usage1' value="500 GB"/>500 GB
-                          <input type='radio' name='usage1' value="1 TB"/>1 TB
-                          <input type='radio' name='usage1' value="2 TB"/>2 TB
-                          </div>
-                      </label>
+                      {isLaptop && (
+                <div className='storageLabel' onChange={handleSize}>
+                  <label>
+                    <h3>Choose Your Storage Size:</h3>
+                    <div className='radioOptions'>
+                      <input type='radio' name='usage2' value='500 GB' />500 GB
+                      <input type='radio' name='usage2' value='1 TB' />1 TB
+                      <input type='radio' name='usage2' value='2 TB' />2 TB
                     </div>
+                  </label>
+                </div>
+              )}
                     <button className='buildBtn' type="submit">Build PC</button>
                 </form>
               </div>

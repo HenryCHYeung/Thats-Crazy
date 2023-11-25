@@ -1,32 +1,86 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 
+const PartList = () => {
+  const [selectedPart, setSelectedPart] = useState(null);
+  const [partDetails, setPartDetails] = useState(null);
 
-function PartList() {
-  
-  return (//Making stuff invisible + the conditional rendering between home, StorageChoice and typeChoice, home is just made invisible for simplicity.
-  <div>
-    <img style={{width:'20%',height:'30%'}} src='/partList.png'/>
-    <h3>All Parts</h3>
-    <h4>CPUs</h4>
-    <button>Show</button>
+  const fetchData = async (part) => {
+    try {
+      const response = await axios.get(`/api/${part}`);
+      setPartDetails(response.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
 
-    <h4>GPUs</h4>
-    <button>Cases</button>
+  const showParts = async (part) => {
+    if (selectedPart === part) {
+      // If the button is clicked again, hide the details
+      setSelectedPart(null);
+      setPartDetails(null);
+    } else {
+      // Otherwise, show the details for the selected part
+      setSelectedPart(part);
+      await fetchData(part);
+    }
+  };
 
-    <h4>Motherboards</h4>
-    <button>RAM</button>
+  return (
+    <div>
+      <img style={{width:'20%',height:'30%'}} src='/partList.png'/>
 
-    <h4>PSUs</h4>
-    <button>Show</button>
+      <h3>All Parts</h3>
 
-    <h4>Storage</h4>
-    <button>Show</button>
+      <h4>CPUs</h4>
+      <button onClick={() => showParts('CPU')}>
+        {selectedPart === 'CPU' ? 'Hide' : 'Show'}
+      </button>
+      {selectedPart === 'CPU' && partDetails && <p>{partDetails}</p>}
 
-    <h4>CPU Cooler</h4>
-    <button>Show</button>
+      <h4>GPUs</h4>
+      <button onClick={() => showParts('GPU')}>
+        {selectedPart === 'GPU' ? 'Hide' : 'Show'}
+      </button>
+      {selectedPart === 'GPU' && partDetails && <p>{partDetails}</p>}
 
-  </div>
+      <h4>Cases</h4>
+      <button onClick={() => showParts('Case')}>
+        {selectedPart === 'Case' ? 'Hide' : 'Show'}
+      </button>
+      {selectedPart === 'Case' && partDetails && <p>{partDetails}</p>}
+
+      <h4>Motherboards</h4>
+      <button onClick={() => showParts('Motherboard')}>
+        {selectedPart === 'Motherboard' ? 'Hide' : 'Show'}
+      </button>
+      {selectedPart === 'Motherboard' && partDetails && <p>{partDetails}</p>}
+
+      <h4>RAM</h4>
+      <button onClick={() => showParts('Case')}>
+        {selectedPart === 'RAM' ? 'Hide' : 'Show'}
+      </button>
+      {selectedPart === 'RAM' && partDetails && <p>{partDetails}</p>}
+
+      <h4>PSUs</h4>
+      <button onClick={() => showParts('PSU')}>
+        {selectedPart === 'PSU' ? 'Hide' : 'Show'}
+      </button>
+      {selectedPart === 'PSU' && partDetails && <p>{partDetails}</p>}
+
+      <h4>Storage</h4>
+      <button onClick={() => showParts('Storage')}>
+        {selectedPart === 'Storage' ? 'Hide' : 'Show'}
+      </button>
+      {selectedPart === 'Storage' && partDetails && <p>{partDetails}</p>}
+
+      <h4>Cooler</h4>
+      <button onClick={() => showParts('Cooler')}>
+        {selectedPart === 'Cooler' ? 'Hide' : 'Show'}
+      </button>
+      {selectedPart === 'Cooler' && partDetails && <p>{partDetails}</p>}
+    </div>
   );
-}
+};
 
 export default PartList;

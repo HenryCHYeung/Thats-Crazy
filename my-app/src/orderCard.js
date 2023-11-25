@@ -13,7 +13,7 @@ function Ordercard({component,name,img,price}) {
       <span className="contentContainer" onClick={() => openLink(amazonLink)}>
       <img src={`/images/${component}/${img}.jpg`} alt={`${name} Image`} class="orderImg" />
         <span>{component}: {name}</span>
-        <span>Price: ${price}</span>
+        <span>Price: ${price.toFixed(2) }</span>
       </span>
     </div>
   );
