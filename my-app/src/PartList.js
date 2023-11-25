@@ -5,6 +5,7 @@ function PartList() {
   
   return (//Making stuff invisible + the conditional rendering between home, StorageChoice and typeChoice, home is just made invisible for simplicity.
   <div>
+    <img style={{width:'20%',height:'30%'}} src='/partList.png'/>
     <h3>All Parts</h3>
     <h4>CPUs</h4>
     <button>Show</button>

@@ -4,6 +4,7 @@ import { useState} from 'react';
 import {useNavigate,useLocation } from 'react-router-dom';
 import Ordercard from './orderCard';
 
+
 function Checkout() {
   const navigate=useNavigate();
   const location = useLocation();
@@ -22,6 +23,7 @@ function Checkout() {
   const [state, setState] = useState('');
   const [postalCode, setPostalcode] = useState('');
   const [country, setCountry] = useState('');
+  const [prebuilt,setPrebuilt]=useState(0);
 
   let cpu=responses.CPU;//remove spaces by replacing space with null
   let gpu=responses.GPU;
@@ -31,7 +33,9 @@ function Checkout() {
   let storage=responses.Storage;
   let ram=responses.RAM;
   let cooler=responses.CPU_Cooler;
-
+  let tax=responses.Price*.1;
+  let ship=50;
+  let total=responses.Price+ship+prebuilt;
 
   let cpuimg=cpu.Name.replace(/\s/g, '');//remove spaces by replacing space with null
   let gpuimg=gpu.Name.replace(/\s/g, '');
@@ -46,6 +50,14 @@ function Checkout() {
      coolerimg=cooler.Name.replace(/\s/g, '');
   }
 
+  const handlebuilt=(event)=>{
+    if(event.target.value=='yes'){
+      setPrebuilt(500);
+    }else{
+      setPrebuilt(0);
+    }
+    
+  }
   const handleShipping= (e, field) => {
     const value = e.target.value;
     switch (field) {
@@ -104,15 +116,15 @@ function Checkout() {
     navigate('/')
   };
   const handlePurchase =()=>{
-    navigate('/receipt', { state: { response: {responses,email,firstName,lastName,phoneNumber,deliveryAddress,suburb,state,postalCode,country} } })
+    navigate('/receipt', { state: { response: {responses,email,firstName,lastName,phoneNumber,deliveryAddress,suburb,state,postalCode,country,ship,prebuilt,total} } })
   };
 
   return (
   <div className='checkout'>
-      <img className='checkLogo' src='Rapid_Rigs.png'/>
       <div className='content'>
-      
-          <h3>Review Your Order</h3>
+          <img className='checkLogo' src='Rapid_Rigs.png'/>
+          <img className='checkChibi'src='/checkout.png'/>
+          <h1>Review Your Order</h1>
           <Ordercard component='CPU' name={cpu.Name} img={cpuimg} price={cpu.Price}/>
           <Ordercard component='GPU' name={gpu.Name} img={gpuimg} price={gpu.Price}/>
           <Ordercard component='Case' name={cased.Name} img={caseimg} price={cased.Price}/>
@@ -123,8 +135,13 @@ function Checkout() {
           {cooler && (
               <Ordercard component='CPU_Cooler' name={cooler.Name} img={coolerimg} price={cooler.Price}/>              
           )}
- 
-          <p>Total: ${responses.Price.toFixed(2)}</p>
+          <p>Taxes: ${tax}</p>
+          <label onChange={handlebuilt}>
+              Would you like it to be prebuilt for a $500 fee?
+              <input type='radio' name='usage1' value="yes"/>Yes
+              <input type='radio' name='usage1' value="no"/>No
+          </label>
+          <p>Total: ${(total).toFixed(2)}</p>
       </div>
       
       <div className='content'>

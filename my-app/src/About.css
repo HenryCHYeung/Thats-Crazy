@@ -1,11 +1,21 @@
 .aboutContainer {
-    background-size: cover;
-    background-attachment: fixed;
-    font-size: 1vw;
-  }
-  .aboutTitle{
+  display: flex;
+  align-items: center;
+}
+.aboutTitle{
     text-align: center;
-  }
+}
 .credit{
   text-align: center;
+  border: 1px solid lawngreen;
+  padding: 2%;
+}
+.info{
+  flex: 1;
+  width: 50%;
+}
+.aboutImg{
+  width: 25%;
+  height: auto; 
+  margin-right: 40px;
 }

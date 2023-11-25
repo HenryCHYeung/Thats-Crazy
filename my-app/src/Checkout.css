@@ -5,6 +5,13 @@
     top: -2%;
     left: 37%;
 }
+.checkChibi{
+    position: absolute;
+    height: 40%;
+    width: 30%;
+    top: -2%;
+    left: 55%;
+}
 .checkout{
     align-items: center;
     text-align: center;

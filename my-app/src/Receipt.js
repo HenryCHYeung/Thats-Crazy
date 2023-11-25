@@ -23,7 +23,9 @@ function Receipt() {
   let suburb=responses.suburb;
   let state=responses.state;
   let postalCode=responses.postalCode;
-  let price=responses.responses.Price;
+  let ship=responses.ship;
+  let prebuilt=responses.prebuilt
+  let total=responses.total;
  
 
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -70,7 +72,11 @@ function Receipt() {
           {cooler && (
             <p>Cooler: {cooler.Name}</p>
           )}
-          <h5>Total: {price}</h5>
+          {prebuilt && (
+            <p>Building fee: ${prebuilt}</p>
+          )}
+          <p>Shipping fee: ${ship}</p>
+          <h5>Total: ${total.toFixed(2)}</h5>
         </div>
         <button onClick={handleDone}>Done</button>
       </div>

@@ -166,9 +166,9 @@ const JModal = ({ isOpen, closeModal }) => {
             return (
               <div>
                 <h2 className='modalHD'>Build Baking Results</h2>
-                <label style={{position:'absolute',top:'30%',left:'10%',width:'60%', height:'60%'}}>
-                  No PC available based on your specifications. That's crazy!
-                  <img style={{width:'110%', height:'110%'}} src={'/Error.png'} alt="CPU Image" />
+                <label style={{position:'absolute',top:'30%',left:'20%',width:'60%', height:'60%'}}>
+                  <p style={{textAlign:'center'}}>No PC available based on your specifications. That's crazy!</p>
+                  <img style={{width:'60%', height:'80%'}} src={'/Error.png'} alt="CPU Image" />
                 </label>
                 <button onClick={handleBackToForm}>Back</button>
               </div>
