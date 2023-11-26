@@ -287,7 +287,8 @@ async function getLaptop(budget, purpose) {
   return selected_laptop[0];
 }
 
-// Takes user inputs and use them to build the cheapest PC, then use that as a baseline to build the actual PC
+// For desktop, takes user inputs and use them to build the cheapest PC, then use that as a baseline to build the actual PC
+// For laptop, choose best laptop that fits criteria
 app.post("/finished", async function(req, res) {
   let type = req.body.selectedTypeOption;
   let choice = req.body.selectedUseOption;
