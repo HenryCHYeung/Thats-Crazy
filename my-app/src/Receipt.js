@@ -26,6 +26,7 @@ function Receipt() {
   let ship=responses.ship;
   let prebuilt=responses.prebuilt
   let total=responses.total;
+  let tax=responses.tax;
  
 
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -59,23 +60,24 @@ function Receipt() {
         <h3>Your Item(s) will be shipped shortly</h3>
         <h5>Receipt for {fname} {lname} from {formattedDate}</h5>
         <div>
+        <hr/>
           <h5>Shipping address</h5>
           <p>{deliveryAddress}, {suburb}, {state}, {postalCode}</p>
           <h5>Items</h5>
-          <p>CPU: {cpu.Name}</p>
-          <p>GPU: {gpu.Name}</p>
-          <p>Case: {cased.Name}</p>
-          <p>Motherboard: {motherboard.Name}</p>
-          <p>PSU: {psu.Name}</p>
-          <p>Storage: {storage.Name}</p>
-          <p>Ram: {ram.Name}</p>
+          <p>CPU: {cpu.Name} Price: ${cpu.Price}</p>
+          <p>GPU: {gpu.Name} Price: ${gpu.Price}</p>
+          <p>Case: {cased.Name} Price: ${cased.Price}</p>
+          <p>Motherboard: {motherboard.Name} Price: ${motherboard.Price}</p>
+          <p>PSU: {psu.Name} Price: ${psu.Price}</p>
+          <p>Storage: {storage.Name} Price: ${storage.Price}</p>
+          <p>Ram: {ram.Name} Price: ${ram.Price}</p>
           {cooler && (
-            <p>Cooler: {cooler.Name}</p>
+            <p>Cooler: {cooler.Name} Price: ${cooler.Price}</p>
           )}
-          {prebuilt && (
-            <p>Building fee: ${prebuilt}</p>
-          )}
+          <p>Building fee: ${prebuilt}</p>
+          <p>Tax: ${tax}</p>
           <p>Shipping fee: ${ship}</p>
+          <hr/>
           <h5>Total: ${total.toFixed(2)}</h5>
         </div>
         <button onClick={handleDone}>Done</button>

@@ -116,7 +116,7 @@ function Checkout() {
     navigate('/')
   };
   const handlePurchase =()=>{
-    navigate('/receipt', { state: { response: {responses,email,firstName,lastName,phoneNumber,deliveryAddress,suburb,state,postalCode,country,ship,prebuilt,total} } })
+    navigate('/receipt', { state: { response: {responses,email,firstName,lastName,phoneNumber,deliveryAddress,suburb,state,postalCode,country,ship,prebuilt,tax,total} } })
   };
 
   return (
