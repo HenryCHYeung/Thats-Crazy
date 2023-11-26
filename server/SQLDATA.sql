@@ -141,7 +141,7 @@ INSERT OR REPLACE INTO Storage (Name,Price,Capacity) VALUES ('Samsung 990 Pro 2 
 INSERT OR REPLACE INTO Storage (Name,Price,Capacity) VALUES ('Crucial P5 2 TB', 313.61,'2 TB');
 INSERT OR REPLACE INTO Storage (Name,Price,Capacity) VALUES ('Western Digital Black SN750 2 TB', 172.48,'2 TB');
 INSERT OR REPLACE INTO CPUCooler (Name,Price) VALUES ('Noctua NH-D15', 109.95);
-INSERT OR REPLACE INTO Laptop (Name,Price,Storage,Category) VALUES ('Razer Blade 16', '1 TB', 'Gaming', 2999.99);
-INSERT OR REPLACE INTO Laptop (Name,Price,Storage,Category) VALUES ('MSI - Stealth 14', '1 TB', 'Gaming', 1099.99);
-INSERT OR REPLACE INTO Laptop (Name,Price,Storage,Category) VALUES ('13-inch Macbook Air (M2)', '512 GB', 'Production', 1399.00);
-INSERT OR REPLACE INTO Laptop (Name,Price,Storage,Category) VALUES ('ASUS ZenBook Duo', '1 TB', 'Production', 1939.99);
+INSERT OR REPLACE INTO Laptop (Name,Price,Storage,Category) VALUES ('Razer Blade 16', 2999.99, '1 TB', 'Gaming');
+INSERT OR REPLACE INTO Laptop (Name,Price,Storage,Category) VALUES ('MSI - Stealth 14', 1099.99, '1 TB', 'Gaming');
+INSERT OR REPLACE INTO Laptop (Name,Price,Storage,Category) VALUES ('13-inch Macbook Air (M2)', 1399.00, '512 GB', 'Production');
+INSERT OR REPLACE INTO Laptop (Name,Price,Storage,Category) VALUES ('ASUS ZenBook Duo', 1939.99, '1 TB', 'Production');

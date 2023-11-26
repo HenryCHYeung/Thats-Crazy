@@ -45,7 +45,7 @@ const PartList = () => {
       {selectedPart === 'GPU' && partDetails && <p>{partDetails}</p>}
 
       <h4>Cases</h4>
-      <button onClick={() => showParts('Case')}>
+      <button onClick={() => showParts('Cases')}>
         {selectedPart === 'Case' ? 'Hide' : 'Show'}
       </button>
       {selectedPart === 'Case' && partDetails && <p>{partDetails}</p>}
@@ -57,7 +57,7 @@ const PartList = () => {
       {selectedPart === 'Motherboard' && partDetails && <p>{partDetails}</p>}
 
       <h4>RAM</h4>
-      <button onClick={() => showParts('Case')}>
+      <button onClick={() => showParts('RAM')}>
         {selectedPart === 'RAM' ? 'Hide' : 'Show'}
       </button>
       {selectedPart === 'RAM' && partDetails && <p>{partDetails}</p>}

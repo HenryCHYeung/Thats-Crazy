@@ -45,13 +45,16 @@ const JModal = ({ isOpen, closeModal }) => {
   
   const fetchData = async () => {
     try {
-        const response = await axios.post('/finished', { selectedUseOption, selectedSizeOption, inputValue });
+        const response = await axios.post('/finished', { selectedTypeOption, selectedUseOption, selectedSizeOption, inputValue });
         if (!response.data) {
             setShowBuildResult(true);
             setvalidBuild(false);
             setBaking(false);
             console.log("No PC available based on your specifications. That's crazy!");
         } else {
+            if (selectedTypeOption == "Laptop") {
+              console.log(response.data);
+            }
             setResponse(response.data)
             if (response.data.Cooler) {
                 setCooler(response.data.Cooler)
@@ -76,7 +79,8 @@ const JModal = ({ isOpen, closeModal }) => {
   const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            if(selectedUseOption==""||selectedSizeOption==""||inputValue==""){
+            if(selectedUseOption==""||selectedTypeOption==""||inputValue==""||
+            (selectedTypeOption=="Desktop" && selectedSizeOption=="")){
                 console.log("Please choose or input Valid values. That's crazy!");
             }else{
                 setBaking(true);
