@@ -9,7 +9,6 @@ function Checkout()  {
   const navigate=useNavigate();
   const location = useLocation();
   const responses = location.state?.responses;
-  console.log(responses);
   const [holder, setHolder] = useState('');
   const [expire, setExpire] = useState('');
   const [cardnum, setCardnum] = useState('');
@@ -24,7 +23,7 @@ function Checkout()  {
   const [state, setState] = useState('');
   const [postalCode, setPostalcode] = useState('');
   const [country, setCountry] = useState('');
-  const [prebuilt,setPrebuilt]=useState('');
+  const [prebuilt,setPrebuilt]=useState('0');
   
   let tax=(responses.Price*.1).toFixed(2);
   let ship=50;
@@ -132,7 +131,9 @@ function Checkout()  {
           <img className='checkChibi'src='/checkout.png'/>
           <h1>Review Your Order</h1>
           {laptop && (
-              <Ordercard component='Laptop' name={laptop.Name} img={laptopimg} price={laptop.Price}/>
+              <>
+                <Ordercard component='Laptop' name={laptop.Name} img={laptopimg} price={laptop.Price}/>
+              </>
           )}
           {!laptop && ( 
             <div>
