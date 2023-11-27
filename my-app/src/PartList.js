@@ -79,6 +79,13 @@ const PartList = () => {
         {selectedPart === 'Cooler' ? 'Hide' : 'Show'}
       </button>
       {selectedPart === 'Cooler' && partDetails && <p>{partDetails}</p>}
+
+      <h4>Laptops</h4>
+      <button onClick={() => showParts('Laptop')}>
+        {selectedPart === 'Laptop' ? 'Hide' : 'Show'}
+      </button>
+      {selectedPart === 'Laptop' && partDetails && <p>{partDetails}</p>}
+
     </div>
   );
 };

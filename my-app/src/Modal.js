@@ -16,6 +16,7 @@ const JModal = ({ isOpen, closeModal }) => {
   const [baking, setBaking] = useState(false);
   const [validBuild, setvalidBuild] = useState(false);
   const [isLaptop, setIsLaptop] = useState(true); 
+  const [laptop, setLaptop] = useState(null);
   const [cpu, setCpu] = useState(null);
   const [cased, setCased] = useState(null);
   const [gpu, setGpu] = useState(null);
@@ -40,7 +41,6 @@ const JModal = ({ isOpen, closeModal }) => {
   };
   const handleType = (selectedType) => {
     setIsLaptop(selectedType === 'Laptop');
-    //
     setSelectedTypeOption(selectedType);
   };
   
@@ -55,8 +55,11 @@ const JModal = ({ isOpen, closeModal }) => {
         } else {
             if (selectedTypeOption == "Laptop") {
               console.log(response.data);
-            }
-            setResponse(response.data)
+              setLaptop(response.data);
+              setShowBuildResult(true);
+              setvalidBuild(true);  
+            } 
+            else {
             if (response.data.Cooler) {
                 setCooler(response.data.Cooler)
             }
@@ -72,6 +75,7 @@ const JModal = ({ isOpen, closeModal }) => {
             console.log(response.data);
             setShowBuildResult(true);
             setvalidBuild(true);
+          }
         }
     } catch (error) {
             console.error('Error fetching data:', error);
@@ -81,7 +85,7 @@ const JModal = ({ isOpen, closeModal }) => {
         event.preventDefault();
         try {
             if(selectedUseOption==""||selectedTypeOption==""||inputValue==""||
-            (selectedTypeOption=="Desktop" && selectedSizeOption=="")){
+            ((selectedTypeOption=="Desktop") && selectedSizeOption=="")){
                 console.log("Please choose or input Valid values. That's crazy!");
             }else{
                 setBaking(true);
@@ -119,14 +123,29 @@ const JModal = ({ isOpen, closeModal }) => {
       <div>
       {(() => {
         if (showBuildResult) {
-          if(validBuild){
-            if(laptop){
-              //variables
+          if(validBuild) {
+            console.log(validBuild);
+            if(isLaptop) {
+              let laptopimg =laptop.Name.replace(/\s/g, '');//remove spaces by replacing space with null
               return(
                 <div>
-
+                  <h2 className='modalHD'>Build Baking Results</h2>
+                  <div className='buildForm'>
+                      <div className='parts'>
+                        <label style={{position:'absolute', top:'20%',left:'35%',width:'50%', height:'0%'}}>
+                          <Componentcard component='Laptop' name={laptop.Name} img={laptopimg} price={laptop.Price}/>
+                        </label>
+                      </div>
+                    </div>
+                <button onClick={handleBackToForm}>Back</button>
+                <div>
+                  <label className='totalLabel'>
+                    <h3>Total Price: ${price.toFixed(2)}</h3>
+                  </label>
+                  <button className='checkBtn' onClick={handleCheckOut}>Check Out</button>
                 </div>
-              );
+              </div>
+              )
             }else{
             let cpuimg=cpu.Name.replace(/\s/g, '');//remove spaces by replacing space with null
             let gpuimg=gpu.Name.replace(/\s/g, '');
@@ -141,7 +160,7 @@ const JModal = ({ isOpen, closeModal }) => {
               coolerimg=cooler.Name.replace(/\s/g, '');
             }
             return (
-                <div >
+                <div>
                   <h2 className='modalHD'>Build Baking Results</h2>
                     <div className='buildForm'>
                       <div className='parts'>
