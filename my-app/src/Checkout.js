@@ -5,10 +5,11 @@ import {useNavigate,useLocation } from 'react-router-dom';
 import Ordercard from './orderCard';
 
 
-function Checkout() {
+function Checkout()  {
   const navigate=useNavigate();
   const location = useLocation();
   const responses = location.state?.responses;
+  console.log(responses);
   const [holder, setHolder] = useState('');
   const [expire, setExpire] = useState('');
   const [cardnum, setCardnum] = useState('');
@@ -23,33 +24,38 @@ function Checkout() {
   const [state, setState] = useState('');
   const [postalCode, setPostalcode] = useState('');
   const [country, setCountry] = useState('');
-  const [prebuilt,setPrebuilt]=useState(0);
 
-  let cpu=responses.CPU;
-  let gpu=responses.GPU;
-  let cased=responses.Case;
-  let motherboard=responses.Motherboard;
-  let psu=responses.PSU;
-  let storage=responses.Storage;
-  let ram=responses.RAM;
-  let cooler=responses.CPU_Cooler;
   let tax=(responses.Price*.1).toFixed(2);
   let ship=50;
   let total=responses.Price+ship+prebuilt;
+  let cpuimg, gpuimg, caseimg, mother, motherimg, psuimg, storageimg, ramimg, coolerimg, laptopimg;
+  let cpu, gpu, cased, motherboard, psu, storage, ram, cooler, laptop;
+  if (responses.Name) {
+     laptopimg =responses.Name.replace(/\s/g, '');//remove spaces by replacing space with null
+     laptop = responses;
+  }
+  else {
+   cpu=responses?.CPU;//remove spaces by replacing space with null
+   gpu=responses?.GPU;
+   cased=responses?.Case;
+   motherboard=responses?.Motherboard;
+   psu=responses?.PSU;
+   storage=responses?.Storage;
+   ram=responses?.RAM;
+   cooler=responses?.CPU_Cooler;
 
-  let cpuimg=cpu.Name.replace(/\s/g, '');//remove spaces by replacing space with null
-  let gpuimg=gpu.Name.replace(/\s/g, '');
-  let caseimg=cased.Name.replace(/\s/g, '');
-  let mother=motherboard.Name.replace(/\s/g, '');
-  let motherimg=mother.replace(/\|/g,'');
-  let psuimg=psu.Name.replace(/\s/g, '');
-  let storageimg=storage.Name.replace(/\s/g, '');
-  let ramimg=ram.Name.replace(/\s/g, '');//
-  let coolerimg;
+  cpuimg=cpu.Name.replace(/\s/g, '');//remove spaces by replacing space with null
+  gpuimg=gpu.Name.replace(/\s/g, '');
+  caseimg=cased.Name.replace(/\s/g, '');
+  mother=motherboard.Name.replace(/\s/g, '');
+  motherimg=mother.replace(/\|/g,'');
+  psuimg=psu.Name.replace(/\s/g, '');
+  storageimg=storage.Name.replace(/\s/g, '');
+  ramimg=ram.Name.replace(/\s/g, '');//
   if(responses.CPU_Cooler){
      coolerimg=cooler.Name.replace(/\s/g, '');
   }
-
+}
   const handlebuilt=(event)=>{
     if(event.target.value=='yes'){
       setPrebuilt(500);
@@ -125,6 +131,11 @@ function Checkout() {
           <img className='checkLogo' src='Rapid_Rigs.png'/>
           <img className='checkChibi'src='/checkout.png'/>
           <h1>Review Your Order</h1>
+          {laptop && (
+              <Ordercard component='Laptop' name={laptop.Name} img={laptopimg} price={laptop.Price}/>
+          )}
+          {!laptop && ( 
+            <div>
           <Ordercard component='CPU' name={cpu.Name} img={cpuimg} price={cpu.Price}/>
           <Ordercard component='GPU' name={gpu.Name} img={gpuimg} price={gpu.Price}/>
           <Ordercard component='Case' name={cased.Name} img={caseimg} price={cased.Price}/>
@@ -132,15 +143,19 @@ function Checkout() {
           <Ordercard component='RAM' name={ram.Name} img={ramimg} price={ram.Price}/>
           <Ordercard component='PSU' name={psu.Name} img={psuimg} price={psu.Price}/>
           <Ordercard component='Storage' name={storage.Name} img={storageimg} price={storage.Price}/>
+          </div>
+          )}
           {cooler && (
               <Ordercard component='CPU_Cooler' name={cooler.Name} img={coolerimg} price={cooler.Price}/>              
           )}
           <p>Taxes: ${tax}</p>
+          {!laptop && ( 
           <label onChange={handlebuilt}>
               Would you like it to be prebuilt for a $500 fee?
               <input type='radio' name='usage1' value="yes"/>Yes
               <input type='radio' name='usage1' value="no"/>No
           </label>
+          )}
           <p>Total: ${(total).toFixed(2)}</p>
       </div>
       
