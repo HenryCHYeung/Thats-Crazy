@@ -24,7 +24,8 @@ function Checkout()  {
   const [state, setState] = useState('');
   const [postalCode, setPostalcode] = useState('');
   const [country, setCountry] = useState('');
-
+  const [prebuilt,setPrebuilt]=useState('');
+  
   let tax=(responses.Price*.1).toFixed(2);
   let ship=50;
   let total=responses.Price+ship+prebuilt;
