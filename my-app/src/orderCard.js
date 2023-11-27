@@ -6,7 +6,8 @@ function openLink(url) {
 }
 
 function Ordercard({component,name,img,price,storage}) {
-  const amazonLink='https://www.amazon.com/s?k='+name+'&crid=22RKV946NH24M&sprefix=MSIMPGX570GAMINGPROCARBONWIFI%2Caps%2C144&ref=nb_sb_noss';
+  let nameA=name.replace(/\|/g,'');
+  const amazonLink='https://www.amazon.com/s?k='+nameA+'&crid=22RKV946NH24M&sprefix=MSIMPGX570GAMINGPROCARBONWIFI%2Caps%2C144&ref=nb_sb_noss';
   return (
     <div className="orderSize">
       <span className="contentContainer" onClick={() => openLink(amazonLink)}>

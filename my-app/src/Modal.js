@@ -122,7 +122,7 @@ const JModal = ({ isOpen, closeModal }) => {
     navigate('/checkout', { state: { responses: repsonses } });
   };
   return (
-    <Modal isOpen={isOpen} onRequestClose={handleCloseModal} contentLabel="Example Modal" style={{content: {width: '80%', height: '70%', margin: 'auto'}}} >
+    <Modal isOpen={isOpen} onRequestClose={handleCloseModal} contentLabel="Example Modal" style={{content: {width: '90%', height: '93%', margin: 'auto'}}} >
         <button className="closeBtn" onClick={handleCloseModal}>X</button>
       <div>
       {(() => {
@@ -144,7 +144,9 @@ const JModal = ({ isOpen, closeModal }) => {
                 <button onClick={handleBackToForm}>Back</button>
                 <div>
                   <label className='totalLabel'>
-                    <h3 className='totalText'>Category: Laptop</h3>
+                    <h3 className='totalText'>Type: {selectedTypeOption}</h3>
+                    <h3 className='totalText'>Category: {selectedUseOption}</h3>
+                    <h3 className='totalText'>Budget: ${inputValue}</h3>
                     <h3 className='totalText'>Total Price: ${laptop.Price.toFixed(2)}</h3>
                   </label>
                   <button className='checkBtn' onClick={handleCheckOut}>Check Out</button>
@@ -179,7 +181,7 @@ const JModal = ({ isOpen, closeModal }) => {
                         <Componentcard component='Case' name={cased.Name} img={caseimg} price={cased.Price}/>
                         </label>
                         <label className='' style={{position:'absolute',top:'20%',left:'70%',width:'13%', height:'13%'}}>
-                        <Componentcard component='Motherboard' name={mother} img={motherimg} price={motherboard.Price}/>
+                        <Componentcard component='Motherboard' name={motherboard.Name} img={motherimg} price={motherboard.Price}/>
                         </label>
                         <label className='' style={{position:'absolute',top:'60%',left:'10%',width:'13%', height:'13%'}}>
                         <Componentcard component='RAM' name={ram.Name} img={ramimg} price={ram.Price}/>
@@ -200,8 +202,10 @@ const JModal = ({ isOpen, closeModal }) => {
                 <button onClick={handleBackToForm}>Back</button>
                 <div>
                   <label className='totalLabel'>
-                    <h3 className='totalText'>Category: Desktop</h3>
+                    <h3 className='totalText'>Type: {selectedTypeOption}</h3>
+                    <h3 className='totalText'>Category: {selectedUseOption}</h3>
                     <h3 className='totalText'>Storage Size: {storage.Capacity}</h3>
+                    <h3 className='totalText'>Budget: ${inputValue}</h3>
                     <h3 className='totalText'>Total Price: ${price.toFixed(2)}</h3>
                   </label>
                   <button className='checkBtn' onClick={handleCheckOut}>Check Out</button>
