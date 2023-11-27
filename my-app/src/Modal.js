@@ -117,6 +117,7 @@ const JModal = ({ isOpen, closeModal }) => {
     closeModal();
   };
   const handleCheckOut = () => {
+    console.log(repsonses);
     navigate('/checkout', { state: { responses: repsonses } });
   };
   return (

@@ -8,15 +8,22 @@ function Receipt() {
   const navigate= useNavigate();
   const location = useLocation();
   const responses = location.state?.response;
+  console.log(responses);
+  let laptop, cpu, gpu, cased, motherboard, psu, storage, ram, cooler;
 
-  let cpu=responses.responses.CPU;
-  let gpu=responses.responses.GPU;
-  let cased=responses.responses.Case;
-  let motherboard=responses.responses.Motherboard;
-  let psu=responses.responses.PSU;
-  let storage=responses.responses.Storage;
-  let ram=responses.responses.RAM;
-  let cooler=responses.responses.CPU_Cooler;
+  if (responses.responses.Name) {
+    laptop = responses.responses;
+  }
+  else {
+  cpu=responses?.CPU;//remove spaces by replacing space with null
+  gpu=responses?.GPU;
+  cased=responses?.Case;
+  motherboard=responses?.Motherboard;
+  psu=responses?.PSU;
+  storage=responses?.Storage;
+  ram=responses?.RAM;
+  cooler=responses?.CPU_Cooler;
+  }
   let fname=responses.firstName;
   let lname=responses.lastName;
   let deliveryAddress=responses.deliveryAddress;
@@ -64,6 +71,11 @@ function Receipt() {
           <h5>Shipping address</h5>
           <p>{deliveryAddress}, {suburb}, {state}, {postalCode}</p>
           <h5>Items</h5>
+          {laptop && (
+              <p>Laptop: {laptop.Name} {laptop.Storage} Price: ${laptop.Price}</p>
+          )}
+          {!laptop && (
+          <div>
           <p>CPU: {cpu.Name} Price: ${cpu.Price}</p>
           <p>GPU: {gpu.Name} Price: ${gpu.Price}</p>
           <p>Case: {cased.Name} Price: ${cased.Price}</p>
@@ -71,6 +83,8 @@ function Receipt() {
           <p>PSU: {psu.Name} Price: ${psu.Price}</p>
           <p>Storage: {storage.Name} Price: ${storage.Price}</p>
           <p>Ram: {ram.Name} Price: ${ram.Price}</p>
+          </div>
+          )}
           {cooler && (
             <p>Cooler: {cooler.Name} Price: ${cooler.Price}</p>
           )}
