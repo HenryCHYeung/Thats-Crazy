@@ -90,7 +90,7 @@ function Receipt() {
           <p>Tax: ${tax}</p>
           <p>Shipping fee: ${ship}</p>
           <hr/>
-          <h5>Total: ${total}</h5>
+          <h5>Total: ${total.toFixed(2)}</h5>
         </div>
         <button onClick={handleDone}>Done</button>
       </div>

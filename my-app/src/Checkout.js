@@ -23,7 +23,7 @@ function Checkout()  {
   const [state, setState] = useState('');
   const [postalCode, setPostalcode] = useState('');
   const [country, setCountry] = useState('');
-  const [prebuilt,setPrebuilt]=useState('0');
+  const [prebuilt,setPrebuilt]=useState(0);
   
   let tax=(responses.Price*.1).toFixed(2);
   let ship=50;
@@ -157,7 +157,7 @@ function Checkout()  {
               <input type='radio' name='usage1' value="no"/>No
           </label>
           )}
-          <p>Total: ${(total)}</p>
+          <p>Total: ${total.toFixed(2)}</p>
       </div>
       
       <div className='content'>
