@@ -8,21 +8,19 @@ function Receipt() {
   const navigate= useNavigate();
   const location = useLocation();
   const responses = location.state?.response;
-  console.log(responses);
   let laptop, cpu, gpu, cased, motherboard, psu, storage, ram, cooler;
-
   if (responses.responses.Name) {
     laptop = responses.responses;
   }
   else {
-  cpu=responses?.CPU;//remove spaces by replacing space with null
-  gpu=responses?.GPU;
-  cased=responses?.Case;
-  motherboard=responses?.Motherboard;
-  psu=responses?.PSU;
-  storage=responses?.Storage;
-  ram=responses?.RAM;
-  cooler=responses?.CPU_Cooler;
+  cpu=responses.responses.CPU;//remove spaces by replacing space with null
+  gpu=responses.responses.GPU;
+  cased=responses.responses.Case;
+  motherboard=responses.responses.Motherboard;
+  psu=responses.responses.PSU;
+  storage=responses.responses.Storage;
+  ram=responses.responses.RAM;
+  cooler=responses.responses?.CPU_Cooler;
   }
   let fname=responses.firstName;
   let lname=responses.lastName;
