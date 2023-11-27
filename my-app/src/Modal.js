@@ -56,10 +56,12 @@ const JModal = ({ isOpen, closeModal }) => {
             if (selectedTypeOption == "Laptop") {
               console.log(response.data);
               setLaptop(response.data);
+              setResponse(response.data);
               setShowBuildResult(true);
               setvalidBuild(true);  
             } 
             else {
+            setResponse(response.data)
             if (response.data.Cooler) {
                 setCooler(response.data.Cooler)
             }
@@ -140,7 +142,8 @@ const JModal = ({ isOpen, closeModal }) => {
                 <button onClick={handleBackToForm}>Back</button>
                 <div>
                   <label className='totalLabel'>
-                    <h3>Total Price: ${price.toFixed(2)}</h3>
+                  <h3>Category: Laptop</h3>
+                    <h3>Total Price: ${laptop.Price.toFixed(2)}</h3>
                   </label>
                   <button className='checkBtn' onClick={handleCheckOut}>Check Out</button>
                 </div>
@@ -195,7 +198,9 @@ const JModal = ({ isOpen, closeModal }) => {
                 <button onClick={handleBackToForm}>Back</button>
                 <div>
                   <label className='totalLabel'>
-                    <h3>Total Price: ${price.toFixed(2)}</h3>
+                    <h3 className='totalText'>Category: Desktop parts</h3>
+                    <h3 className='totalText'>Storage Size: {storage.Capacity}</h3>
+                    <h3 className='totalText'>Total Price: ${price.toFixed(2)}</h3>
                   </label>
                   <button className='checkBtn' onClick={handleCheckOut}>Check Out</button>
                 </div>

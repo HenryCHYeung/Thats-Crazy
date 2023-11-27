@@ -170,4 +170,11 @@
     
   }
   
-  
+  .totalLabel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .totalText{
+    margin-right: 50px;
+  }

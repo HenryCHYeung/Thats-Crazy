@@ -25,7 +25,7 @@ function Checkout() {
   const [country, setCountry] = useState('');
   const [prebuilt,setPrebuilt]=useState(0);
 
-  let cpu=responses.CPU;//remove spaces by replacing space with null
+  let cpu=responses.CPU;
   let gpu=responses.GPU;
   let cased=responses.Case;
   let motherboard=responses.Motherboard;
