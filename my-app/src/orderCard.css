@@ -14,7 +14,7 @@
     align-items: center;
     display: flex;
     padding: 12px 16px; 
-    padding-left: 20%;
+    padding-left:10%;
 }
 .orderSize:hover {
     background-color: lightgray;

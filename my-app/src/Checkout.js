@@ -143,7 +143,7 @@ function Checkout()  {
           <Ordercard component='Motherboard' name={motherboard.Name} img={motherimg} price={motherboard.Price}/>
           <Ordercard component='RAM' name={ram.Name} img={ramimg} price={ram.Price}/>
           <Ordercard component='PSU' name={psu.Name} img={psuimg} price={psu.Price}/>
-          <Ordercard component='Storage' name={storage.Name} img={storageimg} price={storage.Price}/>
+          <Ordercard component='Storage' name={storage.Name} img={storageimg} price={storage.Price} storage={storage.Capacity}/>
           </div>
           )}
           {cooler && (

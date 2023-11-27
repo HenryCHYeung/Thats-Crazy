@@ -15,6 +15,7 @@ function Ordercard({component,name,img,price,storage}) {
         <span>{component}: {name} </span>
         {storage && <span>{storage}</span>}
         <span>Price: ${price.toFixed(2)}</span>
+        {storage && <span>Storage: {storage}</span>}
       </span>
     </div>
   );
