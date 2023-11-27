@@ -40,6 +40,7 @@ const JModal = ({ isOpen, closeModal }) => {
   };
   const handleType = (selectedType) => {
     setIsLaptop(selectedType === 'Laptop');
+    //
     setSelectedTypeOption(selectedType);
   };
   
@@ -119,6 +120,14 @@ const JModal = ({ isOpen, closeModal }) => {
       {(() => {
         if (showBuildResult) {
           if(validBuild){
+            if(laptop){
+              //variables
+              return(
+                <div>
+
+                </div>
+              );
+            }else{
             let cpuimg=cpu.Name.replace(/\s/g, '');//remove spaces by replacing space with null
             let gpuimg=gpu.Name.replace(/\s/g, '');
             let caseimg=cased.Name.replace(/\s/g, '');
@@ -173,6 +182,7 @@ const JModal = ({ isOpen, closeModal }) => {
                 </div>
               </div>
             );
+            }
           }else{
             return (
               <div>
