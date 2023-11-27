@@ -139,7 +139,7 @@ function Checkout()  {
             <div>
           <Ordercard component='CPU' name={cpu.Name} img={cpuimg} price={cpu.Price}/>
           <Ordercard component='GPU' name={gpu.Name} img={gpuimg} price={gpu.Price}/>
-          <Ordercard component='Case' name={cased.Name} img={caseimg} price={cased.Price}/>
+          <Ordercard component='Cases' name={cased.Name} img={caseimg} price={cased.Price}/>
           <Ordercard component='Motherboard' name={motherboard.Name} img={motherimg} price={motherboard.Price}/>
           <Ordercard component='RAM' name={ram.Name} img={ramimg} price={ram.Price}/>
           <Ordercard component='PSU' name={psu.Name} img={psuimg} price={psu.Price}/>
@@ -147,7 +147,7 @@ function Checkout()  {
           </div>
           )}
           {cooler && (
-              <Ordercard component='CPU_Cooler' name={cooler.Name} img={coolerimg} price={cooler.Price}/>              
+              <Ordercard component='CPUCooler' name={cooler.Name} img={coolerimg} price={cooler.Price}/>              
           )}
           <p>Taxes: ${tax}</p>
           {!laptop && ( 

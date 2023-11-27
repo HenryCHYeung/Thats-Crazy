@@ -178,7 +178,7 @@ const JModal = ({ isOpen, closeModal }) => {
                           <Componentcard component='GPU' name={gpu.Name} img={gpuimg} price={gpu.Price}/>
                         </label>
                         <label className='' style={{position:'absolute',top:'20%',left:'50%',width:'13%', height:'13%'}}>
-                        <Componentcard component='Case' name={cased.Name} img={caseimg} price={cased.Price}/>
+                        <Componentcard component='Cases' name={cased.Name} img={caseimg} price={cased.Price}/>
                         </label>
                         <label className='' style={{position:'absolute',top:'20%',left:'70%',width:'13%', height:'13%'}}>
                         <Componentcard component='Motherboard' name={motherboard.Name} img={motherimg} price={motherboard.Price}/>
@@ -194,7 +194,7 @@ const JModal = ({ isOpen, closeModal }) => {
                         </label>
                         {cooler && (
                           <label className='' style={{position:'absolute',top:'60%',left:'70%',width:'13%', height:'13%'}}>
-                            <Componentcard component='CPU_Cooler' name={cooler.Name} img={coolerimg} price={cooler.Price}/>
+                            <Componentcard component='CPUCooler' name={cooler.Name} img={coolerimg} price={cooler.Price}/>
                           </label>                  
                         )}
                       </div>
