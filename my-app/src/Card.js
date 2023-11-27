@@ -5,7 +5,7 @@ function openLink(url) {
   window.open(url, '_blank');
 }
 
-function Componentcard({component,name,img,price}) {
+function Componentcards({component,name,img,price,storage}) {
   const amazonLink='https://www.amazon.com/s?k='+name+'&crid=22RKV946NH24M&sprefix=MSIMPGX570GAMINGPROCARBONWIFI%2Caps%2C144&ref=nb_sb_noss';
   return (
     <div className="cardSize">
@@ -19,7 +19,7 @@ function Componentcard({component,name,img,price}) {
   );
 }
 
-export default Componentcard;
+export default Componentcards;
 {/*
 style={{position:'absolute',top:'30%',left:'10%',width:'40%', height:'40%'}}
 style={{width:'40%', height:'40%'}}

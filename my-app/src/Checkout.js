@@ -132,7 +132,7 @@ function Checkout()  {
           <h1>Review Your Order</h1>
           {laptop && (
               <>
-                <Ordercard component='Laptop' name={laptop.Name} img={laptopimg} price={laptop.Price}/>
+                <Ordercard component='Laptop' name={laptop.Name} img={laptopimg} price={laptop.Price} storage={laptop.Storage}/>
               </>
           )}
           {!laptop && ( 
