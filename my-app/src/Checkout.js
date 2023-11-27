@@ -125,7 +125,6 @@ function Checkout()  {
   const handlePurchase =()=>{
     navigate('/receipt', { state: { response: {responses,email,firstName,lastName,phoneNumber,deliveryAddress,suburb,state,postalCode,country,ship,prebuilt,tax,total} } })
   };
-
   return (
   <div className='checkout'>
       <div className='content'>
@@ -157,7 +156,7 @@ function Checkout()  {
               <input type='radio' name='usage1' value="no"/>No
           </label>
           )}
-          <p>Total: ${(total).toFixed(2)}</p>
+          <p>Total: ${(total)}</p>
       </div>
       
       <div className='content'>
