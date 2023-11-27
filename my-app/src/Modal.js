@@ -26,7 +26,7 @@ const JModal = ({ isOpen, closeModal }) => {
   const [storage, setStorage] = useState(null);
   const [cooler, setCooler] = useState(null);
   const [ram, setRam] = useState(null);
-  const [repsonses,setResponse]=useState(null);
+  const [repsonses, setResponse]=useState(null);
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -53,9 +53,11 @@ const JModal = ({ isOpen, closeModal }) => {
             setBaking(false);
             console.log("No PC available based on your specifications. That's crazy!");
         } else {
+            setResponse(response.data);
             if (selectedTypeOption == "Laptop") {
               console.log(response.data);
               setLaptop(response.data);
+              console.log(laptop);
               setShowBuildResult(true);
               setvalidBuild(true);  
             } 
@@ -140,7 +142,7 @@ const JModal = ({ isOpen, closeModal }) => {
                 <button onClick={handleBackToForm}>Back</button>
                 <div>
                   <label className='totalLabel'>
-                    <h3>Total Price: ${price.toFixed(2)}</h3>
+                    <h3>Total Price: ${laptop.Price.toFixed(2)}</h3>
                   </label>
                   <button className='checkBtn' onClick={handleCheckOut}>Check Out</button>
                 </div>
