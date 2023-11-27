@@ -47,8 +47,8 @@ function Checkout()  {
   cpuimg=cpu.Name.replace(/\s/g, '');//remove spaces by replacing space with null
   gpuimg=gpu.Name.replace(/\s/g, '');
   caseimg=cased.Name.replace(/\s/g, '');
-  mother=motherboard.Name.replace(/\s/g, '');
-  motherimg=mother.replace(/\|/g,'');
+  mother=motherboard.Name.replace(/\|/g,'');
+  motherimg=mother.replace(/\s/g, '');
   psuimg=psu.Name.replace(/\s/g, '');
   storageimg=storage.Name.replace(/\s/g, '');
   ramimg=ram.Name.replace(/\s/g, '');//
@@ -140,7 +140,7 @@ function Checkout()  {
           <Ordercard component='CPU' name={cpu.Name} img={cpuimg} price={cpu.Price}/>
           <Ordercard component='GPU' name={gpu.Name} img={gpuimg} price={gpu.Price}/>
           <Ordercard component='Case' name={cased.Name} img={caseimg} price={cased.Price}/>
-          <Ordercard component='Motherboard' name={motherboard.Name} img={motherimg} price={motherboard.Price}/>
+          <Ordercard component='Motherboard' name={mother} img={motherimg} price={motherboard.Price}/>
           <Ordercard component='RAM' name={ram.Name} img={ramimg} price={ram.Price}/>
           <Ordercard component='PSU' name={psu.Name} img={psuimg} price={psu.Price}/>
           <Ordercard component='Storage' name={storage.Name} img={storageimg} price={storage.Price}/>

@@ -144,8 +144,8 @@ const JModal = ({ isOpen, closeModal }) => {
                 <button onClick={handleBackToForm}>Back</button>
                 <div>
                   <label className='totalLabel'>
-                    <h3>Category: Laptop</h3>
-                    <h3>Total Price: ${laptop.Price.toFixed(2)}</h3>
+                    <h3 className='totalText'>Category: Laptop</h3>
+                    <h3 className='totalText'>Total Price: ${laptop.Price.toFixed(2)}</h3>
                   </label>
                   <button className='checkBtn' onClick={handleCheckOut}>Check Out</button>
                 </div>
@@ -155,8 +155,8 @@ const JModal = ({ isOpen, closeModal }) => {
             let cpuimg=cpu.Name.replace(/\s/g, '');//remove spaces by replacing space with null
             let gpuimg=gpu.Name.replace(/\s/g, '');
             let caseimg=cased.Name.replace(/\s/g, '');
-            let mother=motherboard.Name.replace(/\s/g, '');
-            let motherimg=mother.replace(/\|/g,'');
+            let mother=motherboard.Name.replace(/\|/g,'');
+            let motherimg=mother.replace(/\s/g, '');
             let psuimg=psu.Name.replace(/\s/g, '');
             let storageimg=storage.Name.replace(/\s/g, '');
             let ramimg=ram.Name.replace(/\s/g, '');//
@@ -179,7 +179,7 @@ const JModal = ({ isOpen, closeModal }) => {
                         <Componentcard component='Case' name={cased.Name} img={caseimg} price={cased.Price}/>
                         </label>
                         <label className='' style={{position:'absolute',top:'20%',left:'70%',width:'13%', height:'13%'}}>
-                        <Componentcard component='Motherboard' name={motherboard.Name} img={motherimg} price={motherboard.Price}/>
+                        <Componentcard component='Motherboard' name={mother} img={motherimg} price={motherboard.Price}/>
                         </label>
                         <label className='' style={{position:'absolute',top:'60%',left:'10%',width:'13%', height:'13%'}}>
                         <Componentcard component='RAM' name={ram.Name} img={ramimg} price={ram.Price}/>
@@ -200,7 +200,7 @@ const JModal = ({ isOpen, closeModal }) => {
                 <button onClick={handleBackToForm}>Back</button>
                 <div>
                   <label className='totalLabel'>
-                    <h3 className='totalText'>Category: Desktop parts</h3>
+                    <h3 className='totalText'>Category: Desktop</h3>
                     <h3 className='totalText'>Storage Size: {storage.Capacity}</h3>
                     <h3 className='totalText'>Total Price: ${price.toFixed(2)}</h3>
                   </label>
