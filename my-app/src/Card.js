@@ -5,7 +5,7 @@ function openLink(url) {
   window.open(url, '_blank');
 }
 
-function Componentcard({component,name,img,price}) {
+function Componentcard({component,name,img,price,storage}) {
   const amazonLink='https://www.amazon.com/s?k='+name+'&crid=22RKV946NH24M&sprefix=MSIMPGX570GAMINGPROCARBONWIFI%2Caps%2C144&ref=nb_sb_noss';
   return (
     <div className="cardSize">

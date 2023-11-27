@@ -188,7 +188,7 @@ const JModal = ({ isOpen, closeModal }) => {
                         <Componentcard component='PSU' name={psu.Name} img={psuimg} price={psu.Price}/>
                         </label>
                         <label className='' style={{position:'absolute',top:'60%',left:'50%',width:'13%', height:'13%'}}>
-                        <Componentcard component='Storage' name={storage.Name} img={storageimg} price={storage.Price}/>
+                        <Componentcard component='Storage' name={storage.Name} img={storageimg} price={storage.Price} />
                         </label>
                         {cooler && (
                           <label className='' style={{position:'absolute',top:'60%',left:'70%',width:'13%', height:'13%'}}>
