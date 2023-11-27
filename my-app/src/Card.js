@@ -12,6 +12,7 @@ function Componentcard({component,name,img,price}) {
       <div onClick={() => openLink(amazonLink)}>
         <p>{component}: {name}</p>
         <p>Price: ${price}</p>
+        {storage && <span>Storage: {storage}</span>}
         <img src={`/images/${component}/${img}.jpg`} alt={`${name} Image`} class="imgSize" />
       </div>
     </div>

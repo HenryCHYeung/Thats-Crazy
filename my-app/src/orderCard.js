@@ -10,16 +10,13 @@ function Ordercard({component,name,img,price}) {
   return (
     <div className="orderSize">
       <span className="contentContainer" onClick={() => openLink(amazonLink)}>
-      <img src={`/images/${component}/${img}.jpg`} alt={`${name} Image`} class="orderImg" />
+        <img src={`/images/${component}/${img}.jpg`} alt={`${name} Image`} className="orderImg" />
         <span>{component}: {name}</span>
-        <span>Price: ${price.toFixed(2) }</span>
+        <span>Price: ${price.toFixed(2)}</span>
+        {storage && <span>{storage}</span>}
       </span>
     </div>
   );
 }
 
 export default Ordercard;
-
-/**
- *  <img src={`/images/${component}/${img}.jpg`} alt={`${name} Image`} class="imgSize" />
- */

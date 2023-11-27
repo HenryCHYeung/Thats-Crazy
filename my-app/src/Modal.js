@@ -137,7 +137,7 @@ const JModal = ({ isOpen, closeModal }) => {
                   <div className='buildForm'>
                       <div className='parts'>
                         <label style={{position:'absolute', top:'20%',left:'35%',width:'50%', height:'0%'}}>
-                          <Componentcard component='Laptop' name={laptop.Name} img={laptopimg} price={laptop.Price}/>
+                          <Componentcard component='Laptop' name={laptop.Name} img={laptopimg} price={laptop.Price} storage={laptop.Storage}/>
                         </label>
                       </div>
                     </div>
