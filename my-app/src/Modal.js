@@ -218,7 +218,9 @@ const JModal = ({ isOpen, closeModal }) => {
               <div>
                 <h2 className='modalHD'>Build Baking Results</h2>
                 <label style={{position:'absolute',top:'30%',left:'20%',width:'60%', height:'60%'}}>
-                  <p style={{textAlign:'center'}}>No PC available based on your specifications. That's crazy!</p>
+                  <p style={{textAlign:'center'}}>
+                    No PC available based on your specifications. That's crazy!<br/>Maybe try increasing the budget?
+                  </p>
                   <img style={{width:'60%', height:'80%'}} src={'/Error.png'} alt="CPU Image" />
                 </label>
                 <button onClick={handleBackToForm}>Back</button>
