@@ -19,7 +19,7 @@ function Componentcard({component,name,img,price,storage}) {
   );
 }
 
-export default Componentcards;
+export default Componentcard;
 {/*
 style={{position:'absolute',top:'30%',left:'10%',width:'40%', height:'40%'}}
 style={{width:'40%', height:'40%'}}

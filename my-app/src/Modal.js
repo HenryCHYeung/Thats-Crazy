@@ -3,8 +3,9 @@ import { useState} from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
 import './Modal.css';
-import Componentcard from './Card';
 import { useNavigate} from 'react-router-dom';
+import Build from './PCBuild';
+import Componentcard from './Card';
 
 const JModal = ({ isOpen, closeModal }) => {
   const navigate = useNavigate();
@@ -152,51 +153,10 @@ const JModal = ({ isOpen, closeModal }) => {
               </div>
               )
             }else{
-            let cpuimg=cpu.Name.replace(/\s/g, '');//remove spaces by replacing space with null
-            let gpuimg=gpu.Name.replace(/\s/g, '');
-            let caseimg=cased.Name.replace(/\s/g, '');
-            let mother=motherboard.Name.replace(/\|/g,'');
-            let motherimg=mother.replace(/\s/g, '');
-            let psuimg=psu.Name.replace(/\s/g, '');
-            let storageimg=storage.Name.replace(/\s/g, '');
-            let ramimg=ram.Name.replace(/\s/g, '');//
-            let coolerimg;
-            if(cooler){
-              coolerimg=cooler.Name.replace(/\s/g, '');
-            }
+              console.log(cpu)
             return (
                 <div>
-                  <h2 className='modalHD'>Build Baking Results</h2>
-                    <div className='buildForm'>
-                      <div className='parts'>
-                        <label style={{position:'absolute',top:'20%',left:'10%',width:'13%', height:'13%'}}>
-                          <Componentcard component='CPU' name={cpu.Name} img={cpuimg} price={cpu.Price}/>
-                        </label>
-                        <label className='' style={{position:'absolute',top:'20%',left:'30%',width:'13%', height:'13%'}}>
-                          <Componentcard component='GPU' name={gpu.Name} img={gpuimg} price={gpu.Price}/>
-                        </label>
-                        <label className='' style={{position:'absolute',top:'20%',left:'50%',width:'13%', height:'13%'}}>
-                        <Componentcard component='Case' name={cased.Name} img={caseimg} price={cased.Price}/>
-                        </label>
-                        <label className='' style={{position:'absolute',top:'20%',left:'70%',width:'13%', height:'13%'}}>
-                        <Componentcard component='Motherboard' name={mother} img={motherimg} price={motherboard.Price}/>
-                        </label>
-                        <label className='' style={{position:'absolute',top:'60%',left:'10%',width:'13%', height:'13%'}}>
-                        <Componentcard component='RAM' name={ram.Name} img={ramimg} price={ram.Price}/>
-                        </label>
-                        <label className='' style={{position:'absolute',top:'60%',left:'30%',width:'13%', height:'13%'}}>
-                        <Componentcard component='PSU' name={psu.Name} img={psuimg} price={psu.Price}/>
-                        </label>
-                        <label className='' style={{position:'absolute',top:'60%',left:'50%',width:'13%', height:'13%'}}>
-                        <Componentcard component='Storage' name={storage.Name} img={storageimg} price={storage.Price} />
-                        </label>
-                        {cooler && (
-                          <label className='' style={{position:'absolute',top:'60%',left:'70%',width:'13%', height:'13%'}}>
-                            <Componentcard component='CPU_Cooler' name={cooler.Name} img={coolerimg} price={cooler.Price}/>
-                          </label>                  
-                        )}
-                      </div>
-                    </div>
+                <Build cpu={cpu} gpu={gpu} cased={cased} motherboard={motherboard} ram={ram} psu={psu} storage={storage} cooler={cooler}/>
                 <button onClick={handleBackToForm}>Back</button>
                 <div>
                   <label className='totalLabel'>
@@ -299,70 +259,3 @@ const JModal = ({ isOpen, closeModal }) => {
 };
 
 export default JModal;
-
-
-{/**
-<label className='' style={{position:'absolute',top:'30%',left:'10%',width:'40%', height:'40%'}}>
-                  <p>CPU: {cpu.Name}</p>
-                  <p>Price: ${cpu.Price}</p>
-                  <a href={'https://www.amazon.com/s?k='+cpu.Name+'&crid=22RKV946NH24M&sprefix=MSIMPGX570GAMINGPROCARBONWIFI%2Caps%2C144&ref=nb_sb_noss'} target="_blank" rel="noopener noreferrer">
-                    <img style={{width:'40%', height:'40%'}} src={`/images/CPU/${cpuimg}.jpg`} alt="CPU Image" />
-                  </a>
-                </label>
-                <label className='' style={{position:'absolute',top:'30%',left:'30%',width:'40%', height:'40%'}}>
-                  <p>GPU: {gpu.Name}</p>
-                  <p>Price: ${gpu.Price}</p>
-                  <a href={'https://www.amazon.com/s?k='+gpu.Name+'&crid=22RKV946NH24M&sprefix=MSIMPGX570GAMINGPROCARBONWIFI%2Caps%2C144&ref=nb_sb_noss'} target="_blank" rel="noopener noreferrer">
-                  <img style={{width:'40%', height:'40%' }} src={`/images/GPU/${gpuimg}.jpg`} alt="GPU Image" />
-                  </a>
-                </label>
-                <label className='' style={{position:'absolute',top:'30%',left:'50%',width:'40%', height:'40%'}}>
-                  <p>Case: {cased.Name}</p>
-                  <p>Price: ${cased.Price}</p>
-                  <a href={'https://www.amazon.com/s?k='+cased.Name+'&crid=22RKV946NH24M&sprefix=MSIMPGX570GAMINGPROCARBONWIFI%2Caps%2C144&ref=nb_sb_noss'} target="_blank" rel="noopener noreferrer">
-                  <img style={{width:'40%', height:'40%' }} src={`/images/Case/${caseimg}.jpg`} alt="Case Image" />
-                  </a>
-                </label>
-                <label className='' style={{position:'absolute',top:'30%',left:'70%',width:'40%', height:'40%'}}>
-                  <a href={'https://www.amazon.com/s?k='+motherboard.Name+'&crid=22RKV946NH24M&sprefix=MSIMPGX570GAMINGPROCARBONWIFI%2Caps%2C144&ref=nb_sb_noss'} target="_blank" rel="noopener noreferrer">
-                  <img style={{width:'40%', height:'70%' }} src={`/images/Motherboard/${motherimg}.jpg`} alt="Motherboard Image" />
-                  </a>
-                  <div>
-                    <p>Motherboard: {motherboard.Name}</p>
-                    <p>Price: ${motherboard.Price}</p>
-                  </div>
-                </label>
-                <label className='' style={{position:'absolute',top:'70%',left:'10%',width:'40%', height:'40%'}}>
-                  <p>RAM:  {ram.Name}</p>
-                  <p>Price: ${ram.Price}</p>
-                  <a href={'https://www.amazon.com/s?k='+ram.Name+'&crid=22RKV946NH24M&sprefix=MSIMPGX570GAMINGPROCARBONWIFI%2Caps%2C144&ref=nb_sb_noss'} target="_blank" rel="noopener noreferrer">
-                    <img style={{width:'40%', height:'40%' }}  src={`/images/RAM/${ramimg}.jpg`} alt="RAM Image" />
-                  </a> 
-                </label>
-                <label className='' style={{position:'absolute',top:'70%',left:'30%',width:'40%', height:'40%'}}>
-                  <p>PSU: {psu.Name}</p>
-                  <p>Price: ${psu.Price}</p>
-                  <a href={'https://www.amazon.com/s?k='+psu.Name+'&crid=22RKV946NH24M&sprefix=MSIMPGX570GAMINGPROCARBONWIFI%2Caps%2C144&ref=nb_sb_noss'} target="_blank" rel="noopener noreferrer">
-                  <img style={{width:'40%', height:'40%' }} src={`/images/PSU/${psuimg}.jpg`} alt="PSU Image" />
-                  </a>
-                </label>
-                <label className='' style={{position:'absolute',top:'70%',left:'50%',width:'40%', height:'40%'}}>
-                  <p>Storage: {storage.Name}</p>
-                  <p>Price: ${storage.Price}</p>
-                  <a href={'https://www.amazon.com/s?k='+storage.Name+'&crid=22RKV946NH24M&sprefix=MSIMPGX570GAMINGPROCARBONWIFI%2Caps%2C144&ref=nb_sb_noss'} target="_blank" rel="noopener noreferrer">
-                  <img style={{width:'40%', height:'40%' }} src={`/images/Storage/${storageimg}.jpg`} alt="Storage Image" />
-                  </a>
-                </label>
-                {cooler && (
-                  <label className='' style={{position:'absolute',top:'70%',left:'70%',width:'40%', height:'40%'}}>
-                    <p>Cooler: {cooler.Name}</p>
-                    <p>Price: ${cooler.Price}</p>
-                    <a href={'https://www.amazon.com/s?k='+cooler.Name+'&crid=22RKV946NH24M&sprefix=MSIMPGX570GAMINGPROCARBONWIFI%2Caps%2C144&ref=nb_sb_noss'} target="_blank" rel="noopener noreferrer">
-                    <img style={{width:'40%', height:'40%'}} src={`/images/Cooler/${coolerimg}.jpg`} alt="Cooler Image" />
-                    </a>
-                  </label>                  
-                )}
-                <label>
-                  <h3>Total Price: ${price.toFixed(2)}</h3>
-                </label>
-*/}
