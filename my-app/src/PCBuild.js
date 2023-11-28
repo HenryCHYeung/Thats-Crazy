@@ -13,7 +13,7 @@ function Build({cpu,gpu,cased,motherboard,ram,psu,storage,cooler}){
     let ramimg=ram.Name.replace(/\s/g, '');//
     let coolerimg;
     if(cooler){
-        coolerimg=cooler.Name.replace(/\s/g, '');
+        coolerimg=cooler.Name.replace(/\s/g,'');
     }
     return(
         <div>
@@ -27,7 +27,7 @@ function Build({cpu,gpu,cased,motherboard,ram,psu,storage,cooler}){
                           <Componentcard component='GPU' name={gpu.Name} img={gpuimg} price={gpu.Price}/>
                         </label>
                         <label style={{position:'absolute',top:'20%',left:'50%',width:'13%', height:'13%'}}>
-                        <Componentcard component='Case' name={cased.Name} img={caseimg} price={cased.Price}/>
+                        <Componentcard component='Cases' name={cased.Name} img={caseimg} price={cased.Price}/>
                         </label>
                         <label style={{position:'absolute',top:'20%',left:'70%',width:'13%', height:'13%'}}>
                         <Componentcard component='Motherboard' name={mother} img={motherimg} price={motherboard.Price}/>
@@ -43,7 +43,7 @@ function Build({cpu,gpu,cased,motherboard,ram,psu,storage,cooler}){
                         </label>
                         {cooler && (
                           <label style={{position:'absolute',top:'60%',left:'70%',width:'13%', height:'13%'}}>
-                            <Componentcard component='CPU_Cooler' name={cooler.Name} img={coolerimg} price={cooler.Price}/>
+                            <Componentcard component='CPUCooler' name={cooler.Name} img={coolerimg} price={cooler.Price}/>
                           </label>                  
                         )}
                       </div>
