@@ -1,12 +1,14 @@
 const express = require("express");
 const cors = require("cors");
 const sqlite = require("sqlite3");
+const path = require('path');
 const PORT = process.env.PORT || 3001;  // PORT depends on environment, or 3001 if there is none
 const app = express();
 
 app.use(express.json());      // Allows incoming requests to be recognized as JSON objects
 app.use(express.urlencoded({ extended: true }));        // Allows incoming HTML forms and URL-encoded data to be parsed
 app.use(cors());              // Allows frontend to make requests to access the APIs here
+app.use(express.static(path.resolve(__dirname, '../my-app/build')));
 
 var min_sum_of_price = 0;     // sum of cheapest compatible parts
 
