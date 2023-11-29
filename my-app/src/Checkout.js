@@ -24,6 +24,7 @@ function Checkout()  {
   const [postalCode, setPostalcode] = useState('');
   const [country, setCountry] = useState('');
   const [prebuilt,setPrebuilt]=useState(0);
+  const [isPrebuilt, setIsPrebuilt]=useState(true);
   
   let tax=(responses.Price*.1).toFixed(2);
   let ship=50;
@@ -59,8 +60,10 @@ function Checkout()  {
   const handlebuilt=(event)=>{
     if(event.target.value=='yes'){//set the build fee to 500 or 0 based on user input yes or no
       setPrebuilt(500);
+      setIsPrebuilt(true);
     }else{
       setPrebuilt(0);
+      setIsPrebuilt(false);
     }
     
   }
@@ -128,7 +131,7 @@ function Checkout()  {
   <div className='checkout'>
       <div className='content'>
           <img className='checkLogo' src='Rapid_Rigs.png'/>
-          <img className='checkChibi'src='/checkout.png'/>
+          <img className='checkChibi'src='/checkout.gif'/>
           <h1>Review Your Order</h1>
           {laptop && (
               <>
@@ -157,7 +160,7 @@ function Checkout()  {
               <input type='radio' name='usage1' value="no"/>No
           </label>
           )}
-          {prebuilt==500 && ( 
+          {!isPrebuilt && ( 
           <div>
             <p>Please check this video on building a PC!</p>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/BL4DCEp7blY?si=EE_lQ0kXIL5_rq60" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

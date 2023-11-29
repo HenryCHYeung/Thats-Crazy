@@ -12,21 +12,20 @@
   display: flex;
   align-items: center;
   background-color: #282c34;
-
 }
 
 .logo-link {
-  margin-right: 40px; 
+  margin-right: 100px; 
 }
 
 .logo {
-  width: 8rem; 
-  height: auto;
+  max-width: 100%; 
+  height:75px;
 }
 
 ul {
   list-style-type: none;
-  margin: 0;
+  margin-left: 280px;
   padding: 0;
   display: flex;
   position: absolute;
@@ -35,6 +34,8 @@ ul {
 
 li {
   margin-right: 20px; 
+  font-weight: bold;
+  font-size: 24x;
 }
 
 li:last-child {

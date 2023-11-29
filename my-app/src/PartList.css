@@ -2,9 +2,9 @@
 
 .partLabel {
     color: white; /* Header text color */
-    border-bottom: 2px solid white; /* Underline effect */
     padding-bottom: 8px;
     margin-bottom: 16px;
+    font-size: 24px;
 }
   
 .section-links {
@@ -36,7 +36,7 @@
 }
 
 .part-container {
-  height: 73.2vh;
+  height: 77.6vh;
   overflow-y: scroll;
 }
   

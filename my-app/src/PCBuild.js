@@ -16,7 +16,7 @@ function Build({cpu,gpu,cased,motherboard,ram,psu,storage,cooler}){
         coolerimg=cooler.Name.replace(/\s/g,'');
     }
     return(
-        <div>
+        <div className='screen'>
             <h2 className='modalHD'>Build Baking Results</h2>
                     <div className='buildForm'>
                       <div className='parts'>
@@ -30,7 +30,7 @@ function Build({cpu,gpu,cased,motherboard,ram,psu,storage,cooler}){
                         <Componentcard component='Cases' name={cased.Name} img={caseimg} price={cased.Price}/>
                         </label>
                         <label style={{position:'absolute',top:'20%',left:'70%',width:'13%', height:'13%'}}>
-                        <Componentcard component='Motherboard' name={mother} img={motherimg} price={motherboard.Price}/>
+                        <Componentcard component='Motherboard' name={motherboard.Name} img={motherimg} price={motherboard.Price}/>
                         </label>
                         <label style={{position:'absolute',top:'60%',left:'10%',width:'13%', height:'13%'}}>
                         <Componentcard component='RAM' name={ram.Name} img={ramimg} price={ram.Price}/>

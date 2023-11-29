@@ -28,7 +28,7 @@ const JModal = ({ isOpen, closeModal }) => {
   const [cooler, setCooler] = useState(null);
   const [ram, setRam] = useState(null);
   const [repsonses, setResponse]=useState(null);
-  const [backgroundColor, setBackgroundColor] = useState('grey');
+  const [backgroundColor, setBackgroundColor] = useState('#596d81');
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);//This sets the new budget to the usestate
@@ -111,6 +111,9 @@ const handleBackToForm = () => {
   // Set state to go back to the initial form
   setShowBuildResult(false);
   setvalidBuild(false);
+  if (backgroundColor !== '#596d81') {
+    setBackgroundColor('#596d81');
+  }
 };
 
 
@@ -118,6 +121,9 @@ const handleCloseModal = () => {
   // Close the modal and reset the state
   setShowBuildResult(false);
   setvalidBuild(false);
+  if (backgroundColor !== '#596d81') {
+    setBackgroundColor('#596d81');
+  }
   closeModal();
 };
 const handleCheckOut = () => {
@@ -139,8 +145,8 @@ return (
               <div>
                 <h2 className='modalHD'>Build Baking Results</h2>
                 <div className='buildForm'>
-                    <div className='parts'>
-                      <label style={{position:'absolute', top:'20%',left:'35%',width:'50%', height:'0%'}}>
+                    <div className='partL'>
+                      <label>
                         <Componentcard component='Laptop' name={laptop.Name} img={laptopimg} price={laptop.Price} storage={laptop.Storage}/>
                       </label>
                     </div>
@@ -184,7 +190,7 @@ return (
                 <p style={{textAlign:'center'}}>
                   No PC available based on your specifications. That's crazy!<br/>Maybe try increasing the budget?
                 </p>
-                <img style={{width:'60%', height:'80%'}} src={'/Error.png'} alt="CPU Image" />
+                <img className='errorImage' src={'/Error.png'} alt="CPU Image" />
               </label>
               <button className='backBtn' onClick={handleBackToForm}>Back</button>
             </div>
@@ -195,7 +201,7 @@ return (
           return(
             <div>
               <div className='inLine'>
-                <img style={{width:'160%', opacity: '60%'}} src='giphy.gif'/>
+                <img style={{width:'50%', height: '100%'}} src='making.gif'/>
               </div>
               <div className='inLine'>
               <form className='bakingWindow'onSubmit={handleSubmit}>
@@ -260,7 +266,7 @@ return (
           );}else{
             return(
               <div className='loadImgContainer'>
-                <img className='loadImg'src='baking.gif' alt='baking gif'/>
+                <img className='loadImg'src='making2.gif' alt='baking gif'/>
                 <div className='load'>
                   <h1>Currently Baking...</h1>
                 </div>

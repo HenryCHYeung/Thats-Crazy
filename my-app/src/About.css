@@ -1,5 +1,4 @@
 .aboutContainer {
-  display: flex;
   align-items: center;
 }
 .aboutTitle{
@@ -8,16 +7,24 @@
 .credit{
   text-align: center;
   color:white;
-  border: 1px solid lawngreen;
   padding: 2%;
 }
+.creditContainer{
+  display:flex;
+  align-items: center;
+}
+
 .info{
-  flex: 1;
   color:white;
   width: 50%;
+}
+.infoP {
+  padding:30px;
+  margin-bottom: -32px;
+  font-size: 20px;
 }
 .aboutImg{
   width: 25%;
   height: auto; 
-  margin-right: 40px;
+  margin-left: 400px;
 }

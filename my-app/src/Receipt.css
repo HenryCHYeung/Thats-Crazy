@@ -28,3 +28,16 @@
     background-color: #27ae60;
   }
   
+.receiptL {
+    position: absolute;
+    top: -7%;
+    left: 3%;
+    width: 600px;
+}
+
+.receiptR {
+    position: absolute;
+    top: 5%;
+    right: 3%;
+    width: 600px;
+}

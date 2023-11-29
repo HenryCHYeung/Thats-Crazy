@@ -59,6 +59,9 @@ function Receipt() {
   }
 
   return (
+    <div>
+    <img className='receiptL' src='receiptL.png'/>
+    <img className='receiptR' src='receiptR.png'/>
     <div className='receiptContent'>
       <div>
         <h1>Thank You For Purchasing!</h1>
@@ -94,6 +97,7 @@ function Receipt() {
         </div>
         <button className='doneButton' onClick={handleDone}>Done</button>
       </div>
+    </div>
     </div>
     );
 }

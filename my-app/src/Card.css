@@ -4,8 +4,9 @@
     cursor: pointer;
     font-size: 12pt;
 }
-.cardSize:hover {
+.cardSize:hover, .parts:hover {
     background-color: lightgray;
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
   }
 .imgSize{
     height: 125%;

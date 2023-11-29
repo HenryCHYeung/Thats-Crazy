@@ -4,6 +4,7 @@
   
 .homeChibi{
   display: inline-block;
+  max-width: 30%;
   vertical-align: middle;
   z-index: -1;
 }
@@ -17,17 +18,22 @@
   z-index: -2;
   display: inline-block;
   vertical-align:bottom;
-  height: 100%;
-  width: 100%;
+  height: 40%;
+  width: 30%;
 }
 .homeContainer {
   background-size: cover;
   background-attachment: fixed;
 }
 .homebutton {
+  position:absolute;
+  left:35%;
+  top:60%;
+  width:30%;
+  height:8%;
+  font-size: 28px;
   display: inline-block;
-  padding: 12px 24px;
-  font-size: 16px;
+  padding: 8px 8px;
   font-weight: bold;
   text-align: center;
   text-decoration: none;

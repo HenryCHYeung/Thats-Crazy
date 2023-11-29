@@ -11,12 +11,10 @@ function Home() {
       <span>
       <img className='homeChibi' src='/home.png'/> 
       </span>
+      <h1 className='homeText'>Build Your Dream PC With Our Selected PC Parts!</h1>
+      <img className='deviceImg' src='/pcStock.png'/>
       <span className='homeText'>
-        <h1>Build Your Dream PC With Our Selected PC Parts!</h1>
-        <h3>Not Sure Where to Start?</h3>
-        <h3>No Problem!</h3>
         <ModalButton/>
-        <img className='deviceImg' src='/pcStock.png'/> 
       </span>
     </div>
   </div>

@@ -1,11 +1,11 @@
 .orderSize{
     display: flex;
-    height: 80px;
+    height: 100px;
     width: 100%;
     cursor: pointer;
     font-size: .8vw;
     border: .2px solid red;
-   
+    flex-direction: column;
 }
 .contentContainer span{
     padding-left: 10%;
@@ -24,17 +24,15 @@
 
     width: 75px;
     height: 75px; 
+    padding:2px;
 }
 
-#compNameC, #storageC, #priceC {
-    position:absolute;
-}
-#compNameC {
-    left:500px;
-}
-#storageC {
-    left:900px;
+#compNameC,
+#storageC,
+#priceC {
+  position: relative; /* Set position to relative */ 
 }
 #priceC {
-    right:500px;
-}
+    margin-left: auto; /* Push the price to the bottom */
+    font-weight: bold; /* Make the price bold */
+  }
