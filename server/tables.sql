@@ -1,7 +1,7 @@
 Create Table if not exists CPU(
-	Name VarChar(100) PRIMARY KEY,
+  Name VarChar(100) PRIMARY KEY,
 	Price Numeric(6,2) NOT NULL,
-  Socket VarChar(100) NOT NULL,
+	Socket VarChar(100) NOT NULL,
   TDP TINYINT(100) NOT NULL,
 	PerformanceScore Integer NOT NULL
 );
