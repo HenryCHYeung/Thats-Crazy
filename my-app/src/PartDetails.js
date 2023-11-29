@@ -1,6 +1,6 @@
 import React from 'react';
 import "./PartDetails.css";
-
+//This component show one part's detail
 function openLink(url) {
   window.open(url, '_blank');
 }

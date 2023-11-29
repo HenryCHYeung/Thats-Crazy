@@ -8,11 +8,11 @@ import Build from './PCBuild';
 import Componentcard from './Card';
 
 const JModal = ({ isOpen, closeModal }) => {
-  const navigate = useNavigate();
+  const navigate = useNavigate();// declare navigate from react-router-dom(navigate is used to change pages based on the routes declared in App.js)
   const [inputValue, setInputValue] = useState('');
   const [selectedUseOption, setSelectedUseOption] = useState('');
   const [selectedSizeOption, setSelectedSizeOption] = useState('');
-  const [selectedTypeOption, setSelectedTypeOption] = useState('');
+  const [selectedTypeOption, setSelectedTypeOption] = useState(''); //We use usestate for data that would be updated later by user input or button clicks
   const [showBuildResult, setShowBuildResult] = useState(false);
   const [baking, setBaking] = useState(false);
   const [validBuild, setvalidBuild] = useState(false);
@@ -31,33 +31,33 @@ const JModal = ({ isOpen, closeModal }) => {
   const [backgroundColor, setBackgroundColor] = useState('grey');
 
   const handleInputChange = (event) => {
-    setInputValue(event.target.value);
+    setInputValue(event.target.value);//This sets the new budget to the usestate
   };
 
   const handleSize = (event) => {
-    setSelectedSizeOption(event.target.value);
+    setSelectedSizeOption(event.target.value);//this sets the storage size user input
   };
 
   const handleUse = async (event) => {
-    setSelectedUseOption(event.target.value);
+    setSelectedUseOption(event.target.value);//this sets the option type(gaming or production)
   };
   const handleType = (selectedType) => {
-    setIsLaptop(selectedType === 'Laptop');
-    setSelectedTypeOption(selectedType);
+    setIsLaptop(selectedType === 'Laptop');// this check if the option chosen is a laptop instead of desktop
+    setSelectedTypeOption(selectedType);//This sets the type option
   };
   
   const fetchData = async () => {
     try {
-        const response = await axios.post('/finished', { selectedTypeOption, selectedUseOption, selectedSizeOption, inputValue });
-        if (!response.data) {
-            setShowBuildResult(true);
+        const response = await axios.post('/finished', { selectedTypeOption, selectedUseOption, selectedSizeOption, inputValue }); //posts data to backend algorithm
+        if (!response.data) {//check if response data is null
+            setShowBuildResult(true);//these conditions help render the error page
             setvalidBuild(false);
             setBaking(false);
             console.log("No PC available based on your specifications. That's crazy!");
         } else {
-            setResponse(response.data);
-            if (selectedTypeOption == "Laptop") {
-              console.log(response.data);
+            setResponse(response.data);//otherwise set values to the global usestate variable
+            if (selectedTypeOption == "Laptop") {//check if build type is laptop
+              console.log(response.data);//conditions to render the laptop build page
               setLaptop(response.data);
               setResponse(response.data);
               setShowBuildResult(true);
@@ -65,10 +65,10 @@ const JModal = ({ isOpen, closeModal }) => {
             } 
             else {
             setResponse(response.data)
-            if (response.data.Cooler) {
+            if (response.data.Cooler) {//check if cooler exist and if true delegate data to cooler variable
                 setCooler(response.data.Cooler)
             }
-            setCpu(response.data.CPU);
+            setCpu(response.data.CPU);//delegate data to specific parts
             setGpu(response.data.GPU);
             setCased(response.data.Case);
             setMotherboard(response.data.Motherboard);
@@ -78,12 +78,12 @@ const JModal = ({ isOpen, closeModal }) => {
             setRam(response.data.RAM);
             setCooler(response.data.CPU_Cooler)
             console.log(response.data);
-            setShowBuildResult(true);
+            setShowBuildResult(true);//conditions to show pc build
             setvalidBuild(true);
           }
         }
     } catch (error) {
-            console.error('Error fetching data:', error);
+            console.error('Error fetching data:', error);//return a system or syntax error if issues
     }
 }
 const handleSubmit = async (event) => {
@@ -93,11 +93,11 @@ const handleSubmit = async (event) => {
           ((selectedTypeOption=="Desktop") && selectedSizeOption=="")){
               console.log("Please choose or input Valid values. That's crazy!");
           }else{
-              setBaking(true);
+              setBaking(true);//renders the loading screen
               setBackgroundColor('white')
-              await new Promise((resolve) => setTimeout(resolve, 2000));
+              await new Promise((resolve) => setTimeout(resolve, 2000));//pause the script by 2 seconds
               await fetchData(); // Wait for fetchData to complete and get the data
-              setBaking(false)
+              setBaking(false)//stop loading screen
           }
           
       } catch (error) {
@@ -126,9 +126,10 @@ const handleCheckOut = () => {
 };
 return (
   <Modal isOpen={isOpen} onRequestClose={handleCloseModal} contentLabel="Example Modal" style={{content: {backgroundColor:backgroundColor,width: '90%', height: '93%', margin: 'auto'}}} >
-      <button className="closeBtn" onClick={handleCloseModal}>X</button>
+      <button className="closeBtn" onClick={handleCloseModal}>X</button> {/*handles the close and open buttons */}
     <div>
     {(() => {
+      {/** spaghetti code below but essentially has multiple nested if else statements to render the ui */}
       if (showBuildResult) {
         if(validBuild) {
           console.log(validBuild);

@@ -57,7 +57,7 @@ function Checkout()  {
   }
 }
   const handlebuilt=(event)=>{
-    if(event.target.value=='yes'){
+    if(event.target.value=='yes'){//set the build fee to 500 or 0 based on user input yes or no
       setPrebuilt(500);
     }else{
       setPrebuilt(0);
@@ -65,8 +65,8 @@ function Checkout()  {
     
   }
   const handleShipping= (e, field) => {
-    const value = e.target.value;
-    switch (field) {
+    const value = e.target.value; {/* The switch sets the values to the correct global variable*/}
+    switch (field) {    
       case 'email':
         setEmail(value);
         break;
@@ -100,7 +100,7 @@ function Checkout()  {
   }
 
   const handlePayment= (e, field) => {
-    const value = e.target.value;
+    const value = e.target.value;//the switch makes sure the values are set to the correct global variables of payment
     switch (field) {
       case 'holder':
         setHolder(value);

@@ -12,7 +12,7 @@ const ModalButton = () => {
   const closeModal = () => {
     setModalIsOpen(false);
   };
-
+  //this component is hides modal to be activated by button, Also when rendering it will build the rest of Modal.js
   return (
     <div>
       <button className='homebutton' style={{

@@ -1,7 +1,7 @@
 import React from 'react';
 import './PCBuild.css';
 import Componentcard from './Card';
-
+//This component show the entire part lists for pc build on the modal
 function Build({cpu,gpu,cased,motherboard,ram,psu,storage,cooler}){
     let cpuimg=cpu.Name.replace(/\s/g, '');//remove spaces by replacing space with null
     let gpuimg=gpu.Name.replace(/\s/g, '');

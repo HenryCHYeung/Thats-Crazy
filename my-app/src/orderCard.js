@@ -1,6 +1,6 @@
 import React from 'react';
 import './orderCard.css';
-
+//This component is the same idea as Card.js but has a diffrent css to display correctly on checkout page
 function openLink(url) {
   window.open(url, '_blank');
 }

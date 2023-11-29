@@ -7,13 +7,13 @@ import './Receipt.css';
 function Receipt() {
   const navigate= useNavigate();
   const location = useLocation();
-  const responses = location.state?.response;
+  const responses = location.state?.response;//Check if there is a response recieved from last page
   let laptop, cpu, gpu, cased, motherboard, psu, storage, ram, cooler;
   if (responses.responses.Name) {
     laptop = responses.responses;
   }
   else {
-  cpu=responses.responses.CPU;//remove spaces by replacing space with null
+  cpu=responses.responses.CPU;//stores the component object values
   gpu=responses.responses.GPU;
   cased=responses.responses.Case;
   motherboard=responses.responses.Motherboard;
@@ -22,7 +22,7 @@ function Receipt() {
   ram=responses.responses.RAM;
   cooler=responses.responses?.CPU_Cooler;
   }
-  let fname=responses.firstName;
+  let fname=responses.firstName;//Stores user shipping info
   let lname=responses.lastName;
   let deliveryAddress=responses.deliveryAddress;
   let suburb=responses.suburb;
@@ -38,13 +38,13 @@ function Receipt() {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setCurrentDate(new Date());
+      setCurrentDate(new Date());// set date to user's local computer date
     }, 1000); // Update every second
 
     return () => {
       clearInterval(intervalId);
     };
-  }, []);
+  }, []); //run this function once
 
   const options = {
     weekday: 'long',
@@ -55,7 +55,7 @@ function Receipt() {
 
   const formattedDate = currentDate.toLocaleDateString(undefined, options);
   const handleDone =()=>{
-    navigate('/')
+    navigate('/')//set back to homepage when user clicks done
   }
 
   return (
