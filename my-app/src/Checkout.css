@@ -7,12 +7,13 @@
 }
 .checkChibi{
     position: absolute;
-    height: 40%;
-    width: 25%;
-    top: -2%;
-    left: 55%;
+    height: 260px;
+    width: 260px;
+    top: 0%;
+    left: 65%;
 }
 .checkout{
+    background-color:white;
     align-items: center;
     text-align: center;
     width: 100%;
@@ -42,3 +43,25 @@
     padding: 2px;
     font-size: 2vw;
 }
+
+.checkoutButton {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    margin-right: 30px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #3498db;
+    border-radius: 50px;
+    color: white;
+    background-color: #3498db;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .checkoutButton:hover {
+    background-color: white;
+    color: #3498db;
+  }
+  

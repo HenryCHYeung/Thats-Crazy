@@ -52,8 +52,8 @@ const PartList = () => {
   
 
   return (
-    <div>
-      <h3>All Parts</h3>
+    <div id='partlist'>
+      <h3 className='partLabel'>All Parts</h3>
 
       <div className="section-links">
         {sections.map((part) => (

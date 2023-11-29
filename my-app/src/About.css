@@ -7,11 +7,13 @@
 }
 .credit{
   text-align: center;
+  color:white;
   border: 1px solid lawngreen;
   padding: 2%;
 }
 .info{
   flex: 1;
+  color:white;
   width: 50%;
 }
 .aboutImg{

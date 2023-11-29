@@ -144,7 +144,7 @@ return (
                       </label>
                     </div>
                   </div>
-              <button onClick={handleBackToForm}>Back</button>
+              <button className='backBtn' onClick={handleBackToForm}>Back</button>
               <div>
                 <label className='totalLabel'>
                   <h3 className='totalText'>Type: {selectedTypeOption}</h3>
@@ -161,7 +161,7 @@ return (
           return (
               <div>
               <Build cpu={cpu} gpu={gpu} cased={cased} motherboard={motherboard} ram={ram} psu={psu} storage={storage} cooler={cooler}/>
-              <button onClick={handleBackToForm}>Back</button>
+              <button className='backBtn' onClick={handleBackToForm}>Back</button>
               <div>
                 <label className='totalLabel'>
                   <h3 className='totalText'>Type: {selectedTypeOption}</h3>
@@ -185,7 +185,7 @@ return (
                 </p>
                 <img style={{width:'60%', height:'80%'}} src={'/Error.png'} alt="CPU Image" />
               </label>
-              <button onClick={handleBackToForm}>Back</button>
+              <button className='backBtn' onClick={handleBackToForm}>Back</button>
             </div>
           );
         }

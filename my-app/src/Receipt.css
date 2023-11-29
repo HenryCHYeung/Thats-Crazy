@@ -1,5 +1,6 @@
 .receiptContent{
     position: absolute;
+    background-color: white;
     left: 35%;
     top: 20%;
     text-align: center;
@@ -8,3 +9,22 @@
     border: 2px solid black;
     padding-bottom: 2%;
 }
+
+.doneButton {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #2ecc71;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #2ecc71;
+    transition: background-color 0.3s ease, color 0.3s ease;  
+}
+.doneButton:hover {
+    background-color: #27ae60;
+  }
+  

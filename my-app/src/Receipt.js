@@ -59,8 +59,8 @@ function Receipt() {
   }
 
   return (
-    <div>
-      <div className='receiptContent'>
+    <div className='receiptContent'>
+      <div>
         <h1>Thank You For Purchasing!</h1>
         <h3>Your Item(s) will be shipped shortly</h3>
         <h5>Receipt for {fname} {lname} from {formattedDate}</h5>
@@ -92,7 +92,7 @@ function Receipt() {
           <hr/>
           <h5>Total: ${total.toFixed(2)}</h5>
         </div>
-        <button onClick={handleDone}>Done</button>
+        <button className='doneButton' onClick={handleDone}>Done</button>
       </div>
     </div>
     );

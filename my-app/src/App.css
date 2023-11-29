@@ -1,5 +1,13 @@
 /* Add this to your CSS file */
 
+#partlist, #home, .aboutContainer{
+  background-image: url('../public/grad.png');
+  background-color: rgba(255, 255, 255, 0.1); /* White color with 0.8 opacity */
+  background-size: cover;
+  background-attachment: fixed;  
+}
+
+
 .horizontalNav {
   display: flex;
   align-items: center;

@@ -1,10 +1,6 @@
 /* PartList.css */
-body{
-    background-image: url('../public/grad.png');
-    background-color: rgba(255, 255, 255, 0.1); /* White color with 0.8 opacity */
-}
 
-h3 {
+.partLabel {
     color: white; /* Header text color */
     border-bottom: 2px solid white; /* Underline effect */
     padding-bottom: 8px;
@@ -40,7 +36,7 @@ h3 {
 }
 
 .part-container {
-  height: 65vh;
+  height: 73.2vh;
   overflow-y: scroll;
 }
   

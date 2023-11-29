@@ -1,6 +1,6 @@
 .orderSize{
     display: flex;
-    height: 10%;
+    height: 80px;
     width: 100%;
     cursor: pointer;
     font-size: .8vw;
@@ -19,9 +19,22 @@
 .orderSize:hover {
     background-color: lightgray;
   }
-.orderImg{
-   
-    width: 10%;
-    height: auto; 
-    
+
+.orderImg2{
+
+    width: 75px;
+    height: 75px; 
+}
+
+#compNameC, #storageC, #priceC {
+    position:absolute;
+}
+#compNameC {
+    left:500px;
+}
+#storageC {
+    left:900px;
+}
+#priceC {
+    right:500px;
 }

@@ -168,7 +168,7 @@ function Checkout()  {
       
       <div className='content'>
         <span>
-        <h3>Shipping Info</h3>
+        <h3 className='orderLabel'>Shipping Info</h3>
         <input
             className='textInput'
             type="text"
@@ -267,8 +267,8 @@ function Checkout()  {
         />
         <img className='creditImg'src='./cards.jpg'/> 
        
-        <button  onClick={handlePurchase}>Purchase now</button>
-        <button  onClick={handleCancel}>Cancel</button>
+        <button  className='checkoutButton' onClick={handlePurchase}>Purchase now</button>
+        <button  className='checkoutButton'onClick={handleCancel}>Cancel</button>
    
       </div>
   </div>

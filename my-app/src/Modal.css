@@ -98,14 +98,36 @@
 
 .buildBtn{
     position: absolute;
-    height: 4%;
-    width: 6%;
+    height: 6%;
+    width: 8%;
     top: 80%;
     left: 73%;
     text-align: center;
     font-size: 1vw;
     z-index: '1';
 }
+
+.backBtn, .buildBtn {
+    display: inline-block;
+    padding: 14px 28px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #e74c3c;
+    border-radius: 8px;
+    color: #ffffff;
+    background-color: #e74c3c;
+    transition: background-color 0.3s ease, color 0.3s ease;  
+}
+
+.buildBtn:hover, .backBtn:hover {
+    background-color: #ffffff;
+    color: #e74c3c;
+  }
+  
+
 .buildForm{
     display: flex;
     justify-content: center;
@@ -128,7 +150,26 @@
     left: 90%;
     font-size: .8vw;
     z-index: '1';
+    display: inline-block;
+    padding: 14px 28px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid green;
+    border-radius: 8px;
+    color: #ffffff;
+    background-color: green;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  
 }
+
+.checkBtn:hover {
+    background-color: #ffffff;
+    color: green;
+  }
+  
 .load{
     position: absolute;
     top: 40%;

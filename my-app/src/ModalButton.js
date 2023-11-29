@@ -15,7 +15,7 @@ const ModalButton = () => {
 
   return (
     <div>
-      <button style={{
+      <button className='homebutton' style={{
         left:'40%',
         top:'60%',
         width:'30%', 
