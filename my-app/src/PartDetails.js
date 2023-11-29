@@ -1,33 +1,33 @@
 import React from 'react';
+import "./PartDetails.css";
 
 function openLink(url) {
-    window.open(url, '_blank');
-  }
+  window.open(url, '_blank');
+}
 
-
-function PartDetails({part, type }) {
+function PartDetails({ part, type }) {
   const { Name, Price, Socket, TDP, PerformanceScore, MemoryType, Wattage, Capacity, Storage, Category } = part;
-  let imgName=Name.replace(/\s/g, '');
-  let nameA=imgName.replace(/\|/g,'');
-  const amazonLink='https://www.amazon.com/s?k='+nameA+'&crid=22RKV946NH24M&sprefix=MSIMPGX570GAMINGPROCARBONWIFI%2Caps%2C144&ref=nb_sb_noss';
+  let imgName = Name.replace(/\s/g, '');
+  let nameA = imgName.replace(/\|/g, '');
+  let nameB = Name.replace(/\|/g, '');
+  const amazonLink = 'https://www.amazon.com/s?k=' + nameB + '&crid=22RKV946NH24M&sprefix=MSIMPGX570GAMINGPROCARBONWIFI%2Caps%2C144&ref=nb_sb_noss';
 
   return (
-    <div>
+    <div className="part-details-container">
       <span className="contentContainer" onClick={() => openLink(amazonLink)}>
-      <p>Name: {Name} </p>
-      <img src={`/images/${type}/${nameA}.jpg`} alt={`${Name} Image`} className="orderImg" />
-      <p>Price: {Price} </p>
+        <img src={`/images/${type}/${nameA}.jpg`} alt={`${Name} Image`} className="orderImg" />
+        <p className="part-name">Name: {Name}</p>
+        <p className="part-info">Price: ${Price}</p>
 
-      {Socket && <p>Socket: {Socket} </p>}
-      {TDP && <p>TDP: {TDP} </p>}
-      {PerformanceScore && <p>Performance Score: {PerformanceScore} </p>}
-      {MemoryType && <p>Memory Type: {MemoryType} </p>}
-      {Wattage && <p>Wattage: {Wattage} </p>}
-      {Capacity && <p>Capacity: {Capacity} </p>}
-      {Storage && <p>Storage: {Storage} </p>}
-      {Category && <p>Category: {Category} </p>}
+        {Socket && <p className="part-info">Socket: {Socket}</p>}
+        {TDP && <p className="part-info">TDP: {TDP}W</p>}
+        {PerformanceScore && <p className="part-info">Performance Score: {PerformanceScore}</p>}
+        {MemoryType && <p className="part-info">Memory Type: {MemoryType}</p>}
+        {Wattage && <p className="part-info">Wattage: {Wattage}W</p>}
+        {Capacity && <p className="part-info">Capacity: {Capacity}</p>}
+        {Storage && <p className="part-info">Storage: {Storage}</p>}
+        {Category && <p className="part-info">Category: {Category}</p>}
       </span>
-      <hr />
     </div>
   );
 }

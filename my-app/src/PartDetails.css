@@ -1,0 +1,41 @@
+/* Add this to your stylesheet */
+
+.part-details-container {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease; /* Add transition effect */
+  }
+  
+  .part-details-container:hover {
+    background-color: #e0e0e0; /* Change the background color on hover */
+  }
+  
+  .contentContainer {
+    cursor: pointer;
+  }
+  
+  .part-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    margin-right: 15px;
+  }
+  
+  .orderImg {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    margin-right: 15px;
+  }
+  
+  .part-info {
+    margin-right: 15px;
+    margin-bottom: 8px;
+    display: inline-block;
+    transition: color 0.3s ease; /* Add transition effect */
+  }

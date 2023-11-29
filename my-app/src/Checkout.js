@@ -157,6 +157,12 @@ function Checkout()  {
               <input type='radio' name='usage1' value="no"/>No
           </label>
           )}
+          {prebuilt==500 && ( 
+          <div>
+            <p>Please check this video on building a PC!</p>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/BL4DCEp7blY?si=EE_lQ0kXIL5_rq60" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          )}
           <p>Total: ${total.toFixed(2)}</p>
       </div>
       
