@@ -68,14 +68,16 @@ const PartList = () => {
         ))}
       </div>
 
-      <div className={`part-list ${fade ? 'fade-out' : ''}`}>
-        {selectedPart && partDetails && (
-          <div>
-            {partDetails.map((part) => (
-              <PartDetails key={part.Name} part={part} type={selectedPart} />
-            ))}
-          </div>
-        )}
+      <div className="part-container">
+        <div className={`part-list ${fade ? 'fade-out' : ''}`}>
+          {selectedPart && partDetails && (
+            <div>
+              {partDetails.map((part) => (
+                <PartDetails key={part.Name} part={part} type={selectedPart} />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

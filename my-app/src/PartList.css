@@ -9,7 +9,7 @@ h3 {
     border-bottom: 2px solid white; /* Underline effect */
     padding-bottom: 8px;
     margin-bottom: 16px;
-  }
+}
   
 .section-links {
     display: flex;
@@ -18,26 +18,31 @@ h3 {
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
-  }
+}
   
-  .section-links a {
+.section-links a {
     text-decoration: none;
     cursor: pointer;
     color: #495057; /* Text color */
     padding: 8px 12px;
     border-radius: 5px;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  }
+}
   
-  .section-links a:hover {
+.section-links a:hover {
     background-color: #007bff; /* Hover background color */
     color: #fff; /* Hover text color */
-  }
+}
 
-  .section-links a.active {
+.section-links a.active {
     background-color: #007bff; /* Active link color */
     color:white;
-  }
+}
+
+.part-container {
+  height: 65vh;
+  overflow-y: scroll;
+}
   
   
   /* PartList.css */
@@ -45,10 +50,10 @@ h3 {
 .part-list {
     opacity: 1;
     transition: opacity 0.2s ease-in-out;
-  }
+}
   
-  .part-list.fade-out {
+.part-list.fade-out {
     opacity: 0;
-  }
+}
   
   
