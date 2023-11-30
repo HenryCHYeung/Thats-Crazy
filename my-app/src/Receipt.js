@@ -60,8 +60,8 @@ function Receipt() {
 
   return (
     <div>
-    <img className='receiptL' src='receiptL.png'/>
-    <img className='receiptR' src='receiptR.png'/>
+    <img className='receiptL' src='receiptL.png' alt='Receipt Left'/>
+    <img className='receiptR' src='receiptR.png' alt='Receipt Right'/>
     <div className='receiptContent'>
       <div>
         <h1>Thank You For Purchasing!</h1>

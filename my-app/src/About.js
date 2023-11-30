@@ -6,7 +6,7 @@ function About() {
   return (//Making stuff invisible + the conditional rendering between home, StorageChoice and typeChoice, home is just made invisible for simplicity.
   <div className='aboutContainer'>
     <div className='creditContainer'>
-    <img className='aboutImg' src='/about.png'/>
+    <img className='aboutImg' src='/about.png' alt='Team Crazy'/>
     <div className='credit'>
     <h3>Members of Team That's Crazy:</h3>
     <p>Christian Pascal - Server Hosting/Concept/Original Algorithm</p>

@@ -15,7 +15,7 @@ function PartDetails({ part, type }) {
   return (
     <div className="part-details-container">
       <span className="contentContainer" onClick={() => openLink(amazonLink)}>
-        <img src={`/images/${type}/${nameA}.jpg`} alt={`${Name} Image`} className="orderImg" />
+        <img src={`/images/${type}/${nameA}.jpg`} alt={`${Name}`} className="orderImg" />
         <p className="part-name">Name: {Name}</p>
         <p className="part-info">Price: ${Price}</p>
 

@@ -9,7 +9,7 @@ import './App.css';
 function App() {
 
    const location = useLocation();
-   const renderNav = !['/checkout'].includes(location.pathname);//This makes sure checkout won't be part of public routes and as a seperate page
+   const renderNav = !['/checkout'].includes(location.pathname);//This makes sure checkout won't be part of public routes and as a seperate page 
 
   return (
     <div>
@@ -17,7 +17,7 @@ function App() {
       <nav className='horizontalNav'>{/*This is a navigation bar with tabs linked to other pages */}
         <Link to='/'>
           <div>
-            <img className='logo' src='/Rapid_Rigs.png'/>
+            <img className='logo' src='/Rapid_Rigs.png' alt='Logo'/>
           </div>
         </Link>
         <ul>

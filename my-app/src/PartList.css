@@ -16,8 +16,10 @@
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
 }
   
-.section-links a {
+.section-links button {
     text-decoration: none;
+    background: none;
+    border:none;
     cursor: pointer;
     color: #495057; /* Text color */
     padding: 8px 12px;
@@ -25,19 +27,18 @@
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
   
-.section-links a:hover {
+.section-links button:hover {
     background-color: #007bff; /* Hover background color */
     color: #fff; /* Hover text color */
 }
 
-.section-links a.active {
+.section-links button.active {
     background-color: #007bff; /* Active link color */
     color:white;
 }
 
 .part-container {
   height: 77.6vh;
-  max-height: 520px;
   overflow-y: scroll;
 }
   

@@ -15,7 +15,7 @@ const PartList = () => {
   useEffect(() => {
     // Fetch data for the default selected part (CPU)
     fetchData(selectedPart);
-  }, []); // Empty dependency array ensures this effect runs only once, similar to componentDidMount
+  }, [selectedPart]); // Dependency array ensures this effect runs only once, similar to componentDidMount
 
   const fetchData = async (part) => {
     try {
@@ -57,15 +57,14 @@ const PartList = () => {
 
       <div className="section-links">
         {sections.map((part) => (
-          <a
-            key={part}
-            href="#"
-            onClick={() => handleSectionClick(part)}
-            className={selectedPart === part ? 'active' : ''}
-          >
+          <button
+          key={part}
+          onClick={() => handleSectionClick(part)}
+          className={selectedPart === part ? 'active' : ''}
+        >
           {getSectionLabel(part)}
-          </a>
-        ))}
+        </button>
+      ))}
       </div>
 
       <div className="part-container">

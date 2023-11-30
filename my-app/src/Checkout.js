@@ -58,7 +58,7 @@ function Checkout()  {
   }
 }
   const handlebuilt=(event)=>{
-    if(event.target.value=='yes'){//set the build fee to 500 or 0 based on user input yes or no
+    if(event.target.value==='yes'){//set the build fee to 500 or 0 based on user input yes or no
       setPrebuilt(500);
       setIsPrebuilt(true);
     }else{
@@ -68,7 +68,7 @@ function Checkout()  {
     
   }
   const handleShipping= (e, field) => {
-    const value = e.target.value; {/* The switch sets the values to the correct global variable*/}
+    const value = e.target.value; /* The switch sets the values to the correct global variable*/
     switch (field) {    
       case 'email':
         setEmail(value);
@@ -103,7 +103,7 @@ function Checkout()  {
   }
 
   const handlePayment= (e, field) => {
-    const value = e.target.value;//the switch makes sure the values are set to the correct global variables of payment
+    const value = e.target.value;//the switch makes sure the values are set to the correct global variables of payment 
     switch (field) {
       case 'holder':
         setHolder(value);
@@ -130,8 +130,8 @@ function Checkout()  {
   return (
   <div className='checkout'>
       <div className='content'>
-          <img className='checkLogo' src='Rapid_Rigs.png'/>
-          <img className='checkChibi'src='/checkout.gif'/>
+          <img className='checkLogo' src='Rapid_Rigs.png' alt='Logo'/> *
+          <img className='checkChibi'src='/checkout.gif' alt='GIF'/>
           <h1>Review Your Order</h1>
           {laptop && (
               <>
@@ -268,11 +268,11 @@ function Checkout()  {
           value={cvv}
           onChange={(e) => handlePayment(e, 'cvv')}
         />
-        <img className='creditImg'src='./cards.jpg'/> 
+        <img className='creditImg'src='./cards.jpg' alt='Pay'/> 
        
         <button  className='checkoutButton' onClick={handlePurchase}>Purchase now</button>
         <button  className='checkoutButton'onClick={handleCancel}>Cancel</button>
-   
+    
       </div>
   </div>
   );

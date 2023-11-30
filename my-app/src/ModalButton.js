@@ -4,7 +4,6 @@ import Modal from './Modal';
 
 const ModalButton = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
   const openModal = () => {
     setModalIsOpen(true);
   };
@@ -17,8 +16,6 @@ const ModalButton = () => {
     <div>
       <button className='homebutton'
         onClick={openModal}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
         >Start Rapid Build</button>
       <Modal isOpen={modalIsOpen} closeModal={closeModal} />
     </div>

@@ -5,14 +5,14 @@ import './Home.css';
 
 function Home() {
   
-  return (//Making stuff invisible + the conditional rendering between home, StorageChoice and typeChoice, home is just made invisible for simplicity.
+  return (
   <div id='home'>
     <div className='homeContainer'>
       <span>
-        <img className='homeChibi' src='/home.png'/> 
+        <img className='homeChibi' src='/home.png' alt='Home Chibi' /> 
       </span>
       <h1 className='homeText'>Build Your Dream PC With Our Selected PC Parts!</h1>
-      <img className='deviceImg' src='/pcStock.png'/>
+      <img className='deviceImg' src='/pcStock.png' alt='PC Stock'/>
       <span className='homeText'>
         <ModalButton/>
       </span>

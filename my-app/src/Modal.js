@@ -56,7 +56,7 @@ const JModal = ({ isOpen, closeModal }) => {
             console.log("No PC available based on your specifications. That's crazy!");
         } else {
             setResponse(response.data);//otherwise set values to the global usestate variable
-            if (selectedTypeOption == "Laptop") {//check if build type is laptop
+            if (selectedTypeOption === "Laptop") {//check if build type is laptop
               console.log(response.data);//conditions to render the laptop build page
               setLaptop(response.data);
               setResponse(response.data);
@@ -89,8 +89,8 @@ const JModal = ({ isOpen, closeModal }) => {
 const handleSubmit = async (event) => {
       event.preventDefault();
       try {
-          if(selectedUseOption==""||selectedTypeOption==""||inputValue==""||
-          ((selectedTypeOption=="Desktop") && selectedSizeOption=="")){
+          if(selectedUseOption===""||selectedTypeOption===""||inputValue===""||
+          ((selectedTypeOption==="Desktop") && selectedSizeOption==="")){
               console.log("Please choose or input Valid values. That's crazy!");
           }else{
               setBaking(true);//renders the loading screen
@@ -135,7 +135,7 @@ return (
       <button className="closeBtn" onClick={handleCloseModal}>X</button> {/*handles the close and open buttons */}
     <div>
     {(() => {
-      {/** spaghetti code below but essentially has multiple nested if else statements to render the ui */}
+      /** spaghetti code below but essentially has multiple nested if else statements to render the ui */
       if (showBuildResult) {
         if(validBuild) {
           console.log(validBuild);
@@ -190,7 +190,7 @@ return (
                 <p style={{textAlign:'center'}}>
                   No PC available based on your specifications. That's crazy!<br/>Maybe try increasing the budget?
                 </p>
-                <img className='errorImage' src={'/Error.png'} alt="CPU Image" />
+                <img className='errorImage' src={'/Error.png'} alt="CPU" />
               </label>
               <button className='backBtn' onClick={handleBackToForm}>Back</button>
             </div>
@@ -201,7 +201,7 @@ return (
           return(
             <div>
               <div className='inLine'>
-                <img style={{width:'50%', height: '100%'}} src='making.gif'/>
+                <img style={{width:'50%', height: '100%'}} src='making.gif' alt='Bell'/>
               </div>
               <div className='inLine'>
               <form className='bakingWindow'onSubmit={handleSubmit}>
