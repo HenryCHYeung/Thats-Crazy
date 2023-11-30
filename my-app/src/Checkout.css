@@ -66,3 +66,7 @@
     background-color: white;
     color: #3498db;
 }
+
+input {
+    cursor: pointer;
+}

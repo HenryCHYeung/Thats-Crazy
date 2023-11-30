@@ -1,5 +1,6 @@
 .cardSize{
-    height: 100%;
+    height: auto;
+    min-height: 100%;
     width: 60%;
     cursor: pointer;
     font-size: 12pt;
@@ -9,6 +10,8 @@
     transition: background-color 0.3s ease; /* Add a smooth transition effect */
   }
 .imgSize{
-    height: 125%;
-    width: 125%;
+    height: 100%;
+    width: 100%;
+    display: block;
+    margin: auto;
 }

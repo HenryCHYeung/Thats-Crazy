@@ -3,7 +3,7 @@
     height: 100px;
     width: 100%;
     cursor: pointer;
-    font-size: .8vw;
+    font-size: 1vw;
     border: .2px solid red;
     flex-direction: column;
 }

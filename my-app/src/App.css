@@ -25,10 +25,11 @@ body {
 
 ul {
   list-style-type: none;
-  margin-left: 10%;
+  margin-left: auto;
+  margin-right: 0;
   padding: 0;
   display: flex;
-  position: absolute;
+  position: relative;
   right: 20px;
   text-align: right;
 }

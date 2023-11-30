@@ -1,7 +1,3 @@
-body {
-    min-width: 820px;
-}
-
 .closeBtn{
     position: relative;
     top: 0%;
@@ -27,7 +23,13 @@ body {
 }
 .inLine{
     display: inline-block;
-    
+    min-width: 820px;
+    overflow: auto;  
+}
+@media all and ( max-width: 600px ) {
+    .makingImg {
+        display: none;
+    }
 }
 .modalForm{
     display: flex;
@@ -44,6 +46,10 @@ body {
     font-size: 3vw;
     z-index: '1';
 
+}
+
+.optionScreen {
+    color: white;
 }
 
 .priceLabel{
@@ -98,6 +104,7 @@ body {
     margin-top: 5px;
     padding: 5px;
     width: 80%;
+    cursor: text;
     
 }
 .radioOptions {
@@ -108,6 +115,7 @@ body {
 
 .radioOptions input {
     margin-bottom: 5px;
+    cursor: pointer;
 }
 
 
@@ -225,13 +233,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 1vw;
   }
   .totalText{
     margin-right: 50px;
   }
   .errorImage {
-    position:absolute;
-    right: 300px;
-    width:'50%';
-    height:'100%';
+    display: block;
+    position:relative;
+    margin: auto;
   }

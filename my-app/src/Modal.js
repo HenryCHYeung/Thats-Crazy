@@ -186,7 +186,7 @@ return (
           return (
             <div>
               <h2 className='modalHD'>Build Baking Results</h2>
-              <label style={{position:'absolute',top:'30%',left:'20%',width:'60%', height:'60%'}}>
+              <label style={{position:'absolute',top:'30%',left:'20%',width:'60%', height:'60%', margin: 'auto'}}>
                 <p style={{textAlign:'center'}}>
                   No PC available based on your specifications. That's crazy!<br/>Maybe try increasing the budget?
                 </p>
@@ -200,46 +200,46 @@ return (
         if(!baking){
           return(
             <div>
-              <div className='inLine'>
+              <div className='inLine makingImg'>
                 <img style={{width:'50%', height: '100%'}} src='making.gif' alt='Bell'/>
               </div>
               <div className='inLine'>
               <form className='bakingWindow'onSubmit={handleSubmit}>
-                  <h2 className='modalHd'>Baking Your Computer</h2>
+                  <h2 className='modalHd optionScreen'>Baking Your Computer</h2>
                   <div className='modalForm'>
                     <label className='priceLabel'>
-                        <h3>Enter Your Budget:</h3> 
+                        <h3 className='optionScreen'>Enter Your Budget:</h3> 
                         <input className='textInput' type="text" placeholder="ex.1000.00" value={inputValue} onChange={handleInputChange} />
                     </label>
                     </div>
                     <div className='typeLabel'>
                       <label>
-                        <h3>Choose the PC's Type:</h3>
-                          <div className='radioOptions'>
-                          <input
+                        <h3 className='optionScreen'>Choose the PC's Type:</h3>
+                          <div className='radioOptions optionScreen'>
+                            <input
                               type='radio'
                               name='usage'
                               value='Desktop'
                               checked={selectedTypeOption === 'Desktop'}
                               onChange={() => handleType('Desktop')}
                             />
-                        Desktop
-                    <input
-                      type='radio'
-                      name='usage'
-                      value='Laptop'
-                        checked={selectedTypeOption === 'Laptop'}
-                        onChange={() => handleType('Laptop')}
-                        />
-                          Laptop
-                </div>
-                  </label>
+                              Desktop
+                            <input
+                              type='radio'
+                              name='usage'
+                              value='Laptop'
+                              checked={selectedTypeOption === 'Laptop'}
+                              onChange={() => handleType('Laptop')}
+                              />
+                              Laptop
+                          </div>
+                      </label>
                     </div>
 
                     <div className='useLabel' onChange={handleUse}>
                     <label>
-                        <h3>Choose the PC's Purpose:</h3>
-                        <div className='radioOptions'>
+                        <h3 className='optionScreen'>Choose the PC's Purpose:</h3>
+                        <div className='radioOptions optionScreen'>
                         <input type='radio' name='usage1' value="Gaming"/>Gaming
                         <input type='radio' name='usage1' value="Production"/>Production
                         </div>
@@ -248,8 +248,8 @@ return (
                     {!isLaptop && (
               <div className='storageLabel' onChange={handleSize}>
                 <label>
-                  <h3>Choose Your Storage Size:</h3>
-                  <div className='radioOptions'>
+                  <h3 className='optionScreen'>Choose Your Storage Size:</h3>
+                  <div className='radioOptions optionScreen'>
                     <input type='radio' name='usage2' value='500 GB' />500 GB
                     <input type='radio' name='usage2' value='1 TB' />1 TB
                     <input type='radio' name='usage2' value='2 TB' />2 TB

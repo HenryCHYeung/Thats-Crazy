@@ -41,3 +41,15 @@
     right: 3%;
     width: 30vw;
 }
+
+@media all and ( max-width: 600px ) {
+    .receiptL {
+        display: none;
+    }
+    .receiptR {
+        display: none;
+    }
+    .receiptContent {
+        width: 90%;
+    }
+}
