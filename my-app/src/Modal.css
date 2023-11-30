@@ -1,3 +1,6 @@
+body {
+    min-width: 820px;
+}
 
 .closeBtn{
     position: relative;
@@ -9,6 +12,7 @@
     padding: '15px 30px';
     font-Size: '18px';
     z-index: '1';
+    cursor: pointer;
 }
 
 .partL {
@@ -121,6 +125,7 @@
     color: #ffffff;
     background-color: green;
     transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
 }
 
 .backBtn {

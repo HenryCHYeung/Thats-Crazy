@@ -219,9 +219,9 @@ return (
                           <input
                               type='radio'
                               name='usage'
-                            value='Desktop'
-                            checked={selectedTypeOption === 'Desktop'}
-                            onChange={() => handleType('Desktop')}
+                              value='Desktop'
+                              checked={selectedTypeOption === 'Desktop'}
+                              onChange={() => handleType('Desktop')}
                             />
                         Desktop
                     <input

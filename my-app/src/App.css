@@ -1,4 +1,8 @@
 /* Add this to your CSS file */
+body {
+  min-width: 820px;
+}
+
 
 #partlist, #home, .aboutContainer{
   background-image: url('../public/grad.png');
@@ -7,29 +11,26 @@
   background-attachment: fixed;  
 }
 
-
 .horizontalNav {
   display: flex;
+  width: 100%;
   align-items: center;
   background-color: #282c34;
 }
 
-.logo-link {
-  margin-right: 100px; 
-}
-
 .logo {
   max-width: 100%; 
-  height:75px;
+  height: 75px;
 }
 
 ul {
   list-style-type: none;
-  margin-left: 280px;
+  margin-left: 10%;
   padding: 0;
   display: flex;
   position: absolute;
-  left: 69%;
+  right: 20px;
+  text-align: right;
 }
 
 li {

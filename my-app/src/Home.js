@@ -9,7 +9,7 @@ function Home() {
   <div id='home'>
     <div className='homeContainer'>
       <span>
-      <img className='homeChibi' src='/home.png'/> 
+        <img className='homeChibi' src='/home.png'/> 
       </span>
       <h1 className='homeText'>Build Your Dream PC With Our Selected PC Parts!</h1>
       <img className='deviceImg' src='/pcStock.png'/>

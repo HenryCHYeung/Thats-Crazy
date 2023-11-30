@@ -8,7 +8,7 @@ function About() {
     <div className='creditContainer'>
     <img className='aboutImg' src='/about.png'/>
     <div className='credit'>
-    <h3>Team That's Crazy is...</h3>
+    <h3>Members of Team That's Crazy:</h3>
     <p>Christian Pascal - Server Hosting/Concept/Original Algorithm</p>
     <p>Henry Yeung - Algorithm Development/Database Development</p>
     <p>Guang Wei Too - Frontend Development/Database Development</p>

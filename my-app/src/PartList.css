@@ -37,6 +37,7 @@
 
 .part-container {
   height: 77.6vh;
+  max-height: 520px;
   overflow-y: scroll;
 }
   

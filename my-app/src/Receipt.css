@@ -30,14 +30,14 @@
   
 .receiptL {
     position: absolute;
-    top: -7%;
+    top: 30vh;
     left: 3%;
-    width: 600px;
+    width: 30vw;
 }
 
 .receiptR {
     position: absolute;
-    top: 5%;
+    top: 30vh;
     right: 3%;
-    width: 600px;
+    width: 30vw;
 }

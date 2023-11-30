@@ -60,10 +60,9 @@
     color: white;
     background-color: #3498db;
     transition: background-color 0.3s ease, color 0.3s ease;
-  }
+}
   
-  .checkoutButton:hover {
+.checkoutButton:hover {
     background-color: white;
     color: #3498db;
-  }
-  
+}

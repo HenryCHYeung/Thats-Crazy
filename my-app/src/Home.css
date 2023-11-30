@@ -1,10 +1,14 @@
+body {
+  min-width: 820px;
+}
+
 .invisible {
     display: none;
-  }
+}
   
 .homeChibi{
   display: inline-block;
-  max-width: 30%;
+  max-width: 33%;
   vertical-align: middle;
   z-index: -1;
 }
@@ -13,13 +17,16 @@
   color:white;
   vertical-align: middle;
   text-align: center;
+  max-width: 33%;
+  margin: auto;
 }
 .deviceImg{
   z-index: -2;
-  display: inline-block;
-  vertical-align:bottom;
+  vertical-align: bottom;
+  right: 0;
   height: 40%;
-  width: 30%;
+  width: 33%;
+  float: right;
 }
 .homeContainer {
   background-size: cover;
@@ -30,7 +37,6 @@
   left:35%;
   top:60%;
   width:30%;
-  height:8%;
   font-size: 28px;
   display: inline-block;
   padding: 8px 8px;
@@ -43,6 +49,7 @@
   color: #ffffff;
   background-color: #3498db;
   transition: background-color 0.3s ease, color 0.3s ease;
+  min-width: 95px;
 }
 
 /* Button Hover Effect */

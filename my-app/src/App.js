@@ -12,7 +12,7 @@ function App() {
    const renderNav = !['/checkout'].includes(location.pathname);//This makes sure checkout won't be part of public routes and as a seperate page
 
   return (
-    <>
+    <div>
     {renderNav && (
       <nav className='horizontalNav'>{/*This is a navigation bar with tabs linked to other pages */}
         <Link to='/'>
@@ -35,7 +35,7 @@ function App() {
       <Route path='/receipt' element={<Receipt/>}/>
     </Routes>
     
-    </>
+    </div>
   );
 }
 
