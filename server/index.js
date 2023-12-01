@@ -20,7 +20,7 @@ let db = new sqlite.Database('./PCPartsDB.db', function(err) {
   console.log("Connected to the database");
 });
 
-// Reads from local database ("select" statements usually)
+// Reads from local database and returns array of objects
 async function db_all(query, params) {
 	return new Promise(function(resolve, reject) {
 		db.all(query, params, function(error, rows) {
