@@ -1,0 +1,88 @@
+DESKTOP ALGORITHM:
+1) Given use case (Production/Gaming), storage (500 GB/1 TB/2 TB), budget
+FIND CHEAPEST PC AND USE IT AS BASELINE
+2) IF PRODUCTION
+	a) Find minimum GPU performance score
+	b) Find cheapest CPU with performance score >= minimum GPU performance score
+	c) Find cheapest GPU with performance score <= cheapest_CPU.performance_score AND
+	   performance score >= cheapest_CPU.performance_score - 3500
+   IF GAMING
+	a) Find minimum CPU performance score
+	b) Find cheapest GPU with performance score >= minimum CPU performance score
+	c) Find cheapest CPU with performance score <= cheapest_GPU.performance_score AND
+	   performance score >= cheapest_GPU.performance_score - 3500
+
+3) Find cheapest PSU with wattage >= cheapest_CPU.TDP + cheapest_GPU.TDP
+4) Find cheapest motherboard with socket = cheapest_CPU.socket
+5) Find cheapest RAM with memory type = cheapest_motherboard.memory_type
+6) Find cheapest storage with capacity = userInput(storage)
+7) Find cheapest case
+8) Set min_sum_of_price = sum of cheapest parts above
+9) Recommendation algorithm (Look at pseudo-code below)
+
+Recommendation algorithm:
+	min_sum_of_others = min_sum_of_price - cheapest_CPU.price
+	IF PRODUCTION		
+		a) Find CPUs such that CPU.price <= budget - min_sum_of_others AND 
+			    		CPU.performance_score >= cheapest_GPU.performance score,
+		b) record in array CPU[] ordered by performance_score DESCENDING
+	IF GAMING
+		a) Find GPUs such that GPU.price <= budget - min_sum_of_others AND 
+			    		GPU.performance_score >= cheapest_CPU.performance score,
+		b) record in array GPU[] ordered by performance_score DESCENDING
+	for CPU in CPU[] OR GPU in GPU[]:
+		IF PRODUCTION
+			a) Get a new list of GPUs that satisfy the conditions and do not exceed budget
+			b) Get a new list of motherboards that satisfy the conditions and do not exceed budget
+		IF GAMING
+			a) Get a new list of CPUs that satisfy the conditions and do not exceed budget
+			b) Select a CPU from that list  (if it requires CPU cooler, than adding it should not exceed budget
+			c) Get a new list of motherboards based on the selected CPU and do not exceed budget
+		Select a motherboard from that list
+		Get a new list of RAMs based on selected motherboard and do not exceed budget	
+		Get a new list of PSUs that satisfy the conditions and do not exceed budget (CPU + max(GPU.TDP) from above)
+		Get a new list of storage that satisfy user input and do not exceed budget
+		Get a new list of cases that do not exceed budget
+		// Not exceeding budget means min_sum_of_others + current component <= budget
+		// If any list is empty (no component satisfies conditions), continue to next CPU/GPU in list
+		// Every list except GPU is ordered by price in descending order
+		// GPU is ordered by performance score in descending order
+		Recalculate min_sum_of_others using the new lists
+		if (CPU/GPU.price + min_sum_of_others > budget)		// the cheapest PC with selected CPU/GPU exceeds budget
+			continue to next CPU/GPU in list
+		IF PRODUCTION
+			Add CPU Cooler if necessary and if doing so does not exceed budget
+		min_sum_of_price = min_sum_of_others + CPU.price
+			
+
+		// Right now min_sum_of_price uses the current CPU.price, but it uses the cheapest prices for everything else.
+		// The goal is to select better quality components for the other categories while still remaining in budget.
+		// Choose the best quality/most expensive part that satisfies the conditions. Since this is a production PC, the
+		// CPU is prioritized. Since CPU[] is already ordered by performance score in descending order, 
+		// we will simply choose the first one that meets all the requirements, even if we have to compromise the other
+		// parts for it.			
+			
+		IF PRODUCTION
+			Locked in the CPU, and CPU cooler if necessary
+		IF GAMING
+			Locked in the GPU, CPU, and CPU cooler if necessary
+		Locked in the motherboard
+				
+		break out of loop	// Select the first CPU/GPU that meets all the conditions above
+	end for loop
+	if (No CPU selected) return "No PC available. That's crazy!"	// if no CPU gets selected, no computer can be built
+	Use the function below on each list to get the final components
+		
+	function getSuitablePart(cheapest_part.price, partList, budget)
+		min_sum_of_others = min_sum_of_price - cheapest_part.price
+		for part in partList
+			if (part.price + min_sum_of_others > budget)
+				continue to next part in list
+			else break
+		end for loop
+		min_sum_of_price = min_sum_of_others + part.price	// min_sum_of_price is a global variable
+		return part
+	
+	Put all parts and their info into JSON, then send to frontend
+
+Laptop simply needs to fit the category and the budget
