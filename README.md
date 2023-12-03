@@ -35,4 +35,4 @@ Storage is chosen based on user input. (capacity = 500 GB, 1 TB, or 2 TB)
 
 Case has no restrictions.
 
-For more information about the algorithm. Please look at `algorithm_psuedo_code.txt`.
+For more information about the algorithm. Please look at `algorithm_pseudo_code.txt`.
