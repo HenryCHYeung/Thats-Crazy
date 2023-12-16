@@ -36,3 +36,6 @@ Storage is chosen based on user input. (capacity = 500 GB, 1 TB, or 2 TB)
 Case has no restrictions.
 
 For more information about the algorithm. Please look at `algorithm_pseudo_code.txt`.
+
+## Website Hosting
+This website is being hosted on one of our personal servers. Here is the link: https://rapidrigs.susderp.com/
